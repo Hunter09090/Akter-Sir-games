@@ -1,1 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Aim Trainer | Game Hub</title>
+
+    <meta
+        name="description"
+        content="Improve your aiming speed and accuracy.">
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="responsive.css">
+
+    <link
+        rel="stylesheet"
+        href="game.css">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <div id="header"></div>
+
+    <main class="game-page">
+
+        <h1 class="game-title">
+
+            🎯 Aim Trainer
+
+        </h1>
+
+        <p class="game-description">
+
+            Hit as many targets as possible before time runs out.
+
+        </p>
+
+        <section class="game-box">
+
+            <!-- Arena -->
+
+            <div
+                id="gameArea"
+                class="aim-area">
+
+                <div
+                    id="target"
+                    class="target">
+
+                </div>
+
+            </div>
+
+            <!-- Controls -->
+
+            <div class="button-group">
+
+                <button
+                    id="startBtn"
+                    class="game-btn">
+
+                    Start Game
+
+                </button>
+
+            </div>
+
+            <!-- Result -->
+
+            <div
+                id="result"
+                class="game-result">
+
+                Press Start to Play
+
+            </div>
+            <!-- ======================
+                 Statistics
+            ======================= -->
+
+            <section class="game-stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        Score
+
+                    </div>
+
+                    <div
+                        id="score"
+                        class="stat-value">
+
+                        0
+
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        Accuracy
+
+                    </div>
+
+                    <div
+                        id="accuracy"
+                        class="stat-value">
+
+                        0%
+
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        Time Left
+
+                    </div>
+
+                    <div
+                        id="timeLeft"
+                        class="stat-value">
+
+                        30s
+
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        Best Score
+
+                    </div>
+
+                    <div
+                        id="bestScore"
+                        class="stat-value">
+
+                        0
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ======================
+                 Action Buttons
+            ======================= -->
+
+            <div class="button-group">
+
+                <button
+                    id="playAgainBtn"
+                    class="game-btn">
+
+                    Play Again
+
+                </button>
+
+                <button
+                    id="resetBtn"
+                    class="game-btn">
+
+                    Reset Statistics
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+
+    <script src="utils.js"></script>
+
+    <script src="layout.js"></script>
+
+    <script src="aim.js"></script>
+
+</body>
+
+</html>
