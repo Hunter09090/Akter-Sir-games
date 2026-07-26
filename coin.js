@@ -1,6 +1,7 @@
-
 /* =====================================
    File : coin.js
+   Game : Coin Toss
+   Version : 1.0.0
 ===================================== */
 
 "use strict";
@@ -9,98 +10,161 @@
    DOM Elements
 ===================================== */
 
-const coin = document.getElementById("coin");
+const coin = $("#coin");
 
-const headBtn = document.getElementById("headBtn");
-const tailBtn = document.getElementById("tailBtn");
+const result = $("#result");
 
-const tossBtn = document.getElementById("tossBtn");
+const selectedChoice = $("#selectedChoice");
 
-const resultText = document.getElementById("resultText");
+const headBtn = $("#headBtn");
 
-const headCount = document.getElementById("headCount");
-const tailCount = document.getElementById("tailCount");
-const totalCount = document.getElementById("totalCount");
+const tailBtn = $("#tailBtn");
 
+const tossBtn = $("#tossBtn");
 
-/* =====================================
-   Variables
-===================================== */
+const playAgainBtn = $("#playAgainBtn");
 
-let selectedChoice = "";
+const resetBtn = $("#resetBtn");
 
-let head = 0;
-let tail = 0;
-let total = 0;
+const headCount = $("#headCount");
 
-let isPlaying = false;
+const tailCount = $("#tailCount");
+
+const totalCount = $("#totalCount");
 
 
 /* =====================================
-   Select Head
+   Game State
 ===================================== */
 
-headBtn.addEventListener("click", () => {
+const STORAGE_KEY = "coin_toss_stats";
 
-    selectedChoice = "Head";
+let playerChoice = "";
 
-    headBtn.style.background = "#16a34a";
-    tailBtn.style.background = "#2563eb";
+let isFlipping = false;
+
+let stats = loadData(STORAGE_KEY, {
+
+    head: 0,
+
+    tail: 0,
+
+    total: 0
 
 });
 
 
 /* =====================================
-   Select Tail
+   Initialize
 ===================================== */
 
-tailBtn.addEventListener("click", () => {
+init();
 
-    selectedChoice = "Tail";
+function init() {
 
-    tailBtn.style.background = "#16a34a";
-    headBtn.style.background = "#2563eb";
+    updateStatistics();
 
-});
+    bindEvents();
+
+}
 
 
 /* =====================================
-   Toss Button
+   Events
 ===================================== */
 
-tossBtn.addEventListener("click", tossCoin);
+function bindEvents() {
+
+    on(headBtn, "click", () => {
+
+        selectChoice("Head");
+
+    });
+
+    on(tailBtn, "click", () => {
+
+        selectChoice("Tail");
+
+    });
+
+    on(tossBtn, "click", tossCoin);
+
+    on(playAgainBtn, "click", resetRound);
+
+    on(resetBtn, "click", resetStatistics);
+
+}
 
 
+/* =====================================
+   Select Choice
+===================================== */
+
+function selectChoice(choice) {
+
+    playerChoice = choice;
+
+    selectedChoice.textContent = choice;
+
+    headBtn.classList.remove("success");
+
+    tailBtn.classList.remove("success");
+
+    if (choice === "Head") {
+
+        headBtn.classList.add("success");
+
+    } else {
+
+        tailBtn.classList.add("success");
+
+    }
+
+}
 /* =====================================
    Toss Coin
 ===================================== */
 
-function tossCoin() {
+async function tossCoin() {
 
-    if (isPlaying) return;
-
-    if (selectedChoice === "") {
-
-        alert("Please select Head or Tail.");
+    if (isFlipping) {
 
         return;
 
     }
 
-    isPlaying = true;
+    if (playerChoice === "") {
 
-    resultText.textContent = "Flipping...";
+        toast("Please select Head or Tail", "error");
 
-    coin.style.transform = "rotateY(0deg)";
+        vibrate(200);
 
-    setTimeout(() => {
+        return;
 
-        const result =
-            Math.random() < 0.5 ? "Head" : "Tail";
+    }
 
-        showResult(result);
+    isFlipping = true;
 
-    }, 1500);
+    disable(tossBtn);
+
+    disable(headBtn);
+
+    disable(tailBtn);
+
+    loading(tossBtn, "Flipping...");
+
+    result.textContent = "Flipping Coin...";
+
+    coin.classList.add("rotate");
+
+    await delay(1000);
+
+    const coinSide =
+        randomItem(["Head", "Tail"]);
+
+    coin.classList.remove("rotate");
+
+    showResult(coinSide);
 
 }
 
@@ -109,120 +173,81 @@ function tossCoin() {
    Show Result
 ===================================== */
 
-function showResult(result) {
+function showResult(coinSide) {
 
-    total++;
+    coin.textContent =
+        coinSide === "Head"
+        ? "🙂"
+        : "🦅";
 
-    if (result === "Head") {
+    if (coinSide === "Head") {
 
-        head++;
-
-        coin.textContent = "🙂";
-
-    } else {
-
-        tail++;
-
-        coin.textContent = "🦅";
-
-    }
-
-    updateStats();
-
-    if (selectedChoice === result) {
-
-        resultText.textContent =
-            `🎉 You Win! (${result})`;
+        stats.head++;
 
     } else {
 
-        resultText.textContent =
-            `😢 You Lose! (${result})`;
+        stats.tail++;
 
     }
 
-    isPlaying = false;
+    stats.total++;
+
+    saveData(STORAGE_KEY, stats);
+
+    updateStatistics();
+
+    if (playerChoice === coinSide) {
+
+        result.innerHTML =
+            "🎉 You Win!";
+
+        result.className =
+            "game-result success";
+
+        toast("Congratulations!", "success");
+
+        vibrate(100);
+
+    } else {
+
+        result.innerHTML =
+            "😔 You Lose!";
+
+        result.className =
+            "game-result error";
+
+        toast("Better Luck Next Time", "error");
+
+        vibrate([120, 80, 120]);
+
+    }
+
+    stopLoading(tossBtn);
+
+    enable(tossBtn);
+
+    enable(headBtn);
+
+    enable(tailBtn);
+
+    isFlipping = false;
 
 }
+
+
 /* =====================================
    Update Statistics
 ===================================== */
 
-function updateStats() {
+function updateStatistics() {
 
-    headCount.textContent = head;
-    tailCount.textContent = tail;
-    totalCount.textContent = total;
+    headCount.textContent =
+        stats.head;
 
-    saveGame();
+    tailCount.textContent =
+        stats.tail;
 
-}
+    totalCount.textContent =
+        stats.total;
 
-
-/* =====================================
-   Save Statistics
-===================================== */
-
-function saveGame() {
-
-    const data = {
-
-        head,
-        tail,
-        total
-
-    };
-
-    localStorage.setItem(
-        "coinGameStats",
-        JSON.stringify(data)
-    );
-
-}
-
-
-/* =====================================
-   Load Statistics
-===================================== */
-
-function loadGame() {
-
-    const data = JSON.parse(
-        localStorage.getItem("coinGameStats")
-    );
-
-    if (!data) return;
-
-    head = data.head || 0;
-    tail = data.tail || 0;
-    total = data.total || 0;
-
-    updateStats();
-
-}
-
-
-/* =====================================
-   Reset Button (Future)
-===================================== */
-
-function resetGame() {
-
-    head = 0;
-    tail = 0;
-    total = 0;
-
-    updateStats();
-
-    resultText.textContent = "Choose First";
-
-    coin.textContent = "🪙";
-
-}
-
-
-/* =====================================
-   Initialize
-===================================== */
-
-loadGame();
+                          }
