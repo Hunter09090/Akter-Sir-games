@@ -1,1 +1,184 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Spin The Wheel | Game Hub</title>
+
+    <meta
+        name="description"
+        content="Spin the wheel and get a random result.">
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="responsive.css">
+
+    <link
+        rel="stylesheet"
+        href="game.css">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <div id="header"></div>
+
+    <main class="game-page">
+
+        <h1 class="game-title">
+
+            🎡 Spin The Wheel
+
+        </h1>
+
+        <p class="game-description">
+
+            Spin the wheel and see where your luck lands!
+
+        </p>
+
+        <section class="game-box">
+
+            <!-- Wheel Area -->
+
+            <div class="wheel-container">
+
+                <!-- Pointer -->
+
+                <div class="wheel-pointer">
+
+                    ▼
+
+                </div>
+
+                <!-- Wheel -->
+
+                <div
+                    id="wheel"
+                    class="wheel">
+
+                </div>
+
+            </div>
+
+            <!-- Spin Button -->
+
+            <div class="button-group">
+
+                <button
+                    id="spinBtn"
+                    class="game-btn">
+
+                    Spin Now
+
+                </button>
+
+            </div>
+
+            <!-- Result -->
+
+            <div
+                id="result"
+                class="game-result">
+
+                Press "Spin Now"
+
+            </div>
+                        <!-- ======================
+                 Statistics
+            ======================= -->
+
+            <section class="game-stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        Total Spins
+
+                    </div>
+
+                    <div
+                        id="totalSpins"
+                        class="stat-value">
+
+                        0
+
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        Last Result
+
+                    </div>
+
+                    <div
+                        id="lastResult"
+                        class="stat-value">
+
+                        -
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Action Buttons -->
+
+            <div class="button-group">
+
+                <button
+                    id="playAgainBtn"
+                    class="game-btn">
+
+                    Spin Again
+
+                </button>
+
+                <button
+                    id="resetBtn"
+                    class="game-btn">
+
+                    Reset
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+
+    <script src="utils.js"></script>
+
+    <script src="layout.js"></script>
+
+    <script src="wheel.js"></script>
+
+</body>
+
+</html>
