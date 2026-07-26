@@ -144,3 +144,85 @@ function showResult(result) {
     isPlaying = false;
 
 }
+/* =====================================
+   Update Statistics
+===================================== */
+
+function updateStats() {
+
+    headCount.textContent = head;
+    tailCount.textContent = tail;
+    totalCount.textContent = total;
+
+    saveGame();
+
+}
+
+
+/* =====================================
+   Save Statistics
+===================================== */
+
+function saveGame() {
+
+    const data = {
+
+        head,
+        tail,
+        total
+
+    };
+
+    localStorage.setItem(
+        "coinGameStats",
+        JSON.stringify(data)
+    );
+
+}
+
+
+/* =====================================
+   Load Statistics
+===================================== */
+
+function loadGame() {
+
+    const data = JSON.parse(
+        localStorage.getItem("coinGameStats")
+    );
+
+    if (!data) return;
+
+    head = data.head || 0;
+    tail = data.tail || 0;
+    total = data.total || 0;
+
+    updateStats();
+
+}
+
+
+/* =====================================
+   Reset Button (Future)
+===================================== */
+
+function resetGame() {
+
+    head = 0;
+    tail = 0;
+    total = 0;
+
+    updateStats();
+
+    resultText.textContent = "Choose First";
+
+    coin.textContent = "🪙";
+
+}
+
+
+/* =====================================
+   Initialize
+===================================== */
+
+loadGame();
