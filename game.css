@@ -420,3 +420,34 @@
     }
 
 }
+/* ==========================================
+   Coin Toss
+========================================== */
+
+.coin-view{
+
+    width:180px;
+
+    height:180px;
+
+    margin:35px auto;
+
+    border-radius:50%;
+
+    background:#FFD54F;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:80px;
+
+    box-shadow:0 12px 25px rgba(0,0,0,.18);
+
+    user-select:none;
+
+    transition:transform .8s ease;
+
+}
