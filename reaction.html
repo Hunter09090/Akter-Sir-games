@@ -1,1 +1,193 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Reaction Time Test | Game Hub</title>
+
+    <meta
+        name="description"
+        content="Test your reaction speed.">
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="responsive.css">
+
+    <link
+        rel="stylesheet"
+        href="game.css">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <div id="header"></div>
+
+
+    <main class="game-page">
+
+        <h1 class="game-title">
+
+            ⚡ Reaction Time Test
+
+        </h1>
+
+        <p class="game-description">
+
+            Wait until the box turns green, then tap it as fast as you can.
+
+        </p>
+
+        <section class="game-box">
+
+            <!-- Reaction Area -->
+
+            <div
+                id="reactionBox"
+                class="reaction-box">
+
+                Click Start
+
+            </div>
+
+            <!-- Buttons -->
+
+            <div class="button-group">
+
+                <button
+                    id="startBtn"
+                    class="game-btn">
+
+                    Start
+
+                </button>
+
+            </div>
+
+            <!-- Result -->
+
+            <div
+                id="result"
+                class="game-result">
+
+                Press Start to Begin
+
+            </div>
+                        <!-- ======================
+                 Statistics
+            ======================= -->
+
+            <section class="game-stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        Best Time
+
+                    </div>
+
+                    <div
+                        id="bestTime"
+                        class="stat-value">
+
+                        --
+
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        Average
+
+                    </div>
+
+                    <div
+                        id="averageTime"
+                        class="stat-value">
+
+                        --
+
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        Attempts
+
+                    </div>
+
+                    <div
+                        id="attemptCount"
+                        class="stat-value">
+
+                        0
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ======================
+                 Action Buttons
+            ======================= -->
+
+            <div class="button-group">
+
+                <button
+                    id="playAgainBtn"
+                    class="game-btn">
+
+                    Play Again
+
+                </button>
+
+                <button
+                    id="resetBtn"
+                    class="game-btn">
+
+                    Reset Statistics
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+
+    <script src="utils.js"></script>
+
+    <script src="layout.js"></script>
+
+    <script src="reaction.js"></script>
+
+</body>
+
+</html>
