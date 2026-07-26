@@ -703,3 +703,36 @@
     z-index:10;
 
 }
+/* ==========================================
+   Truth Or Dare
+========================================== */
+
+.question-box{
+
+    min-height:180px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:#f8fafc;
+
+    border:2px dashed #2563eb;
+
+    font-size:22px;
+
+    font-weight:600;
+
+    line-height:1.6;
+
+    margin-bottom:30px;
+
+}
