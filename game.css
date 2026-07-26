@@ -562,3 +562,85 @@
     transform:scale(.98);
 
 }
+/* ==========================================
+   Aim Trainer
+========================================== */
+
+.aim-area{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:700px;
+
+    height:420px;
+
+    margin:30px auto;
+
+    border:3px solid #2563eb;
+
+    border-radius:20px;
+
+    background:#f8fafc;
+
+    overflow:hidden;
+
+}
+
+.target{
+
+    position:absolute;
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    background:#dc2626;
+
+    cursor:pointer;
+
+    display:none;
+
+    transition:
+        transform .15s ease,
+        left .2s ease,
+        top .2s ease;
+
+}
+
+.target:hover{
+
+    transform:scale(1.08);
+
+}
+
+.target::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:10px;
+
+    border-radius:50%;
+
+    background:#ffffff;
+
+}
+
+.target::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:22px;
+
+    border-radius:50%;
+
+    background:#dc2626;
+
+}
