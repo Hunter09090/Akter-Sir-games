@@ -1,1 +1,188 @@
 
+/* =====================================
+   File : app.js
+===================================== */
+
+"use strict";
+
+/* =====================================
+   Game List
+===================================== */
+
+const games = [
+
+    {
+        id: 1,
+        name: "Reaction Time Test",
+        icon: "⚡",
+        description: "Test your reaction speed.",
+        page: "reaction.html"
+    },
+
+    {
+        id: 2,
+        name: "Coin Toss",
+        icon: "🪙",
+        description: "Flip a virtual coin.",
+        page: "coin.html"
+    },
+
+    {
+        id: 3,
+        name: "Dice Roller",
+        icon: "🎲",
+        description: "Roll a random dice.",
+        page: "dice.html"
+    },
+
+    {
+        id: 4,
+        name: "Tic Tac Toe",
+        icon: "❌",
+        description: "Classic XO Game.",
+        page: "tictactoe.html"
+    },
+
+    {
+        id: 5,
+        name: "Spin The Wheel",
+        icon: "🎡",
+        description: "Spin and get a surprise.",
+        page: "wheel.html"
+    },
+
+    {
+        id: 6,
+        name: "Truth Or Dare",
+        icon: "🤔",
+        description: "Play with friends.",
+        page: "truth.html"
+    },
+
+    {
+        id: 7,
+        name: "Random Challenge",
+        icon: "🎯",
+        description: "Complete fun challenges.",
+        page: "challenge.html"
+    },
+
+    {
+        id: 8,
+        name: "Aim Trainer",
+        icon: "🎯",
+        description: "Improve your aiming skill.",
+        page: "aim.html"
+    },
+
+    {
+        id: 9,
+        name: "Jump Game",
+        icon: "🦘",
+        description: "Jump over obstacles.",
+        page: "jump.html"
+    }
+
+];
+
+
+/* =====================================
+   DOM
+===================================== */
+
+const gamesContainer =
+document.getElementById("gamesContainer");
+
+const searchInput =
+document.getElementById("searchInput");
+
+
+/* =====================================
+   Start App
+===================================== */
+
+window.onload = () => {
+
+    loadGames(games);
+
+};
+/* =====================================
+   Load Game Cards
+===================================== */
+
+function loadGames(gameList) {
+
+    // যদি Container না থাকে তাহলে বন্ধ
+    if (!gamesContainer) return;
+
+    // আগের Card মুছে ফেলো
+    gamesContainer.innerHTML = "";
+
+    // যদি কোন Game না থাকে
+    if (gameList.length === 0) {
+
+        gamesContainer.innerHTML = `
+
+            <div class="no-game">
+
+                <h2>No Game Found 😔</h2>
+
+                <p>Please try another search.</p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    // Loop করে সব Game Card তৈরি
+    gameList.forEach(game => {
+
+        const card = document.createElement("div");
+
+        card.className = "game-card";
+
+        card.innerHTML = `
+
+            <div class="game-icon">
+
+                ${game.icon}
+
+            </div>
+
+            <h2 class="game-title">
+
+                ${game.name}
+
+            </h2>
+
+            <p class="game-description">
+
+                ${game.description}
+
+            </p>
+
+            <button
+                class="play-btn"
+                data-page="${game.page}">
+
+                ▶ Play Now
+
+            </button>
+
+        `;
+
+        // Card Click করলে Game Page Open হবে
+        card.addEventListener("click", () => {
+
+            window.location.href = game.page;
+
+        });
+
+        gamesContainer.appendChild(card);
+
+    });
+
+}
