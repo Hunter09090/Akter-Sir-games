@@ -1,1 +1,234 @@
 
+/* ==========================================
+   File : responsive.css
+========================================== */
+
+
+/* ==========================================
+   Large Tablet
+========================================== */
+
+@media (max-width:992px){
+
+    .hero{
+
+        padding:50px 20px;
+
+    }
+
+    .hero h1{
+
+        font-size:36px;
+
+    }
+
+}
+
+
+/* ==========================================
+   Tablet
+========================================== */
+
+@media (max-width:768px){
+
+    .header{
+
+        height:65px;
+
+        padding:0 16px;
+
+    }
+
+    .logo{
+
+        font-size:24px;
+
+    }
+
+    .hero{
+
+        padding:45px 18px;
+
+    }
+
+    .hero h1{
+
+        font-size:32px;
+
+    }
+
+    .hero p{
+
+        font-size:16px;
+
+    }
+
+    .games-container{
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:18px;
+
+        padding:18px;
+
+    }
+
+    .game-card{
+
+        padding:20px;
+
+    }
+
+    .game-icon{
+
+        font-size:52px;
+
+    }
+
+    .game-title{
+
+        font-size:20px;
+
+    }
+
+}
+
+
+/* ==========================================
+   Mobile
+========================================== */
+
+@media (max-width:576px){
+
+    .header{
+
+        height:60px;
+
+    }
+
+    .logo{
+
+        font-size:22px;
+
+    }
+
+    .hero{
+
+        padding:35px 15px;
+
+    }
+
+    .hero h1{
+
+        font-size:26px;
+
+        line-height:1.4;
+
+    }
+
+    .hero p{
+
+        font-size:15px;
+
+    }
+
+    .search-section{
+
+        padding:0 15px 25px;
+
+    }
+
+    #searchInput{
+
+        height:48px;
+
+        font-size:15px;
+
+    }
+
+    .games-container{
+
+        grid-template-columns:1fr;
+
+        padding:15px;
+
+        gap:16px;
+
+    }
+
+    .game-card{
+
+        border-radius:16px;
+
+        padding:18px;
+
+    }
+
+    .game-icon{
+
+        font-size:48px;
+
+    }
+
+    .game-title{
+
+        font-size:20px;
+
+    }
+
+    .game-description{
+
+        font-size:14px;
+
+    }
+
+    .play-btn{
+
+        height:46px;
+
+        font-size:15px;
+
+    }
+
+    .footer{
+
+        margin-top:40px;
+
+        font-size:14px;
+
+    }
+
+}
+
+
+/* ==========================================
+   Small Mobile
+========================================== */
+
+@media (max-width:360px){
+
+    .hero h1{
+
+        font-size:22px;
+
+    }
+
+    .logo{
+
+        font-size:20px;
+
+    }
+
+    .game-icon{
+
+        font-size:42px;
+
+    }
+
+    .game-title{
+
+        font-size:18px;
+
+    }
+
+}
