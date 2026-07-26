@@ -186,3 +186,66 @@ function loadGames(gameList) {
     });
 
 }
+/* =====================================
+   Search Games
+===================================== */
+
+if (searchInput) {
+
+    searchInput.addEventListener("input", function () {
+
+        const keyword = this.value
+            .trim()
+            .toLowerCase();
+
+        const filteredGames = games.filter(game => {
+
+            return (
+                game.name.toLowerCase().includes(keyword) ||
+                game.description.toLowerCase().includes(keyword)
+            );
+
+        });
+
+        loadGames(filteredGames);
+
+    });
+
+}
+
+
+/* =====================================
+   Open Game
+===================================== */
+
+document.addEventListener("click", function (event) {
+
+    if (!event.target.classList.contains("play-btn")) {
+        return;
+    }
+
+    event.stopPropagation();
+
+    const page = event.target.dataset.page;
+
+    if (page) {
+
+        window.location.href = page;
+
+    }
+
+});
+
+
+/* =====================================
+   Future Ready
+===================================== */
+
+// এখানে ভবিষ্যতে যোগ করা হবে:
+// - Category Filter
+// - Favorite Games
+// - Recently Played
+// - Most Played
+// - Game Rating
+// - Game Search History
+// - Firebase Sync
