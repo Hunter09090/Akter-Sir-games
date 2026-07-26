@@ -505,3 +505,60 @@
     word-break:break-word;
 
 }
+/* ==========================================
+   Reaction Time Test
+========================================== */
+
+.reaction-box{
+
+    width:100%;
+
+    max-width:500px;
+
+    height:250px;
+
+    margin:30px auto;
+
+    border-radius:20px;
+
+    background:#dc2626;
+
+    color:#ffffff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    transition:all .3s ease;
+
+}
+
+.reaction-box.ready{
+
+    background:#16a34a;
+
+}
+
+.reaction-box.wait{
+
+    background:#ca8a04;
+
+}
+
+.reaction-box:active{
+
+    transform:scale(.98);
+
+}
