@@ -1,0 +1,422 @@
+/* ==========================================
+   File : game.css
+========================================== */
+
+/* Game Container */
+
+.game-page{
+
+    width:100%;
+
+    max-width:900px;
+
+    margin:40px auto;
+
+    padding:25px;
+
+}
+
+
+/* Game Title */
+
+.game-title{
+
+    text-align:center;
+
+    font-size:38px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+
+/* Description */
+
+.game-description{
+
+    text-align:center;
+
+    color:#666;
+
+    margin-bottom:35px;
+
+}
+
+
+/* Game Card */
+
+.game-box{
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+
+/* Button Area */
+
+.button-group{
+
+    display:flex;
+
+    gap:15px;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    margin-top:25px;
+
+}
+
+
+/* Game Button */
+
+.game-btn{
+
+    min-width:140px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+.game-btn:hover{
+
+    background:#1d4ed8;
+
+    transform:translateY(-3px);
+
+}
+
+
+/* Result */
+
+.game-result{
+
+    margin-top:30px;
+
+    text-align:center;
+
+    font-size:22px;
+
+    font-weight:600;
+
+}
+
+
+/* Statistics */
+
+.game-stats{
+
+    margin-top:35px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+
+    gap:15px;
+
+}
+
+
+.stat-card{
+
+    background:#f8fafc;
+
+    border-radius:16px;
+
+    padding:20px;
+
+    text-align:center;
+
+    box-shadow:0 5px 12px rgba(0,0,0,.05);
+
+}
+
+
+.stat-title{
+
+    color:#666;
+
+    margin-bottom:8px;
+
+}
+
+
+.stat-value{
+
+    font-size:26px;
+
+    font-weight:700;
+
+}
+/* ==========================================
+   Game Badge
+========================================== */
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:90px;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+
+/* ==========================================
+   Game Message
+========================================== */
+
+.success{
+
+    color:#16a34a;
+
+}
+
+.error{
+
+    color:#dc2626;
+
+}
+
+.warning{
+
+    color:#ca8a04;
+
+}
+
+.info{
+
+    color:#2563eb;
+
+}
+
+
+/* ==========================================
+   Fade Animation
+========================================== */
+
+.fade-in{
+
+    animation:fadeIn .4s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+
+/* ==========================================
+   Scale Animation
+========================================== */
+
+.scale-in{
+
+    animation:scaleIn .35s ease;
+}
+
+@keyframes scaleIn{
+
+    from{
+
+        transform:scale(.8);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+
+/* ==========================================
+   Pop Animation
+========================================== */
+
+.pop{
+
+    animation:pop .35s ease;
+}
+
+@keyframes pop{
+
+    0%{
+
+        transform:scale(.9);
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/* ==========================================
+   Shake Animation
+========================================== */
+
+.shake{
+
+    animation:shake .4s;
+}
+
+@keyframes shake{
+
+    0%{transform:translateX(0);}
+
+    25%{transform:translateX(-8px);}
+
+    50%{transform:translateX(8px);}
+
+    75%{transform:translateX(-8px);}
+
+    100%{transform:translateX(0);}
+
+}
+
+
+/* ==========================================
+   Rotate Animation
+========================================== */
+
+.rotate{
+
+    animation:rotate360 1s linear;
+}
+
+@keyframes rotate360{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+
+/* ==========================================
+   Disabled Button
+========================================== */
+
+.game-btn:disabled{
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+}
+
+
+/* ==========================================
+   Loading Spinner
+========================================== */
+
+.loader{
+
+    width:45px;
+
+    height:45px;
+
+    margin:20px auto;
+
+    border:5px solid #ddd;
+
+    border-top:5px solid #2563eb;
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
