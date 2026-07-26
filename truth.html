@@ -1,1 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Truth or Dare | Game Hub</title>
+
+    <meta
+        name="description"
+        content="Play Truth or Dare with your friends.">
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="responsive.css">
+
+    <link
+        rel="stylesheet"
+        href="game.css">
+
+</head>
+
+<body>
+
+<div id="header"></div>
+
+<main class="game-page">
+
+    <h1 class="game-title">
+
+        🎉 Truth or Dare
+
+    </h1>
+
+    <p class="game-description">
+
+        Choose Truth or Dare and get a random challenge.
+
+    </p>
+
+    <section class="game-box">
+
+        <div
+            id="questionBox"
+            class="question-box">
+
+            Press Truth or Dare
+
+        </div>
+
+        <div class="button-group">
+
+            <button
+                id="truthBtn"
+                class="game-btn">
+
+                Truth
+
+            </button>
+
+            <button
+                id="dareBtn"
+                class="game-btn">
+
+                Dare
+
+            </button>
+
+        </div>
+
+        <div
+            id="result"
+            class="game-result">
+
+            Waiting...
+
+        </div>
+      
+            <!-- ======================
+                 Statistics
+            ======================= -->
+
+            <section class="game-stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        Total Played
+
+                    </div>
+
+                    <div
+                        id="totalPlayed"
+                        class="stat-value">
+
+                        0
+
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        Truth
+
+                    </div>
+
+                    <div
+                        id="truthCount"
+                        class="stat-value">
+
+                        0
+
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        Dare
+
+                    </div>
+
+                    <div
+                        id="dareCount"
+                        class="stat-value">
+
+                        0
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ======================
+                 Action Buttons
+            ======================= -->
+
+            <div class="button-group">
+
+                <button
+                    id="playAgainBtn"
+                    class="game-btn">
+
+                    Play Again
+
+                </button>
+
+                <button
+                    id="resetBtn"
+                    class="game-btn">
+
+                    Reset Statistics
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="utils.js"></script>
+
+    <script src="layout.js"></script>
+
+    <script src="truth-data.js"></script>
+    <script src="truth.js"></script>
+
+</body>
+
+</html>
