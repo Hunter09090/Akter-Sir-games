@@ -251,3 +251,130 @@ function updateStatistics() {
         stats.total;
 
                           }
+/* =====================================
+   Reset Current Round
+===================================== */
+
+function resetRound() {
+
+    playerChoice = "";
+
+    selectedChoice.textContent = "No Choice";
+
+    result.textContent = "Select Head or Tail";
+
+    result.className = "game-result";
+
+    coin.textContent = "🪙";
+
+    headBtn.classList.remove("success");
+
+    tailBtn.classList.remove("success");
+
+}
+
+
+/* =====================================
+   Reset Statistics
+===================================== */
+
+function resetStatistics() {
+
+    const confirmReset = confirm(
+        "Are you sure you want to reset all statistics?"
+    );
+
+    if (!confirmReset) {
+
+        return;
+
+    }
+
+    stats = {
+
+        head: 0,
+
+        tail: 0,
+
+        total: 0
+
+    };
+
+    saveData(STORAGE_KEY, stats);
+
+    updateStatistics();
+
+    resetRound();
+
+    toast("Statistics Reset Successfully", "success");
+
+}
+
+
+/* =====================================
+   Keyboard Shortcuts
+===================================== */
+
+document.addEventListener("keydown", (event) => {
+
+    switch (event.key.toLowerCase()) {
+
+        case "h":
+
+            selectChoice("Head");
+
+            break;
+
+        case "t":
+
+            selectChoice("Tail");
+
+            break;
+
+        case "enter":
+
+        case " ":
+
+            event.preventDefault();
+
+            tossCoin();
+
+            break;
+
+        case "r":
+
+            resetRound();
+
+            break;
+
+    }
+
+});
+
+
+/* =====================================
+   Future Firebase Hook
+===================================== */
+
+/*
+Future Example
+
+async function saveOnlineStats(){
+
+    // Firebase Firestore
+
+}
+
+async function loadOnlineStats(){
+
+    // Firebase Firestore
+
+}
+*/
+
+
+/* =====================================
+   End Of File
+===================================== */
+
+console.log("Coin Toss Loaded Successfully");
