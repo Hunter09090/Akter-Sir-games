@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +9,11 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-    <title>Coin Toss</title>
+    <title>Coin Toss | Game Hub</title>
+
+    <meta
+        name="description"
+        content="Play Coin Toss Online">
 
     <link
         rel="stylesheet"
@@ -19,6 +22,10 @@
     <link
         rel="stylesheet"
         href="responsive.css">
+
+    <link
+        rel="stylesheet"
+        href="game.css">
 
 </head>
 
@@ -30,164 +37,108 @@
 
     <div id="header"></div>
 
-        <div class="logo">
-
-            🪙 Coin Toss
-
-        </div>
-
-        <a href="index.html"
-           class="back-btn">
-
-            ← Home
-
-        </a>
-
-    </header>
-
 
 
     <!-- ==========================
-         Main
+         Game Page
     =========================== -->
 
-    <main class="coin-page">
+    <main class="game-page">
 
-        <h1>
+        <h1 class="game-title">
 
-            Coin Toss
+            🪙 Coin Toss
 
         </h1>
 
-        <p>
+        <p class="game-description">
 
-            Choose Head or Tail and test your luck.
+            Choose Head or Tail, flip the coin and test your luck!
 
         </p>
 
 
 
-        <!-- Coin -->
+        <!-- ======================
+             Game Box
+        ======================= -->
 
-        <div
-            class="coin"
-            id="coin">
-
-            🪙
-
-        </div>
+        <section class="game-box">
 
 
 
-        <!-- Choice -->
+            <!-- Coin -->
 
-        <div class="choice-box">
+            <div
+                id="coin"
+                class="coin-view">
 
-            <button
-                id="headBtn"
-                class="choice-btn">
-
-                Head
-
-            </button>
-
-            <button
-                id="tailBtn"
-                class="choice-btn">
-
-                Tail
-
-            </button>
-
-        </div>
-
-
-
-        <!-- Toss -->
-
-        <button
-            id="tossBtn"
-            class="play-btn">
-
-            Toss Coin
-
-        </button>
-
-
-
-        <!-- Result -->
-
-        <h2
-            id="resultText">
-
-            Choose First
-
-        </h2>
-
-
-
-        <!-- Statistics -->
-
-        <div class="coin-stats">
-
-            <div>
-
-                Head
-
-                <span id="headCount">
-
-                    0
-
-                </span>
+                🪙
 
             </div>
 
-            <div>
 
-                Tail
 
-                <span id="tailCount">
+            <!-- Selected -->
 
-                    0
+            <div
+                id="selectedChoice"
+                class="badge">
 
-                </span>
-
-            </div>
-
-            <div>
-
-                Total
-
-                <span id="totalCount">
-
-                    0
-
-                </span>
+                No Choice
 
             </div>
 
-        </div>
-
-    </main>
 
 
-<!-- Page Content -->
+            <!-- Buttons -->
 
-<div id="footer"></div>
-    
-<script src="utils.js"></script>
-<script src="layout.js"></script>
-<script src="coin.js"></script>
-    
+            <div class="button-group">
 
-    <button
-    onclick="resetGame()"
-    class="play-btn">
+                <button
+                    id="headBtn"
+                    class="game-btn">
 
-    Reset Statistics
+                    Head
 
-    </button>
-    
-</body>
+                </button>
 
-</html>
+                <button
+                    id="tailBtn"
+                    class="game-btn">
+
+                    Tail
+
+                </button>
+
+            </div>
+
+
+
+            <!-- Toss -->
+
+            <div class="button-group">
+
+                <button
+                    id="tossBtn"
+                    class="game-btn">
+
+                    Toss Coin
+
+                </button>
+
+            </div>
+
+
+
+            <!-- Result -->
+
+            <div
+                id="result"
+                class="game-result">
+
+                Select Head or Tail
+
+            </div>
+
+        </section>
