@@ -1,1 +1,181 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Coin Toss</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="responsive.css">
+
+</head>
+
+<body>
+
+    <!-- ==========================
+         Header
+    =========================== -->
+
+    <header class="header">
+
+        <div class="logo">
+
+            🪙 Coin Toss
+
+        </div>
+
+        <a href="index.html"
+           class="back-btn">
+
+            ← Home
+
+        </a>
+
+    </header>
+
+
+
+    <!-- ==========================
+         Main
+    =========================== -->
+
+    <main class="coin-page">
+
+        <h1>
+
+            Coin Toss
+
+        </h1>
+
+        <p>
+
+            Choose Head or Tail and test your luck.
+
+        </p>
+
+
+
+        <!-- Coin -->
+
+        <div
+            class="coin"
+            id="coin">
+
+            🪙
+
+        </div>
+
+
+
+        <!-- Choice -->
+
+        <div class="choice-box">
+
+            <button
+                id="headBtn"
+                class="choice-btn">
+
+                Head
+
+            </button>
+
+            <button
+                id="tailBtn"
+                class="choice-btn">
+
+                Tail
+
+            </button>
+
+        </div>
+
+
+
+        <!-- Toss -->
+
+        <button
+            id="tossBtn"
+            class="play-btn">
+
+            Toss Coin
+
+        </button>
+
+
+
+        <!-- Result -->
+
+        <h2
+            id="resultText">
+
+            Choose First
+
+        </h2>
+
+
+
+        <!-- Statistics -->
+
+        <div class="coin-stats">
+
+            <div>
+
+                Head
+
+                <span id="headCount">
+
+                    0
+
+                </span>
+
+            </div>
+
+            <div>
+
+                Tail
+
+                <span id="tailCount">
+
+                    0
+
+                </span>
+
+            </div>
+
+            <div>
+
+                Total
+
+                <span id="totalCount">
+
+                    0
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <script src="utils.js"></script>
+
+    <script src="coin.js"></script>
+
+</body>
+
+</html>
