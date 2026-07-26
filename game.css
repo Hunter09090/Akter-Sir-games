@@ -451,3 +451,10 @@
     transition:transform .8s ease;
 
 }
+.game-btn.active{
+
+    background:#16a34a;
+
+    color:#ffffff;
+
+}
