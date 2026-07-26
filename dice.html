@@ -1,1 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Dice Roller | Game Hub</title>
+
+    <meta
+        name="description"
+        content="Roll a Dice Online">
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="responsive.css">
+
+    <link
+        rel="stylesheet"
+        href="game.css">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <div id="header"></div>
+
+    <!-- Game -->
+
+    <main class="game-page">
+
+        <h1 class="game-title">
+
+            🎲 Dice Roller
+
+        </h1>
+
+        <p class="game-description">
+
+            Roll the dice and test your luck.
+
+        </p>
+
+        <section class="game-box">
+
+            <!-- Dice -->
+
+            <div
+                id="dice"
+                class="dice-view">
+
+                🎲
+
+            </div>
+
+            <!-- Current Number -->
+
+            <div
+                id="diceNumber"
+                class="badge">
+
+                Ready
+
+            </div>
+
+            <!-- Buttons -->
+
+            <div class="button-group">
+
+                <button
+                    id="rollBtn"
+                    class="game-btn">
+
+                    Roll Dice
+
+                </button>
+
+            </div>
+
+            <!-- Result -->
+
+            <div
+                id="result"
+                class="game-result">
+
+                Press Roll Dice
+
+            </div>
+                      <!-- ======================
+                 Statistics
+            ======================= -->
+
+            <section class="game-stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        Total Rolls
+
+                    </div>
+
+                    <div
+                        id="totalRolls"
+                        class="stat-value">
+
+                        0
+
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        Last Roll
+
+                    </div>
+
+                    <div
+                        id="lastRoll"
+                        class="stat-value">
+
+                        -
+
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        Highest Roll
+
+                    </div>
+
+                    <div
+                        id="highestRoll"
+                        class="stat-value">
+
+                        -
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ======================
+                 Roll History
+            ======================= -->
+
+            <section class="game-box fade-in">
+
+                <h2>Roll History</h2>
+
+                <div
+                    id="historyList"
+                    class="history-list">
+
+                    No rolls yet.
+
+                </div>
+
+            </section>
+
+            <!-- ======================
+                 Action Buttons
+            ======================= -->
+
+            <div class="button-group">
+
+                <button
+                    id="playAgainBtn"
+                    class="game-btn">
+
+                    Roll Again
+
+                </button>
+
+                <button
+                    id="resetBtn"
+                    class="game-btn">
+
+                    Reset Statistics
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+
+    <script src="utils.js"></script>
+
+    <script src="layout.js"></script>
+
+    <script src="dice.js"></script>
+
+</body>
+</html>
