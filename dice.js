@@ -115,7 +115,7 @@ async function rollDice() {
     const value = random(1, 6);
 
     showResult(value);
-
+enable(rollBtn);
 }
 /* =====================================
    Show Result
