@@ -399,3 +399,32 @@ img{
     background:#e9e9e9;
 
 }
+/* ==========================================
+   No Game Found
+========================================== */
+
+.no-game{
+
+    width:100%;
+
+    grid-column:1/-1;
+
+    text-align:center;
+
+    padding:60px 20px;
+
+}
+
+.no-game h2{
+
+    font-size:30px;
+
+    margin-bottom:10px;
+
+}
+
+.no-game p{
+
+    color:#666;
+
+}
