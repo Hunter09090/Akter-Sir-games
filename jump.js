@@ -39,55 +39,6 @@ const STORAGE_KEY = "jump_game_high_score";
 const WIDTH = canvas.width;
 const HEIGHT = canvas.height;
 const GROUND_Y = HEIGHT - 40;
-/* =====================================
-   Background Engine
-===================================== */
-
-const clouds = [
-
-    {
-        x: 120,
-        y: 40,
-        width: 70,
-        height: 25,
-        speed: 0.5
-    },
-
-    {
-        x: 420,
-        y: 70,
-        width: 90,
-        height: 30,
-        speed: 0.8
-    },
-
-    {
-        x: 720,
-        y: 50,
-        width: 80,
-        height: 28,
-        speed: 0.6
-    }
-
-];
-
-const trees = [
-
-    {
-        x: 250,
-        width: 22,
-        height: 65,
-        speed: 2
-    },
-
-    {
-        x: 620,
-        width: 22,
-        height: 80,
-        speed: 2
-    }
-
-];
 
 /* =====================================
    Player
@@ -210,7 +161,54 @@ function drawSky() {
         WIDTH,
 
         GROUND_Y
+/* =====================================
+   Draw Trees
+===================================== */
 
+function drawTrees() {
+
+    trees.forEach((tree) => {
+
+        // Trunk
+
+        ctx.fillStyle = "#8b5a2b";
+
+        ctx.fillRect(
+
+            tree.x,
+
+            GROUND_Y - tree.height,
+
+            tree.width,
+
+            tree.height
+
+        );
+
+        // Leaves
+
+        ctx.fillStyle = "#16a34a";
+
+        ctx.beginPath();
+
+        ctx.arc(
+
+            tree.x + 11,
+
+            GROUND_Y - tree.height,
+
+            22,
+
+            0,
+
+            Math.PI * 2
+
+        );
+
+        ctx.fill();
+
+    });
+   
     );
 
 }
@@ -277,53 +275,6 @@ function drawClouds() {
 }
 
 
-/* =====================================
-   Draw Trees
-===================================== */
-
-function drawTrees() {
-
-    trees.forEach((tree) => {
-
-        // Trunk
-
-        ctx.fillStyle = "#8b5a2b";
-
-        ctx.fillRect(
-
-            tree.x,
-
-            GROUND_Y - tree.height,
-
-            tree.width,
-
-            tree.height
-
-        );
-
-        // Leaves
-
-        ctx.fillStyle = "#16a34a";
-
-        ctx.beginPath();
-
-        ctx.arc(
-
-            tree.x + 11,
-
-            GROUND_Y - tree.height,
-
-            22,
-
-            0,
-
-            Math.PI * 2
-
-        );
-
-        ctx.fill();
-
-    });
 
 }
 /* =====================================
@@ -343,7 +294,56 @@ function drawGround() {
         WIDTH,
 
         HEIGHT - GROUND_Y
+/* =====================================
+   Background Engine
+===================================== */
 
+const clouds = [
+
+    {
+        x: 120,
+        y: 40,
+        width: 70,
+        height: 25,
+        speed: 0.5
+    },
+
+    {
+        x: 420,
+        y: 70,
+        width: 90,
+        height: 30,
+        speed: 0.8
+    },
+
+    {
+        x: 720,
+        y: 50,
+        width: 80,
+        height: 28,
+        speed: 0.6
+    }
+
+];
+
+const trees = [
+
+    {
+        x: 250,
+        width: 22,
+        height: 65,
+        speed: 2
+    },
+
+    {
+        x: 620,
+        width: 22,
+        height: 80,
+        speed: 2
+    }
+
+];
+   
     );
 
 }
