@@ -329,3 +329,86 @@ window.addEventListener(
     initHeader
 
 );
+/* =====================================
+   Active Page
+===================================== */
+
+function setActiveMenu() {
+
+    const currentPage =
+
+        window.location.pathname
+
+        .split("/")
+
+        .pop() ||
+
+        "index.html";
+
+    document
+
+        .querySelectorAll(
+
+            ".nav-link, .mobile-link"
+
+        )
+
+        .forEach(link => {
+
+            const href =
+
+                link.getAttribute("href");
+
+            if (href === currentPage) {
+
+                link.classList.add("active");
+
+            }
+
+        });
+
+}
+
+/* =====================================
+   Header Scroll Effect
+===================================== */
+
+function headerScrollEffect() {
+
+    const header =
+
+        document.querySelector(".main-header");
+
+    if (!header) return;
+
+    if (window.scrollY > 20) {
+
+        header.classList.add("scrolled");
+
+    } else {
+
+        header.classList.remove("scrolled");
+
+    }
+
+}
+
+/* =====================================
+   Initialize
+===================================== */
+
+setActiveMenu();
+
+headerScrollEffect();
+
+window.addEventListener(
+
+    "scroll",
+
+    headerScrollEffect
+
+);
+
+console.log("Header Loaded Successfully");
+
+}
