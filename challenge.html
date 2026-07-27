@@ -1,1 +1,159 @@
 
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Random Challenge | Game Hub</title>
+
+    <meta name="description"
+          content="Random Challenge Game">
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <link rel="stylesheet"
+          href="responsive.css">
+
+    <link rel="stylesheet"
+          href="game.css">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div id="header"></div>
+
+    <main class="game-page">
+
+        <h1 class="game-title">
+
+            🎯 Random Challenge
+
+        </h1>
+
+        <p class="game-description">
+
+            বোতামে চাপ দিন এবং একটি নতুন Challenge নিন।
+
+        </p>
+
+        <section class="game-box">
+
+            <!-- Challenge Box -->
+
+            <div id="challengeBox"
+                 class="question-box">
+
+                Start বাটনে চাপ দিন
+
+            </div>
+
+            <!-- Buttons -->
+
+            <div class="button-group">
+
+                <button id="challengeBtn"
+                        class="game-btn">
+
+                    🎲 New Challenge
+
+                </button>
+
+            </div>
+
+            <!-- Result -->
+
+            <div id="result"
+                 class="game-result">
+
+                Waiting...
+
+            </div>
+                        <!-- ======================
+                 Statistics
+            ======================= -->
+
+            <section class="game-stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        Total Challenges
+
+                    </div>
+
+                    <div id="totalChallenges"
+                         class="stat-value">
+
+                        0
+
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        Last Challenge
+
+                    </div>
+
+                    <div id="lastChallenge"
+                         class="stat-value">
+
+                        -
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Action Buttons -->
+
+            <div class="button-group">
+
+                <button id="playAgainBtn"
+                        class="game-btn">
+
+                    🔄 আবার
+
+                </button>
+
+                <button id="resetBtn"
+                        class="game-btn">
+
+                    ♻️ রিসেট
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+
+    <script src="utils.js"></script>
+
+    <script src="layout.js"></script>
+    <script src="challenge-data.js"></script>
+    <script src="challenge.js"></script>
+
+</body>
+
+</html>
