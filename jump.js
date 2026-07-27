@@ -1,8 +1,7 @@
-
 /* =====================================
    File : jump.js
-   Game : Jump Game
-   Version : 1.0.0
+   Game : Jump Game V2
+   Version : 2.0.0
 ===================================== */
 
 "use strict";
@@ -17,69 +16,37 @@ const ctx = canvas.getContext("2d");
 const scoreBox = $("#scoreBox");
 const highScoreBox = $("#highScore");
 const speedBox = $("#speedBox");
-
 const result = $("#result");
 
 const startBtn = $("#startBtn");
-const jumpBtn = $("#jumpBtn");
 const restartBtn = $("#restartBtn");
+const jumpBtn = $("#jumpBtn");
+
+
+/* =====================================
+   Canvas
+===================================== */
+
+const GAME = {
+
+    width: canvas.width,
+
+    height: canvas.height,
+
+    ground: canvas.height - 40,
+
+    fps: 60
+
+};
 
 
 /* =====================================
    Storage
 ===================================== */
 
-const STORAGE_KEY = "jump_game_high_score";
+const STORAGE = {
 
-
-/* =====================================
-   Canvas Size
-===================================== */
-
-const WIDTH = canvas.width;
-const HEIGHT = canvas.height;
-const GROUND_Y = HEIGHT - 40;
-
-/* =====================================
-   Player
-===================================== */
-
-const player = {
-
-    x: 80,
-
-    y: GROUND_Y - 50,
-
-    width: 40,
-
-    height: 50,
-
-    velocityY: 0,
-
-    gravity: 0.8,
-
-    jumpPower: -15,
-
-    onGround: true
-
-};
-
-
-/* =====================================
-   Obstacle
-===================================== */
-
-const obstacle = {
-
-    x: WIDTH,
-
-    y: GROUND_Y - 45,
-
-    width: 30,
-
-    height: 45,
-
-    speed: 6
+    HIGH_SCORE: "jump_high_score"
 
 };
 
@@ -88,18 +55,24 @@ const obstacle = {
    Game State
 ===================================== */
 
-let score = 0;
+const state = {
 
-let highScore = loadData(
-    STORAGE_KEY,
-    0
-);
+    running: false,
 
-let gameStarted = false;
+    gameOver: false,
 
-let gameOver = false;
+    score: 0,
 
-let animationId = null;
+    highScore: loadData(
+        STORAGE.HIGH_SCORE,
+        0
+    ),
+
+    speed: 6,
+
+    animationId: null
+
+};
 
 
 /* =====================================
@@ -110,39 +83,85 @@ init();
 
 function init() {
 
-    highScoreBox.textContent = highScore;
+    highScoreBox.textContent =
+        state.highScore;
 
-    speedBox.textContent = "1x";
+    scoreBox.textContent =
+        "Score : 0";
+
+    speedBox.textContent =
+        "1.0x";
 
     bindEvents();
 
-    drawStartScreen();
-
-}
-
-
-/* =====================================
-   Events
-===================================== */
-
-function bindEvents() {
-
-    on(startBtn, "click", startGame);
-
-    on(restartBtn, "click", restartGame);
-
-    on(jumpBtn, "click", jump);
-
 }
 /* =====================================
-   Clear Canvas
+   Background Engine
 ===================================== */
 
-function clearCanvas() {
+const background = {
 
-    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+    sky: {
 
-}
+        color: "#dbeafe"
+
+    },
+
+    clouds: [
+
+        {
+            x: 120,
+            y: 45,
+            width: 80,
+            height: 28,
+            speed: 0.5
+        },
+
+        {
+            x: 420,
+            y: 75,
+            width: 95,
+            height: 32,
+            speed: 0.7
+        },
+
+        {
+            x: 720,
+            y: 55,
+            width: 85,
+            height: 30,
+            speed: 0.6
+        }
+
+    ],
+
+    trees: [
+
+        {
+            x: 220,
+            width: 24,
+            height: 70,
+            speed: 2
+        },
+
+        {
+            x: 520,
+            width: 24,
+            height: 90,
+            speed: 2
+        },
+
+        {
+            x: 820,
+            width: 24,
+            height: 75,
+            speed: 2
+        }
+
+    ]
+
+};
+
 
 /* =====================================
    Draw Sky
@@ -150,65 +169,13 @@ function clearCanvas() {
 
 function drawSky() {
 
-    ctx.fillStyle = "#dbeafe";
+    ctx.fillStyle = background.sky.color;
 
     ctx.fillRect(
-
         0,
-
         0,
-
-        WIDTH,
-
-        GROUND_Y
-/* =====================================
-   Draw Trees
-===================================== */
-
-function drawTrees() {
-
-    trees.forEach((tree) => {
-
-        // Trunk
-
-        ctx.fillStyle = "#8b5a2b";
-
-        ctx.fillRect(
-
-            tree.x,
-
-            GROUND_Y - tree.height,
-
-            tree.width,
-
-            tree.height
-
-        );
-
-        // Leaves
-
-        ctx.fillStyle = "#16a34a";
-
-        ctx.beginPath();
-
-        ctx.arc(
-
-            tree.x + 11,
-
-            GROUND_Y - tree.height,
-
-            22,
-
-            0,
-
-            Math.PI * 2
-
-        );
-
-        ctx.fill();
-
-    });
-   
+        GAME.width,
+        GAME.ground
     );
 
 }
@@ -222,45 +189,60 @@ function drawClouds() {
 
     ctx.fillStyle = "#ffffff";
 
-    clouds.forEach((cloud) => {
+    background.clouds.forEach((cloud) => {
 
         ctx.beginPath();
 
-        ctx.arc(
+        ctx.arc(cloud.x, cloud.y, 15, 0, Math.PI * 2);
 
-            cloud.x,
+        ctx.arc(cloud.x + 22, cloud.y - 8, 18, 0, Math.PI * 2);
 
-            cloud.y,
+        ctx.arc(cloud.x + 45, cloud.y, 15, 0, Math.PI * 2);
 
-            cloud.height / 2,
+        ctx.fill();
 
-            0,
+    });
 
-            Math.PI * 2
+}
+
+
+/* =====================================
+   Draw Trees
+===================================== */
+
+function drawTrees() {
+
+    background.trees.forEach((tree) => {
+
+        // Tree Trunk
+
+        ctx.fillStyle = "#8b5a2b";
+
+        ctx.fillRect(
+
+            tree.x,
+
+            GAME.ground - tree.height,
+
+            tree.width,
+
+            tree.height
 
         );
 
-        ctx.arc(
+        // Leaves
 
-            cloud.x + 25,
+        ctx.beginPath();
 
-            cloud.y - 8,
-
-            cloud.height / 2,
-
-            0,
-
-            Math.PI * 2
-
-        );
+        ctx.fillStyle = "#16a34a";
 
         ctx.arc(
 
-            cloud.x + 50,
+            tree.x + tree.width / 2,
 
-            cloud.y,
+            GAME.ground - tree.height,
 
-            cloud.height / 2,
+            24,
 
             0,
 
@@ -273,78 +255,204 @@ function drawClouds() {
     });
 
 }
+/* =====================================
+   Update Background
+===================================== */
+
+function updateBackground() {
+
+    /* ---------- Clouds ---------- */
+
+    background.clouds.forEach((cloud) => {
+
+        cloud.x -= cloud.speed;
+
+        if (cloud.x + cloud.width < 0) {
+
+            cloud.x = GAME.width + random(50, 200);
+
+            cloud.y = random(30, 90);
+
+        }
+
+    });
 
 
+    /* ---------- Trees ---------- */
+
+    background.trees.forEach((tree) => {
+
+        tree.x -= tree.speed;
+
+        if (tree.x + tree.width < 0) {
+
+            tree.x = GAME.width + random(150, 350);
+
+            tree.height = random(60, 95);
+
+        }
+
+    });
 
 }
+
+
 /* =====================================
    Draw Ground
 ===================================== */
 
 function drawGround() {
 
-    ctx.fillStyle = "#16a34a";
+    // Grass
+
+    ctx.fillStyle = "#22c55e";
 
     ctx.fillRect(
 
         0,
 
-        GROUND_Y,
+        GAME.ground,
 
-        WIDTH,
+        GAME.width,
 
-        HEIGHT - GROUND_Y
+        GAME.height - GAME.ground
+
+    );
+
+    // Ground Line
+
+    ctx.fillStyle = "#15803d";
+
+    ctx.fillRect(
+
+        0,
+
+        GAME.ground,
+
+        GAME.width,
+
+        4
+
+    );
+
+}
 /* =====================================
-   Background Engine
+   Render Frame
 ===================================== */
 
-const clouds = [
+function render() {
 
-    {
-        x: 120,
-        y: 40,
-        width: 70,
-        height: 25,
-        speed: 0.5
-    },
+    ctx.clearRect(
 
-    {
-        x: 420,
-        y: 70,
-        width: 90,
-        height: 30,
-        speed: 0.8
-    },
+        0,
 
-    {
-        x: 720,
-        y: 50,
-        width: 80,
-        height: 28,
-        speed: 0.6
-    }
+        0,
 
-];
+        GAME.width,
 
-const trees = [
+        GAME.height
 
-    {
-        x: 250,
-        width: 22,
-        height: 65,
-        speed: 2
-    },
-
-    {
-        x: 620,
-        width: 22,
-        height: 80,
-        speed: 2
-    }
-
-];
-   
     );
+
+    drawSky();
+
+    drawClouds();
+
+    drawTrees();
+
+    drawGround();
+
+    // পরের Part-এ আসবে
+    drawPlayer();
+
+    drawObstacle();
+
+}
+/* =====================================
+   Player Engine
+===================================== */
+
+const player = {
+
+    x: 80,
+
+    y: GAME.ground - 55,
+
+    width: 40,
+
+    height: 55,
+
+    velocityY: 0,
+
+    gravity: 0.8,
+
+    jumpPower: -15,
+
+    onGround: true,
+
+    frame: 0,
+
+    legOffset: 0
+
+};
+
+
+/* =====================================
+   Update Player
+===================================== */
+
+function updatePlayer() {
+
+    // Gravity
+
+    player.velocityY += player.gravity;
+
+    player.y += player.velocityY;
+
+    // Ground
+
+    if (player.y >= GAME.ground - player.height) {
+
+        player.y = GAME.ground - player.height;
+
+        player.velocityY = 0;
+
+        player.onGround = true;
+
+    } else {
+
+        player.onGround = false;
+
+    }
+
+    // Run Animation
+
+    if (player.onGround) {
+
+        player.frame += 0.25;
+
+        player.legOffset =
+
+            Math.sin(player.frame) * 5;
+
+    }
+
+}
+
+
+/* =====================================
+   Jump
+===================================== */
+
+function jump() {
+
+    if (!state.running) return;
+
+    if (!player.onGround) return;
+
+    player.velocityY =
+
+        player.jumpPower;
 
 }
 
@@ -354,6 +462,8 @@ const trees = [
 ===================================== */
 
 function drawPlayer() {
+
+    // Body
 
     ctx.fillStyle = "#2563eb";
 
@@ -369,6 +479,168 @@ function drawPlayer() {
 
     );
 
+    // Eyes
+
+    ctx.fillStyle = "#ffffff";
+
+    ctx.fillRect(
+
+        player.x + 8,
+
+        player.y + 10,
+
+        6,
+
+        6
+
+    );
+
+    ctx.fillRect(
+
+        player.x + 26,
+
+        player.y + 10,
+
+        6,
+
+        6
+
+    );
+
+    // Smile
+
+    ctx.strokeStyle = "#ffffff";
+
+    ctx.lineWidth = 2;
+
+    ctx.beginPath();
+
+    ctx.arc(
+
+        player.x + 20,
+
+        player.y + 26,
+
+        8,
+
+        0,
+
+        Math.PI
+
+    );
+
+    ctx.stroke();
+
+    // Legs
+
+    ctx.strokeStyle = "#111827";
+
+    ctx.lineWidth = 3;
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+
+        player.x + 10,
+
+        player.y + player.height
+
+    );
+
+    ctx.lineTo(
+
+        player.x + 10,
+
+        player.y +
+
+        player.height +
+
+        player.legOffset
+
+    );
+
+    ctx.stroke();
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+
+        player.x + 30,
+
+        player.y + player.height
+
+    );
+
+    ctx.lineTo(
+
+        player.x + 30,
+
+        player.y +
+
+        player.height -
+
+        player.legOffset
+
+    );
+
+    ctx.stroke();
+
+       }
+/* =====================================
+   Obstacle Engine
+===================================== */
+
+const obstacle = {
+
+    x: GAME.width + 100,
+
+    y: GAME.ground - 50,
+
+    width: 35,
+
+    height: 50
+
+};
+
+
+/* =====================================
+   Update Obstacle
+===================================== */
+
+function updateObstacle() {
+
+    obstacle.x -= state.speed;
+
+    // Screen-এর বাইরে গেলে
+    if (obstacle.x + obstacle.width < 0) {
+
+        obstacle.x = GAME.width + random(150, 300);
+
+        obstacle.height = random(40, 70);
+
+        obstacle.y =
+
+            GAME.ground - obstacle.height;
+
+        state.score++;
+
+        scoreBox.textContent =
+
+            `Score : ${state.score}`;
+
+        // প্রতি ৫ স্কোরে Speed বাড়বে
+        if (state.score % 5 === 0) {
+
+            state.speed += 0.5;
+
+            speedBox.textContent =
+
+                `${(state.speed / 6).toFixed(1)}x`;
+
+        }
+
+    }
+
 }
 
 
@@ -378,7 +650,7 @@ function drawPlayer() {
 
 function drawObstacle() {
 
-    ctx.fillStyle = "#ef4444";
+    ctx.fillStyle = "#dc2626";
 
     ctx.fillRect(
 
@@ -396,102 +668,6 @@ function drawObstacle() {
 
 
 /* =====================================
-   Jump
-===================================== */
-
-function jump() {
-
-    if (
-
-        !gameStarted ||
-
-        gameOver ||
-
-        !player.onGround
-
-    ) {
-
-        return;
-
-    }
-
-    player.velocityY =
-
-        player.jumpPower;
-
-    player.onGround = false;
-
-}
-
-
-/* =====================================
-   Apply Gravity
-===================================== */
-
-function applyGravity() {
-
-    player.velocityY +=
-
-        player.gravity;
-
-    player.y +=
-
-        player.velocityY;
-
-    if (
-
-        player.y >=
-
-        GROUND_Y - player.height
-
-    ) {
-
-        player.y =
-
-            GROUND_Y -
-
-            player.height;
-
-        player.velocityY = 0;
-
-        player.onGround = true;
-
-    }
-
-}
-/* =====================================
-   Move Obstacle
-===================================== */
-
-function moveObstacle() {
-
-    obstacle.x -= obstacle.speed;
-
-    // Obstacle পার হয়ে গেলে
-    if (obstacle.x + obstacle.width < 0) {
-
-        obstacle.x = WIDTH + random(80, 220);
-
-        score++;
-
-        scoreBox.textContent =
-            `Score : ${score}`;
-
-        // Speed Increase
-        obstacle.speed = Math.min(
-            obstacle.speed + 0.2,
-            15
-        );
-
-        speedBox.textContent =
-            `${(obstacle.speed / 6).toFixed(1)}x`;
-
-    }
-
-}
-
-
-/* =====================================
    Collision Detection
 ===================================== */
 
@@ -500,16 +676,16 @@ function checkCollision() {
     return (
 
         player.x <
-        obstacle.x + obstacle.width &&
+            obstacle.x + obstacle.width &&
 
         player.x + player.width >
-        obstacle.x &&
+            obstacle.x &&
 
         player.y <
-        obstacle.y + obstacle.height &&
+            obstacle.y + obstacle.height &&
 
         player.y + player.height >
-        obstacle.y
+            obstacle.y
 
     );
 
@@ -522,67 +698,74 @@ function checkCollision() {
 
 function endGame() {
 
-    gameOver = true;
+    state.running = false;
 
-    cancelAnimationFrame(animationId);
+    state.gameOver = true;
+
+    cancelAnimationFrame(
+
+        state.animationId
+
+    );
 
     result.textContent =
+
         "💥 Game Over!";
 
-    if (score > highScore) {
+    if (
 
-        highScore = score;
+        state.score >
+
+        state.highScore
+
+    ) {
+
+        state.highScore =
+
+            state.score;
 
         saveData(
-            STORAGE_KEY,
-            highScore
+
+            STORAGE.HIGH_SCORE,
+
+            state.highScore
+
         );
 
         highScoreBox.textContent =
-            highScore;
+
+            state.highScore;
 
         toast(
+
             "🎉 New High Score!",
+
             "success"
+
         );
 
     }
 
-}
-
-
-/* =====================================
-   Draw Frame
-===================================== */
-
-function render() {
-
-    clearCanvas();
-
-    drawGround();
-
-    drawPlayer();
-
-    drawObstacle();
-
-}
+   }
 /* =====================================
    Start Game
 ===================================== */
 
 function startGame() {
 
-    if (gameStarted && !gameOver) {
+    if (state.running) {
 
         return;
 
     }
 
-    gameStarted = true;
+    state.running = true;
 
-    gameOver = false;
+    state.gameOver = false;
 
-    score = 0;
+    state.score = 0;
+
+    state.speed = 6;
 
     scoreBox.textContent = "Score : 0";
 
@@ -590,15 +773,17 @@ function startGame() {
 
     result.textContent = "Playing...";
 
-    player.y = GROUND_Y - player.height;
+    player.y = GAME.ground - player.height;
 
     player.velocityY = 0;
 
     player.onGround = true;
 
-    obstacle.x = WIDTH;
+    obstacle.x = GAME.width + 150;
 
-    obstacle.speed = 6;
+    obstacle.height = 50;
+
+    obstacle.y = GAME.ground - obstacle.height;
 
     gameLoop();
 
@@ -611,11 +796,11 @@ function startGame() {
 
 function restartGame() {
 
-    cancelAnimationFrame(animationId);
+    cancelAnimationFrame(state.animationId);
 
-    gameStarted = false;
+    state.running = false;
 
-    gameOver = false;
+    state.gameOver = false;
 
     startGame();
 
@@ -628,9 +813,17 @@ function restartGame() {
 
 function gameLoop() {
 
-    applyGravity();
+    if (!state.running) {
 
-    moveObstacle();
+        return;
+
+    }
+
+    updateBackground();
+
+    updatePlayer();
+
+    updateObstacle();
 
     if (checkCollision()) {
 
@@ -642,7 +835,7 @@ function gameLoop() {
 
     render();
 
-    animationId = requestAnimationFrame(
+    state.animationId = requestAnimationFrame(
 
         gameLoop
 
@@ -652,80 +845,81 @@ function gameLoop() {
 
 
 /* =====================================
-   Start Screen
+   Event Binding
 ===================================== */
 
-function drawStartScreen() {
+function bindEvents() {
 
-    clearCanvas();
+    on(startBtn, "click", startGame);
 
-    drawGround();
+    on(restartBtn, "click", restartGame);
 
-    drawPlayer();
+    on(jumpBtn, "click", jump);
 
-    drawObstacle();
+    document.addEventListener(
+
+        "keydown",
+
+        (event) => {
+
+            if (
+
+                event.code === "Space" ||
+
+                event.code === "ArrowUp"
+
+            ) {
+
+                event.preventDefault();
+
+                jump();
+
+            }
+
+        }
+
+    );
+
+    canvas.addEventListener(
+
+        "touchstart",
+
+        () => {
+
+            jump();
+
+        },
+
+        {
+
+            passive: true
+
+        }
+
+    );
 
 }
 
 
 /* =====================================
-   Keyboard Controls
+   Draw Start Screen
 ===================================== */
 
-document.addEventListener(
+function drawStartScreen() {
 
-    "keydown",
+    render();
 
-    (event) => {
-
-        if (
-
-            event.code === "Space" ||
-
-            event.code === "ArrowUp"
-
-        ) {
-
-            event.preventDefault();
-
-            jump();
-
-        }
-
-    }
-
-);
-
-
-/* =====================================
-   Mobile Touch
-===================================== */
-
-canvas.addEventListener(
-
-    "touchstart",
-
-    () => {
-
-        jump();
-
-    },
-
-    {
-
-        passive: true
-
-    }
-
-);
+}
 
 
 /* =====================================
    Ready
 ===================================== */
 
+drawStartScreen();
+
 console.log(
 
-    "Jump Game Loaded Successfully"
+    "Jump Game V2 Loaded Successfully"
 
 );
