@@ -1,5 +1,5 @@
 /* =====================================
-   Header
+   Professional Header
 ===================================== */
 
 .main-header{
@@ -12,15 +12,15 @@
 
     width:100%;
 
-    z-index:999;
+    z-index:1000;
 
-    backdrop-filter:blur(14px);
+    background:rgba(255,255,255,.96);
 
-    background:rgba(255,255,255,.90);
+    backdrop-filter:blur(12px);
 
     border-bottom:1px solid rgba(0,0,0,.08);
 
-    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    box-shadow:0 4px 20px rgba(0,0,0,.08);
 
 }
 
@@ -32,9 +32,11 @@
 
     max-width:1200px;
 
-    margin:auto;
+    height:72px;
 
-    padding:14px 20px;
+    margin:0 auto;
+
+    padding:0 20px;
 
     display:flex;
 
@@ -60,29 +62,29 @@
 
     text-decoration:none;
 
+    flex-shrink:0;
+
 }
 
 .logo img{
 
-    width:48px;
+    width:46px;
 
-    height:48px;
+    height:46px;
 
     border-radius:50%;
 
     object-fit:cover;
 
-    box-shadow:0 5px 15px rgba(0,0,0,.18);
-
 }
 
 .logo span{
 
-    font-size:1.25rem;
+    font-size:22px;
 
     font-weight:700;
 
-    color:#222;
+    color:#2563eb;
 
     white-space:nowrap;
 
@@ -98,35 +100,27 @@
 
     align-items:center;
 
-    gap:12px;
+    gap:10px;
 
 }
 
 .nav-link{
 
-    text-decoration:none;
-
-    color:#444;
-
-    font-weight:600;
-
-    padding:10px 18px;
+    padding:10px 16px;
 
     border-radius:10px;
 
-    transition:.30s;
+    text-decoration:none;
+
+    color:#333;
+
+    font-weight:600;
+
+    transition:.3s;
 
 }
 
-.nav-link:hover{
-
-    background:#2563eb;
-
-    color:#fff;
-
-    transform:translateY(-2px);
-
-}
+.nav-link:hover,
 
 .nav-link.active{
 
@@ -147,6 +141,8 @@
 
     gap:12px;
 
+    flex-shrink:0;
+
 }
 
 /* =====================================
@@ -161,7 +157,7 @@
 
     gap:8px;
 
-    padding:10px 16px;
+    padding:8px 14px;
 
     background:#fff8dc;
 
@@ -173,22 +169,10 @@
 
     color:#d97706;
 
-    box-shadow:0 4px 12px rgba(255,193,7,.25);
-
-    transition:.3s;
-
-}
-
-.coin-box:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:0 8px 20px rgba(255,193,7,.35);
-
 }
 
 /* =====================================
-   Icon Button
+   Theme Button
 ===================================== */
 
 .icon-btn{
@@ -201,9 +185,9 @@
 
     border-radius:50%;
 
-    cursor:pointer;
+    background:#f3f4f6;
 
-    background:#f5f5f5;
+    cursor:pointer;
 
     font-size:20px;
 
@@ -215,7 +199,7 @@
 
     background:#2563eb;
 
-    color:#fff;
+    color:#ffffff;
 
     transform:rotate(20deg);
 
@@ -232,8 +216,6 @@
     align-items:center;
 
     justify-content:center;
-
-    text-decoration:none;
 
 }
 
@@ -260,41 +242,10 @@
 }
 
 /* =====================================
-   Login
+   Login / Logout
 ===================================== */
 
-.login-btn{
-
-    border:none;
-
-    cursor:pointer;
-
-    padding:10px 18px;
-
-    border-radius:10px;
-
-    background:#2563eb;
-
-    color:#fff;
-
-    font-weight:600;
-
-    transition:.3s;
-
-}
-
-.login-btn:hover{
-
-    background:#1d4ed8;
-
-    transform:translateY(-2px);
-
-}
-
-/* =====================================
-   Logout
-===================================== */
-
+.login-btn,
 .logout-btn{
 
     border:none;
@@ -305,9 +256,7 @@
 
     border-radius:10px;
 
-    background:#dc2626;
-
-    color:#fff;
+    color:#ffffff;
 
     font-weight:600;
 
@@ -315,16 +264,27 @@
 
 }
 
-.logout-btn:hover{
+.login-btn{
 
-    background:#b91c1c;
+    background:#2563eb;
+
+}
+
+.logout-btn{
+
+    background:#dc2626;
+
+}
+
+.login-btn:hover,
+.logout-btn:hover{
 
     transform:translateY(-2px);
 
 }
 
 /* =====================================
-   Mobile Menu Button
+   Menu Button
 ===================================== */
 
 .menu-btn{
@@ -337,23 +297,21 @@
 
     border:none;
 
-    border-radius:12px;
-
-    cursor:pointer;
+    border-radius:10px;
 
     background:#2563eb;
 
-    color:#fff;
+    color:#ffffff;
 
     font-size:22px;
+
+    cursor:pointer;
 
     transition:.3s;
 
 }
 
 .menu-btn:hover{
-
-    transform:scale(1.05);
 
     background:#1d4ed8;
 
@@ -376,15 +334,15 @@
 
     background:#ffffff;
 
-    box-shadow:-10px 0 30px rgba(0,0,0,.15);
-
-    padding:80px 25px 30px;
-
-    transition:.35s ease;
-
-    z-index:1001;
+    padding:80px 20px 30px;
 
     overflow-y:auto;
+
+    box-shadow:-8px 0 25px rgba(0,0,0,.15);
+
+    transition:right .35s ease;
+
+    z-index:1001;
 
 }
 
@@ -402,37 +360,31 @@
 
     display:block;
 
-    text-decoration:none;
-
-    color:#333;
-
-    font-size:16px;
-
-    font-weight:600;
-
     padding:14px 16px;
 
     margin-bottom:10px;
 
-    border-radius:12px;
+    text-decoration:none;
+
+    color:#333;
+
+    font-weight:600;
+
+    border-radius:10px;
 
     transition:.3s;
 
 }
 
-.mobile-link:hover{
+.mobile-link:hover,
+
+.mobile-link.active{
 
     background:#2563eb;
 
     color:#ffffff;
 
-    transform:translateX(5px);
-
 }
-
-/* =====================================
-   Contact Section
-===================================== */
 
 .mobile-contact{
 
@@ -444,9 +396,7 @@
 
     margin-bottom:15px;
 
-    color:#222;
-
-    font-size:18px;
+    color:#111827;
 
 }
 
@@ -454,11 +404,11 @@
 
     display:block;
 
+    padding:10px 0;
+
     text-decoration:none;
 
     color:#555;
-
-    padding:10px 0;
 
     transition:.3s;
 
@@ -468,7 +418,7 @@
 
     color:#2563eb;
 
-    padding-left:8px;
+    padding-left:6px;
 
 }
 
@@ -499,6 +449,16 @@
     opacity:1;
 
     visibility:visible;
+
+}
+
+/* =====================================
+   Header Scroll
+===================================== */
+
+.main-header.scrolled{
+
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
 
 }
 
@@ -538,13 +498,23 @@
 
     .header-container{
 
-        padding:12px 16px;
+        padding:0 16px;
 
     }
 
     .logo span{
 
         font-size:18px;
+
+    }
+
+}
+
+@media (min-width:769px){
+
+    .mobile-menu{
+
+        display:none;
 
     }
 
@@ -575,16 +545,5 @@
         font-size:14px;
 
     }
-
-}
-/* =====================================
-   Header Scroll Effect
-===================================== */
-
-.main-header.scrolled{
-
-    box-shadow:0 10px 30px rgba(0,0,0,.18);
-
-    background:rgba(255,255,255,.96);
 
 }
