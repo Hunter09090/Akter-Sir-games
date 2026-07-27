@@ -1,1 +1,170 @@
 
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Jump Game | Game Hub</title>
+
+    <meta name="description"
+          content="Simple Offline Jump Game">
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <link rel="stylesheet"
+          href="responsive.css">
+
+    <link rel="stylesheet"
+          href="game.css">
+
+</head>
+
+<body>
+
+<div id="header"></div>
+
+<main class="game-page">
+
+    <h1 class="game-title">
+
+        🦘 Jump Game
+
+    </h1>
+
+    <p class="game-description">
+
+        বাধা এড়িয়ে যত দূর সম্ভব এগিয়ে যান।
+
+    </p>
+
+    <section class="game-box">
+
+        <!-- Score -->
+
+        <div
+            id="scoreBox"
+            class="game-result">
+
+            Score : 0
+
+        </div>
+
+        <!-- Canvas -->
+
+        <canvas
+            id="gameCanvas"
+            width="800"
+            height="300">
+
+        </canvas>
+
+        <!-- Result -->
+
+        <div
+            id="result"
+            class="game-result">
+
+            Start চাপুন
+
+        </div>
+                <!-- ======================
+             Statistics
+        ======================= -->
+
+        <section class="game-stats">
+
+            <div class="stat-card">
+
+                <div class="stat-title">
+
+                    🏆 High Score
+
+                </div>
+
+                <div
+                    id="highScore"
+                    class="stat-value">
+
+                    0
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-title">
+
+                    ⚡ Speed
+
+                </div>
+
+                <div
+                    id="speedBox"
+                    class="stat-value">
+
+                    1x
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ======================
+             Controls
+        ======================= -->
+
+        <div class="button-group">
+
+            <button
+                id="startBtn"
+                class="game-btn">
+
+                ▶️ Start
+
+            </button>
+
+            <button
+                id="jumpBtn"
+                class="game-btn">
+
+                ⬆️ Jump
+
+            </button>
+
+            <button
+                id="restartBtn"
+                class="game-btn">
+
+                🔄 Restart
+
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- Footer -->
+
+<div id="footer"></div>
+
+<!-- Scripts -->
+
+<script src="utils.js"></script>
+
+<script src="layout.js"></script>
+
+<script src="jump.js"></script>
+
+</body>
+
+</html>
