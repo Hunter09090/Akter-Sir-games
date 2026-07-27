@@ -736,3 +736,115 @@
     margin-bottom:30px;
 
 }
+/* ==========================================
+   Tic Tac Toe
+========================================== */
+
+.tic-board{
+
+    width:100%;
+
+    max-width:360px;
+
+    margin:30px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+
+}
+
+.tic-cell{
+
+    aspect-ratio:1 / 1;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#ffffff;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+    font-size:48px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:
+        transform .2s,
+        box-shadow .2s,
+        background .2s;
+
+}
+
+.tic-cell:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+.tic-cell:active{
+
+    transform:scale(.95);
+
+}
+
+.tic-cell:disabled{
+
+    cursor:not-allowed;
+
+    opacity:1;
+
+}
+
+/* Winner Cells */
+
+.tic-cell.winner{
+
+    background:#22c55e;
+
+    color:#ffffff;
+
+    box-shadow:0 0 20px rgba(34,197,94,.7);
+
+}
+
+/* Player Colors */
+
+.tic-cell.x{
+
+    color:#2563eb;
+
+}
+
+.tic-cell.o{
+
+    color:#ef4444;
+
+}
+
+/* Mobile */
+
+@media (max-width:480px){
+
+    .tic-board{
+
+        max-width:300px;
+
+        gap:10px;
+
+    }
+
+    .tic-cell{
+
+        font-size:40px;
+
+    }
+
+}
