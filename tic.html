@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Tic Tac Toe | Game Hub</title>
+
+    <meta
+        name="description"
+        content="Play Tic Tac Toe offline with your friends.">
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="responsive.css">
+
+    <link
+        rel="stylesheet"
+        href="game.css">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <div id="header"></div>
+
+    <main class="game-page">
+
+        <h1 class="game-title">
+
+            ❌ Tic Tac Toe ⭕
+
+        </h1>
+
+        <p class="game-description">
+
+            দুইজন খেলোয়াড় পালাক্রমে X এবং O বসাবে।
+
+        </p>
+
+        <section class="game-box">
+
+            <!-- ======================
+                 Current Turn
+            ======================= -->
+
+            <div
+                id="turnBox"
+                class="game-result">
+
+                বর্তমান টার্ন : Player X
+
+            </div>
+
+            <!-- ======================
+                 Game Board
+            ======================= -->
+
+            <div
+                id="ticBoard"
+                class="tic-board">
+
+                <button class="tic-cell" data-index="0"></button>
+
+                <button class="tic-cell" data-index="1"></button>
+
+                <button class="tic-cell" data-index="2"></button>
+
+                <button class="tic-cell" data-index="3"></button>
+
+                <button class="tic-cell" data-index="4"></button>
+
+                <button class="tic-cell" data-index="5"></button>
+
+                <button class="tic-cell" data-index="6"></button>
+
+                <button class="tic-cell" data-index="7"></button>
+
+                <button class="tic-cell" data-index="8"></button>
+
+            </div>
+
+            <!-- ======================
+                 Match Result
+            ======================= -->
+
+            <div
+                id="result"
+                class="game-result">
+
+                নতুন ম্যাচ শুরু করুন
+
+            </div>
+
+            <!-- ======================
+                 Score Board
+            ======================= -->
+
+            <section class="game-stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        ❌ Player X
+
+                    </div>
+
+                    <div
+                        id="xWins"
+                        class="stat-value">
+
+                        0
+
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        ⭕
+
+                        Player O
+
+                    </div>
+
+                    <div
+                        id="oWins"
+                        class="stat-value">
+
+                        0
+
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        🤝 Draw
+
+                    </div>
+
+                    <div
+                        id="draws"
+                        class="stat-value">
+
+                        0
+
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+
+                        🎮 Match
+
+                    </div>
+
+                    <div
+                        id="totalMatches"
+                        class="stat-value">
+
+                        0
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ======================
+                 Action Buttons
+            ======================= -->
+
+            <div class="button-group">
+
+                <button
+                    id="restartBtn"
+                    class="game-btn">
+
+                    🔄 Restart Match
+
+                </button>
+
+                <button
+                    id="newGameBtn"
+                    class="game-btn">
+
+                    🆕 New Game
+
+                </button>
+
+                <button
+                    id="resetBtn"
+                    class="game-btn">
+
+                    ♻️ Reset Statistics
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+
+    <script src="utils.js"></script>
+
+    <script src="layout.js"></script>
+
+    <script src="tic.js"></script>
+
+</body>
+
+</html>
