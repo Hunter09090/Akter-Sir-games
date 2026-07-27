@@ -1,0 +1,460 @@
+/* =====================================
+   Footer
+===================================== */
+
+.main-footer{
+
+    margin-top:60px;
+
+    background:#111827;
+
+    color:#ffffff;
+
+    padding:60px 20px 25px;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* =====================================
+   Container
+===================================== */
+
+.footer-container{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(250px,1fr));
+
+    gap:40px;
+
+}
+
+/* =====================================
+   Footer Column
+===================================== */
+
+.footer-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+/* =====================================
+   Logo
+===================================== */
+
+.footer-logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:18px;
+
+}
+
+.footer-logo img{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.footer-logo h2{
+
+    font-size:24px;
+
+    color:#ffffff;
+
+}
+
+/* =====================================
+   Text
+===================================== */
+
+.footer-text{
+
+    color:#d1d5db;
+
+    line-height:1.8;
+
+    font-size:15px;
+
+}
+
+/* =====================================
+   Heading
+===================================== */
+
+.footer-column h3{
+
+    margin-bottom:18px;
+
+    font-size:20px;
+
+    color:#ffffff;
+
+}
+
+/* =====================================
+   Links
+===================================== */
+
+.footer-column a{
+
+    color:#d1d5db;
+
+    text-decoration:none;
+
+    margin-bottom:12px;
+
+    transition:.3s;
+
+}
+
+.footer-column a:hover{
+
+    color:#60a5fa;
+
+    padding-left:8px;
+
+}
+/* =====================================
+   Social Links
+===================================== */
+
+.social-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    margin-top:20px;
+
+}
+
+/* =====================================
+   Social Button
+===================================== */
+
+.social-btn{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:22px;
+
+    text-decoration:none;
+
+    color:#ffffff;
+
+    transition:.35s;
+
+}
+
+/* =====================================
+   Facebook
+===================================== */
+
+.facebook{
+
+    background:#1877f2;
+
+}
+
+.facebook:hover{
+
+    transform:translateY(-5px) scale(1.08);
+
+    box-shadow:0 10px 25px rgba(24,119,242,.45);
+
+}
+
+/* =====================================
+   WhatsApp
+===================================== */
+
+.whatsapp{
+
+    background:#25D366;
+
+}
+
+.whatsapp:hover{
+
+    transform:translateY(-5px) scale(1.08);
+
+    box-shadow:0 10px 25px rgba(37,211,102,.45);
+
+}
+
+/* =====================================
+   Email
+===================================== */
+
+.email{
+
+    background:#ea4335;
+
+}
+
+.email:hover{
+
+    transform:translateY(-5px) scale(1.08);
+
+    box-shadow:0 10px 25px rgba(234,67,53,.45);
+
+}
+
+/* =====================================
+   Footer Bottom
+===================================== */
+
+.footer-bottom{
+
+    margin-top:45px;
+
+    padding-top:20px;
+
+    border-top:1px solid rgba(255,255,255,.12);
+
+    text-align:center;
+
+}
+
+.footer-bottom p{
+
+    color:#d1d5db;
+
+    font-size:15px;
+
+}
+
+/* =====================================
+   Back To Top
+===================================== */
+
+.back-to-top{
+
+    position:fixed;
+
+    right:22px;
+
+    bottom:22px;
+
+    width:52px;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#2563eb;
+
+    color:#ffffff;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:0 10px 25px rgba(37,99,235,.35);
+
+    transition:.3s;
+
+    z-index:999;
+
+}
+
+.back-to-top:hover{
+
+    transform:translateY(-5px);
+
+    background:#1d4ed8;
+
+}
+/* =====================================
+   Footer Animation
+===================================== */
+
+.footer-column{
+
+    animation:fadeUp .6s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* =====================================
+   Footer Logo Hover
+===================================== */
+
+.footer-logo img{
+
+    transition:.35s;
+
+}
+
+.footer-logo img:hover{
+
+    transform:rotate(8deg) scale(1.08);
+
+}
+
+/* =====================================
+   Social Icon Animation
+===================================== */
+
+.social-btn i{
+
+    transition:.3s;
+
+}
+
+.social-btn:hover i{
+
+    transform:scale(1.2);
+
+}
+
+/* =====================================
+   Responsive
+===================================== */
+
+@media (max-width:768px){
+
+    .main-footer{
+
+        padding:50px 18px 25px;
+
+    }
+
+    .footer-container{
+
+        grid-template-columns:1fr;
+
+        gap:35px;
+
+        text-align:center;
+
+    }
+
+    .footer-logo{
+
+        justify-content:center;
+
+    }
+
+    .social-links{
+
+        justify-content:center;
+
+    }
+
+    .footer-column a:hover{
+
+        padding-left:0;
+
+    }
+
+}
+
+/* =====================================
+   Small Devices
+===================================== */
+
+@media (max-width:480px){
+
+    .footer-logo h2{
+
+        font-size:20px;
+
+    }
+
+    .footer-text{
+
+        font-size:14px;
+
+    }
+
+    .footer-column h3{
+
+        font-size:18px;
+
+    }
+
+    .social-btn{
+
+        width:45px;
+
+        height:45px;
+
+        font-size:20px;
+
+    }
+
+    .back-to-top{
+
+        width:46px;
+
+        height:46px;
+
+        right:15px;
+
+        bottom:15px;
+
+    }
+
+}
