@@ -1,15 +1,244 @@
-<header class="header">
+<!-- =====================================
+     Header
+====================================== -->
 
-    <div class="logo">
+<header class="main-header">
 
-        🎮 Game Hub
+    <div class="header-container">
+
+        <!-- ======================
+             Logo
+        ======================= -->
+
+        <a href="index.html" class="logo">
+
+            <img
+                src="assets/logo.png"
+                alt="GAME HUB OF  SIR">
+
+            <span>
+
+                GAME HUB OF SIR
+
+            </span>
+
+        </a>
+
+        <!-- ======================
+             Desktop Menu
+        ======================= -->
+
+        <nav class="desktop-menu">
+
+            <a
+                href="index.html"
+                class="nav-link active">
+
+                Home
+
+            </a>
+
+            <a
+                href="games.html"
+                class="nav-link">
+
+                Games
+
+            </a>
+
+            <a
+                href="leaderboard.html"
+                class="nav-link">
+
+                Leaderboard
+
+            </a>
+
+            <a
+                href="profile.html"
+                class="nav-link">
+
+                Profile
+
+            </a>
+
+        </nav>
+
+        <!-- ======================
+             Right Area
+        ======================= -->
+
+        <div class="header-right">
+
+            <!-- Coin -->
+
+            <div class="coin-box">
+
+                🪙
+
+                <span id="coinBalance">
+
+                    0
+
+                </span>
+
+            </div>
+
+            <!-- Theme -->
+
+            <button
+                id="themeToggle"
+                class="icon-btn"
+                title="Theme">
+
+                🌙
+
+            </button>
+
+            <!-- User -->
+
+            <a
+                href="profile.html"
+                class="profile-btn">
+
+                <img
+                    id="headerPhoto"
+                    src="assets/user.png"
+                    alt="User">
+
+            </a>
+
+            <!-- Login -->
+
+            <button
+                id="loginBtn"
+                class="login-btn">
+
+                Login
+
+            </button>
+
+            <!-- Logout -->
+
+            <button
+                id="logoutBtn"
+                class="logout-btn hidden">
+
+                Logout
+
+            </button>
+
+            <!-- Mobile Menu -->
+
+            <button
+                id="menuBtn"
+                class="menu-btn">
+
+                ☰
+
+            </button>
+
+        </div>
+
+    </div>
+        <!-- ======================
+             Mobile Navigation
+        ======================= -->
+
+        <div
+            id="mobileMenu"
+            class="mobile-menu">
+
+            <a
+                href="index.html"
+                class="mobile-link">
+
+                🏠 Home
+
+            </a>
+
+            <a
+                href="games.html"
+                class="mobile-link">
+
+                🎮 Games
+
+            </a>
+
+            <a
+                href="leaderboard.html"
+                class="mobile-link">
+
+                🏆 Leaderboard
+
+            </a>
+
+            <a
+                href="profile.html"
+                class="mobile-link">
+
+                👤 Profile
+
+            </a>
+
+            <a
+                href="coin.html"
+                class="mobile-link">
+
+                🪙 Coins
+
+            </a>
+
+            <hr>
+
+            <div class="mobile-contact">
+
+                <h3>
+
+                    Contact
+
+                </h3>
+
+                <a
+                    href="https://www.facebook.com/ahr110"
+                    target="_blank"
+                    class="mobile-contact-link">
+
+                    Facebook
+
+                </a>
+
+                <a
+                    href="https://wa.me/8801884197276"
+                    target="_blank"
+                    class="mobile-contact-link">
+
+                    WhatsApp
+
+                </a>
+
+                <a
+                    href="mailto:aakterhossen80@gmail.com"
+                    class="mobile-contact-link">
+
+                    Email
+
+                </a>
+
+            </div>
+
+        </div>
 
     </div>
 
-    <nav class="nav">
-
-        <a href="index.html">Home</a>
-
-    </nav>
-
 </header>
+
+<!-- ======================
+     Mobile Menu Overlay
+======================= -->
+
+<div
+    id="menuOverlay"
+    class="menu-overlay">
+
+</div>
