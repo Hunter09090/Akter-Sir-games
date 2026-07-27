@@ -20,6 +20,10 @@ async function loadLayout() {
 
         header.innerHTML = await response.text();
 
+       document.dispatchEvent(
+    new Event("headerLoaded")
+);
+       
     }
 
     if (footer) {
