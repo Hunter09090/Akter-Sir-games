@@ -5,94 +5,94 @@
 "use strict";
 
 /* =====================================
-   Elements
+   Header Initialize
 ===================================== */
 
-const menuBtn = document.getElementById("menuBtn");
+function initHeader() {
 
-const mobileMenu = document.getElementById("mobileMenu");
+    const menuBtn =
+        document.getElementById("menuBtn");
 
-const menuOverlay = document.getElementById("menuOverlay");
+    const mobileMenu =
+        document.getElementById("mobileMenu");
 
-const themeToggle = document.getElementById("themeToggle");
+    const menuOverlay =
+        document.getElementById("menuOverlay");
 
+    const themeToggle =
+        document.getElementById("themeToggle");
 
-/* =====================================
-   Mobile Menu
-===================================== */
+    const header =
+        document.querySelector(".main-header");
 
-function openMenu() {
+    if (!header) {
 
-    mobileMenu.classList.add("show");
+        console.warn("Header Not Loaded");
 
-    menuOverlay.classList.add("show");
+        return;
 
-    document.body.style.overflow = "hidden";
+    }
 
-}
+    /* ==========================
+       Open Menu
+    ========================== */
 
-function closeMenu() {
+    function openMenu() {
 
-    mobileMenu.classList.remove("show");
+        mobileMenu.classList.add("show");
 
-    menuOverlay.classList.remove("show");
+        menuOverlay.classList.add("show");
 
-    document.body.style.overflow = "";
+        document.body.style.overflow = "hidden";
 
-}
+    }
 
-function toggleMenu() {
+    /* ==========================
+       Close Menu
+    ========================== */
 
-    mobileMenu.classList.contains("show")
+    function closeMenu() {
 
-        ? closeMenu()
+        mobileMenu.classList.remove("show");
 
-        : openMenu();
+        menuOverlay.classList.remove("show");
 
-}
+        document.body.style.overflow = "";
 
+    }
 
-/* =====================================
-   Events
-===================================== */
+    /* ==========================
+       Toggle Menu
+    ========================== */
 
-if (menuBtn) {
+    function toggleMenu() {
 
-    menuBtn.addEventListener(
+        mobileMenu.classList.contains("show")
 
-        "click",
+            ? closeMenu()
 
-        toggleMenu
+            : openMenu();
 
-    );
+    }
+       /* ==========================
+       Menu Events
+    ========================== */
 
-}
+    if (menuBtn) {
 
-if (menuOverlay) {
+        menuBtn.addEventListener(
 
-    menuOverlay.addEventListener(
+            "click",
 
-        "click",
+            toggleMenu
 
-        closeMenu
+        );
 
-    );
+    }
 
-}
+    if (menuOverlay) {
 
-
-/* =====================================
-   Close Menu
-   After Click Link
-===================================== */
-
-document
-
-    .querySelectorAll(".mobile-link")
-
-    .forEach((link) => {
-
-        link.addEventListener(
+        menuOverlay.addEventListener(
 
             "click",
 
@@ -100,122 +100,155 @@ document
 
         );
 
-    });
-/* =====================================
-   Theme System
-===================================== */
+    }
 
-const THEME_KEY = "website_theme";
+    /* ==========================
+       Close After Click Link
+    ========================== */
 
+    document
 
-/* =====================================
-   Apply Theme
-===================================== */
+        .querySelectorAll(".mobile-link")
 
-function applyTheme(theme) {
+        .forEach((link) => {
 
-    document.documentElement.setAttribute(
+            link.addEventListener(
 
-        "data-theme",
+                "click",
 
-        theme
+                closeMenu
+
+            );
+
+        });
+
+    /* ==========================
+       ESC Close
+    ========================== */
+
+    document.addEventListener(
+
+        "keydown",
+
+        (event) => {
+
+            if (event.key === "Escape") {
+
+                closeMenu();
+
+            }
+
+        }
 
     );
 
-    if (themeToggle) {
+    /* ==========================
+       Resize Fix
+    ========================== */
 
-        themeToggle.textContent =
+    window.addEventListener(
 
-            theme === "dark"
+        "resize",
 
-            ? "☀️"
+        () => {
 
-            : "🌙";
+            if (window.innerWidth > 768) {
+
+                closeMenu();
+
+            }
+
+        }
+
+    );
+
+    /* ==========================
+       Theme System
+    ========================== */
+
+    const THEME_KEY = "website_theme";
+
+    function applyTheme(theme) {
+
+        document.documentElement.setAttribute(
+
+            "data-theme",
+
+            theme
+
+        );
+
+        if (themeToggle) {
+
+            themeToggle.textContent =
+
+                theme === "dark"
+
+                ? "☀️"
+
+                : "🌙";
+
+        }
 
     }
 
-}
+    function loadTheme() {
 
+        const savedTheme =
 
-/* =====================================
-   Load Theme
-===================================== */
+            localStorage.getItem(THEME_KEY)
 
-function loadTheme() {
+            || "light";
 
-    const savedTheme =
+        applyTheme(savedTheme);
 
-        localStorage.getItem(THEME_KEY)
+    }
 
-        || "light";
+    function toggleTheme() {
 
-    applyTheme(savedTheme);
+        const currentTheme =
 
-}
+            document.documentElement.getAttribute(
 
+                "data-theme"
 
-/* =====================================
-   Toggle Theme
-===================================== */
+            ) || "light";
 
-function toggleTheme() {
+        const newTheme =
 
-    const currentTheme =
+            currentTheme === "light"
 
-        document.documentElement.getAttribute(
+            ? "dark"
+            : "light";
 
-            "data-theme"
+        localStorage.setItem(
 
-        ) || "light";
+            THEME_KEY,
 
-    const newTheme =
+            newTheme
 
-        currentTheme === "light"
+        );
 
-        ? "dark"
+        applyTheme(newTheme);
 
-        : "light";
+    }
 
-    localStorage.setItem(
+    if (themeToggle) {
 
-        THEME_KEY,
+        themeToggle.addEventListener(
 
-        newTheme
+            "click",
 
-    );
+            toggleTheme
 
-    applyTheme(newTheme);
+        );
 
-}
+    }
 
-
-/* =====================================
-   Theme Event
-===================================== */
-
-if (themeToggle) {
-
-    themeToggle.addEventListener(
-
-        "click",
-
-        toggleTheme
-
-    );
-
-}
-
-
-/* =====================================
-   Initialize Theme
-===================================== */
-
-loadTheme();
-/* =====================================
-   Active Navigation
-===================================== */
-
-function setActiveMenu() {
+    loadTheme();
+       /* ==========================
+       Active Navigation
+    ========================== */
 
     const currentPage =
 
@@ -245,110 +278,54 @@ function setActiveMenu() {
 
                 link.classList.add("active");
 
-            } else {
-
-                link.classList.remove("active");
-
             }
 
         });
 
-}
+    /* ==========================
+       Header Scroll Effect
+    ========================== */
 
+    function updateHeader() {
 
-/* =====================================
-   Header Scroll Effect
-===================================== */
+        if (window.scrollY > 20) {
 
-const header =
+            header.classList.add("scrolled");
 
-    document.querySelector(".main-header");
+        } else {
 
-function updateHeaderOnScroll() {
-
-    if (!header) return;
-
-    if (window.scrollY > 20) {
-
-        header.classList.add("scrolled");
-
-    } else {
-
-        header.classList.remove("scrolled");
-
-    }
-
-}
-
-window.addEventListener(
-
-    "scroll",
-
-    updateHeaderOnScroll
-
-);
-
-
-/* =====================================
-   ESC Key Close Menu
-===================================== */
-
-document.addEventListener(
-
-    "keydown",
-
-    (event) => {
-
-        if (
-
-            event.key === "Escape"
-
-        ) {
-
-            closeMenu();
+            header.classList.remove("scrolled");
 
         }
 
     }
 
-);
+    window.addEventListener(
 
+        "scroll",
+
+        updateHeader
+
+    );
+
+    updateHeader();
+
+    console.log(
+
+        "Header Ready"
+
+    );
+
+}
 
 /* =====================================
-   Resize Fix
+   Wait Until Header Loaded
 ===================================== */
 
 window.addEventListener(
 
-    "resize",
+    "headerLoaded",
 
-    () => {
-
-        if (
-
-            window.innerWidth > 768
-
-        ) {
-
-            closeMenu();
-
-        }
-
-    }
-
-);
-
-
-/* =====================================
-   Initialize
-===================================== */
-
-setActiveMenu();
-
-updateHeaderOnScroll();
-
-console.log(
-
-    "Professional Header Ready"
+    initHeader
 
 );
