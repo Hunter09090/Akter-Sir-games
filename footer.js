@@ -5,83 +5,81 @@
 "use strict";
 
 /* =====================================
-   Elements
+   Footer Initialize
 ===================================== */
 
-const backToTop = document.getElementById("backToTop");
+function initFooter() {
 
+    const backToTop =
 
-/* =====================================
-   Show / Hide Button
-===================================== */
+        document.getElementById("backToTop");
 
-function toggleBackToTop() {
+    if (!backToTop) {
 
-    if (!backToTop) return;
-
-    if (window.scrollY > 300) {
-
-        backToTop.style.opacity = "1";
-
-        backToTop.style.visibility = "visible";
-
-    } else {
-
-        backToTop.style.opacity = "0";
-
-        backToTop.style.visibility = "hidden";
+        return;
 
     }
 
-}
+    /* ==========================
+       Show / Hide Button
+    ========================== */
 
+    function toggleButton() {
 
-/* =====================================
-   Scroll To Top
-===================================== */
+        if (window.scrollY > 300) {
 
-function scrollToTop() {
+            backToTop.classList.add("show");
 
-    window.scrollTo({
+        } else {
 
-        top: 0,
+            backToTop.classList.remove("show");
 
-        behavior: "smooth"
+        }
 
-    });
+    }
 
-}
+    /* ==========================
+       Scroll To Top
+    ========================== */
 
+    function scrollTopPage() {
 
-/* =====================================
-   Events
-===================================== */
+        window.scrollTo({
 
-window.addEventListener(
+            top: 0,
 
-    "scroll",
+            behavior: "smooth"
 
-    toggleBackToTop
+        });
 
-);
+    }
 
-if (backToTop) {
+    /* ==========================
+       Events
+    ========================== */
+
+    window.addEventListener(
+
+        "scroll",
+
+        toggleButton
+
+    );
 
     backToTop.addEventListener(
 
         "click",
 
-        scrollToTop
+        scrollTopPage
+
+    );
+
+    toggleButton();
+
+    console.log(
+
+        "Footer Loaded Successfully"
 
     );
 
 }
-
-
-/* =====================================
-   Initialize
-===================================== */
-
-toggleBackToTop();
-
-console.log("Footer Ready");
