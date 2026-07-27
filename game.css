@@ -848,3 +848,52 @@
     }
 
 }
+/* ==========================================
+   Jump Game
+========================================== */
+
+#gameCanvas{
+
+    display:block;
+
+    width:100%;
+
+    max-width:800px;
+
+    height:auto;
+
+    margin:25px auto;
+
+    background:#f8fafc;
+
+    border:2px solid #e2e8f0;
+
+    border-radius:18px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.10);
+
+    touch-action:none;
+
+}
+
+/* Canvas Focus */
+
+#gameCanvas:focus{
+
+    outline:none;
+
+}
+
+/* Mobile */
+
+@media (max-width:768px){
+
+    #gameCanvas{
+
+        max-width:100%;
+
+        border-radius:14px;
+
+    }
+
+}
