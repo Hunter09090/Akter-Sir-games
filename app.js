@@ -127,7 +127,9 @@ document.getElementById("searchInput");
    Start App
 ===================================== */
 
-window.onload = () => {
+window.onload = async () => {
+
+    await loadLayout();
 
     loadGames(games);
 
