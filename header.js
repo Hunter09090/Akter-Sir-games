@@ -322,13 +322,7 @@ function initHeader() {
    Wait Until Header Loaded
 ===================================== */
 
-window.addEventListener(
 
-    "headerLoaded",
-
-    initHeader
-
-);
 /* =====================================
    Active Page
 ===================================== */
