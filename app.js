@@ -31,7 +31,9 @@ async function loadLayout() {
         const response = await fetch("footer.html");
 
         footer.innerHTML = await response.text();
-
+document.dispatchEvent(
+    new Event("footerLoaded")
+);
     }
 
 }
