@@ -10,30 +10,56 @@
 
 async function loadLayout() {
 
-    const header = document.getElementById("header");
+    try {
 
-    const footer = document.getElementById("footer");
+        const headerContainer =
+            document.getElementById("header");
 
-    if (header) {
+        if (headerContainer) {
 
-        const response = await fetch("header.html");
+            const response =
+                await fetch("header.html");
 
-        header.innerHTML = await response.text();
+            headerContainer.innerHTML =
+                await response.text();
 
-       document.dispatchEvent(
-    new Event("headerLoaded")
-);
-       
-    }
+            if (typeof initHeader === "function") {
 
-    if (footer) {
+                initHeader();
 
-        const response = await fetch("footer.html");
+            }
 
-        footer.innerHTML = await response.text();
-document.dispatchEvent(
-    new Event("footerLoaded")
-);
+        }
+
+        const footerContainer =
+            document.getElementById("footer");
+
+        if (footerContainer) {
+
+            const response =
+                await fetch("footer.html");
+
+            footerContainer.innerHTML =
+                await response.text();
+
+            if (typeof initFooter === "function") {
+
+                initFooter();
+
+            }
+
+        }
+
+    } catch (error) {
+
+        console.error(
+
+            "Layout Load Error:",
+
+            error
+
+        );
+
     }
 
 }
