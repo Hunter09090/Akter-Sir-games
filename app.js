@@ -158,10 +158,7 @@ document.getElementById("searchInput");
 /* =====================================
    Start App
 ===================================== */
-
-window.onload = async () => {
-
-    await loadLayout();
+window.onload = () => {
 
     loadGames(games);
 
