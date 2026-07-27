@@ -40,7 +40,7 @@ const games = [
         name: "Tic Tac Toe",
         icon: "❌",
         description: "Classic XO Game.",
-        page: "tictactoe.html"
+        page: "tic.html"
     },
 
     {
