@@ -458,134 +458,109 @@ function jump() {
 
 
 /* =====================================
-   Draw Player
+   Draw Cartoon Human
 ===================================== */
 
 function drawPlayer() {
 
-    // Body
+    const x = player.x;
+    const y = player.y;
 
-    ctx.fillStyle = "#2563eb";
+    /* Head */
 
-    ctx.fillRect(
-
-        player.x,
-
-        player.y,
-
-        player.width,
-
-        player.height
-
-    );
-
-    // Eyes
-
-    ctx.fillStyle = "#ffffff";
-
-    ctx.fillRect(
-
-        player.x + 8,
-
-        player.y + 10,
-
-        6,
-
-        6
-
-    );
-
-    ctx.fillRect(
-
-        player.x + 26,
-
-        player.y + 10,
-
-        6,
-
-        6
-
-    );
-
-    // Smile
-
-    ctx.strokeStyle = "#ffffff";
-
-    ctx.lineWidth = 2;
+    ctx.fillStyle = "#f4c28b";
 
     ctx.beginPath();
 
     ctx.arc(
-
-        player.x + 20,
-
-        player.y + 26,
-
-        8,
-
+        x + 20,
+        y + 10,
+        10,
         0,
-
-        Math.PI
-
+        Math.PI * 2
     );
 
-    ctx.stroke();
+    ctx.fill();
 
-    // Legs
+    /* Hair */
 
-    ctx.strokeStyle = "#111827";
+    ctx.fillStyle = "#2d2d2d";
+
+    ctx.beginPath();
+
+    ctx.arc(
+        x + 20,
+        y + 7,
+        10,
+        Math.PI,
+        0
+    );
+
+    ctx.fill();
+
+    /* Eyes */
+
+    ctx.fillStyle = "#000";
+
+    ctx.beginPath();
+
+    ctx.arc(x + 16, y + 10, 1.5, 0, Math.PI * 2);
+    ctx.arc(x + 24, y + 10, 1.5, 0, Math.PI * 2);
+
+    ctx.fill();
+
+    /* Body */
+
+    ctx.fillStyle = "#2563eb";
+
+    ctx.fillRect(
+        x + 12,
+        y + 20,
+        16,
+        22
+    );
+
+    /* Arms */
+
+    ctx.strokeStyle = "#f4c28b";
 
     ctx.lineWidth = 3;
 
     ctx.beginPath();
 
-    ctx.moveTo(
+    ctx.moveTo(x + 12, y + 24);
+    ctx.lineTo(x + 5, y + 32);
 
-        player.x + 10,
-
-        player.y + player.height
-
-    );
-
-    ctx.lineTo(
-
-        player.x + 10,
-
-        player.y +
-
-        player.height +
-
-        player.legOffset
-
-    );
+    ctx.moveTo(x + 28, y + 24);
+    ctx.lineTo(x + 35, y + 32);
 
     ctx.stroke();
+
+    /* Legs Animation */
+
+    ctx.strokeStyle = "#1f2937";
+
+    ctx.lineWidth = 4;
 
     ctx.beginPath();
 
-    ctx.moveTo(
-
-        player.x + 30,
-
-        player.y + player.height
-
-    );
+    ctx.moveTo(x + 16, y + 42);
 
     ctx.lineTo(
+        x + 16,
+        y + 55 + player.legOffset
+    );
 
-        player.x + 30,
+    ctx.moveTo(x + 24, y + 42);
 
-        player.y +
-
-        player.height -
-
-        player.legOffset
-
+    ctx.lineTo(
+        x + 24,
+        y + 55 - player.legOffset
     );
 
     ctx.stroke();
 
-       }
+}
 /* =====================================
    Obstacle Engine
 ===================================== */
