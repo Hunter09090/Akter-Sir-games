@@ -139,8 +139,16 @@ const games = [
         icon: "🦘",
         description: "Jump over obstacles.",
         page: "jump.html"
-    }
+    },
+{
+    id: 10,
+    name: "Memory Match",
+    icon: "🧠",
+    description: "Find matching emoji pairs and train your brain.",
+    page: "memory.html"
+}
 
+   
 ];
 
 
