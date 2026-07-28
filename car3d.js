@@ -406,8 +406,8 @@ if (finalScore > bestScore) {
     setTimeout(() => {
 
         const again = confirm(
-            `💥 GAME OVER!\\n\\nYour Score: ${Math.floor(score)}\\n\\nPlay Again?`
-        );
+    `💥 GAME OVER!\\n\\nYour Score: ${finalScore}\\nBest Score: ${bestScore}\\n\\nPlay Again?`
+);
 
         if (again) {
 
