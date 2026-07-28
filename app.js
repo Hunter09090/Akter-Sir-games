@@ -146,7 +146,14 @@ const games = [
     icon: "🧠",
     description: "Find matching emoji pairs and train your brain.",
     page: "memory.html"
-}
+},
+   {
+    id: 11,
+    name: "Rock Paper Scissors",
+    icon: "✊",
+    description: "Play against the computer and test your luck.",
+    page: "rps.html"
+   }
 
    
 ];
