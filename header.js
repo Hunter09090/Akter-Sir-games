@@ -405,4 +405,4 @@ window.addEventListener(
 
 console.log("Header Loaded Successfully");
 
-}
+
