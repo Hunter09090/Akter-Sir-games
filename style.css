@@ -598,7 +598,7 @@ img{
     background:#2563eb;
 
 }
-```css
+
 /* =====================================
    SIMPLE HEADER
 ===================================== */
@@ -636,6 +636,136 @@ img{
     justify-content:space-between;
 
     gap:20px;
+
+}
+
+.simple-logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    text-decoration:none;
+
+    color:#ffffff;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.simple-logo img{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    background:#ffffff;
+
+}
+
+.simple-nav{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.simple-nav a{
+
+    text-decoration:none;
+
+    color:#ffffff;
+
+    padding:10px 14px;
+
+    border-radius:8px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.simple-nav a:hover{
+
+    background:rgba(255,255,255,.18);
+
+}
+
+.theme-btn{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#ffffff;
+
+    color:#2563eb;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.theme-btn:hover{
+
+    transform:rotate(20deg) scale(1.05);
+
+}
+
+@media (max-width:768px){
+
+    .simple-header-container{
+
+        flex-wrap:wrap;
+
+        height:auto;
+
+        padding:12px 16px;
+
+    }
+
+    .simple-nav{
+
+        width:100%;
+
+        justify-content:center;
+
+        flex-wrap:wrap;
+
+    }
+
+    .simple-logo{
+
+        font-size:18px;
+
+    }
+
+    .simple-logo img{
+
+        width:36px;
+
+        height:36px;
+
+    }
 
 }
 
