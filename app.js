@@ -160,6 +160,13 @@ const games = [
     icon: "🔮",
     description: "Think of a number and let the magic read your mind.",
     page: "mindreader.html"
+   },
+   {
+    id: 13,
+    name: "3D Highway Runner",
+    icon: "🏎️",
+    description: "Drive a 3D car and avoid obstacles.",
+    page: "car3d.html"
    }
 
    
