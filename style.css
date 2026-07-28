@@ -785,3 +785,90 @@ img{
 
 }
 
+/* =====================================
+   SIMPLE FOOTER
+===================================== */
+
+.simple-footer{
+
+    margin-top:60px;
+
+    background:#111827;
+
+    color:#ffffff;
+
+    padding:40px 20px;
+
+    text-align:center;
+
+}
+
+.simple-footer-container{
+
+    max-width:900px;
+
+    margin:auto;
+
+}
+
+.simple-footer h2{
+
+    font-size:28px;
+
+    margin-bottom:12px;
+
+}
+
+.simple-footer p{
+
+    color:#d1d5db;
+
+    margin-bottom:16px;
+
+}
+
+.footer-social{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:16px;
+
+    margin-bottom:20px;
+
+}
+
+.footer-social a{
+
+    color:#ffffff;
+
+    text-decoration:none;
+
+    padding:10px 16px;
+
+    border-radius:8px;
+
+    background:#2563eb;
+
+    transition:.3s;
+
+}
+
+.footer-social a:hover{
+
+    background:#1d4ed8;
+
+    transform:translateY(-2px);
+
+}
+
+.footer-copy{
+
+    font-size:14px;
+
+    color:#9ca3af;
+
+}
