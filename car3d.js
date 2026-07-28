@@ -283,6 +283,13 @@ function animate() {
     scoreEl.textContent =
         Math.floor(score);
 
+   /* Update Enemies */
+
+if (!gameOver) {
+
+    updateEnemies();
+
+}
     /* Render */
 
     renderer.render(scene, camera);
