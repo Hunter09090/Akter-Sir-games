@@ -438,3 +438,90 @@ function updateEnemies() {
     });
 
 }
+/* =====================================
+   SIDE TREES
+===================================== */
+
+function createTree(x, z) {
+
+    const tree = new THREE.Group();
+
+    // Trunk
+    const trunkGeo = new THREE.CylinderGeometry(0.1, 0.1, 0.8);
+
+    const trunkMat = new THREE.MeshStandardMaterial({
+        color: 0x8b5a2b
+    });
+
+    const trunk = new THREE.Mesh(trunkGeo, trunkMat);
+
+    trunk.position.y = 0.4;
+
+    tree.add(trunk);
+
+    // Leaves
+    const leavesGeo = new THREE.SphereGeometry(0.45, 8, 8);
+
+    const leavesMat = new THREE.MeshStandardMaterial({
+        color: 0x22c55e
+    });
+
+    const leaves = new THREE.Mesh(leavesGeo, leavesMat);
+
+    leaves.position.y = 1.0;
+
+    tree.add(leaves);
+
+    tree.position.set(x, 0, z);
+
+    scene.add(tree);
+
+}
+
+/* Create Many Trees */
+
+for (let i = -25; i < 25; i += 4) {
+
+    createTree(-5, i);
+
+    createTree(5, i);
+
+}
+
+/* =====================================
+   BEST SCORE
+===================================== */
+
+const bestScoreEl =
+document.getElementById("bestScore");
+
+let bestScore =
+Number(localStorage.getItem("car3d-best")) || 0;
+
+bestScoreEl.textContent = bestScore;
+
+/* =====================================
+   SPEED SYSTEM
+===================================== */
+
+let speed = 0.35;
+
+function increaseSpeed() {
+
+    speed += 0.005;
+
+    speed = Math.min(speed, 0.9);
+
+}
+
+/* Increase Speed Every 5 Seconds */
+
+setInterval(() => {
+
+    if (!gameOver) {
+
+        increaseSpeed();
+
+    }
+
+}, 5000);
