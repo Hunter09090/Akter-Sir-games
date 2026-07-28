@@ -1,0 +1,107 @@
+/* =====================================
+   MIND READER GAME
+===================================== */
+
+.mind-box{
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+.mind-steps{
+
+    text-align:left;
+
+    background:#f8fafc;
+
+    padding:24px;
+
+    border-radius:20px;
+
+    margin:30px 0;
+
+    box-shadow:0 6px 16px rgba(0,0,0,.05);
+
+}
+
+.mind-steps p{
+
+    margin-bottom:14px;
+
+    font-size:17px;
+
+    color:#374151;
+
+}
+
+.mind-result{
+
+    margin-top:28px;
+
+    padding:28px;
+
+    border-radius:24px;
+
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+    color:#ffffff;
+
+    animation:fadePop .5s ease;
+
+}
+
+.mind-number{
+
+    font-size:72px;
+
+    font-weight:700;
+
+    margin:18px 0;
+
+    text-shadow:0 6px 20px rgba(0,0,0,.25);
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+@keyframes fadePop{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.85);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+@media (max-width:600px){
+
+    .mind-number{
+
+        font-size:56px;
+
+    }
+
+    .mind-steps{
+
+        padding:20px;
+
+    }
+
+}
