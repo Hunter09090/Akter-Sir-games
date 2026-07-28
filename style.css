@@ -978,3 +978,1001 @@ img{
     transform:translateY(-100%);
 
 }
+/* =====================================
+   UI POLISH - GLOBAL
+===================================== */
+
+body{
+
+    background:#f3f4f6;
+
+    color:#111827;
+
+    font-family:"Poppins",sans-serif;
+
+    line-height:1.6;
+
+    overflow-x:hidden;
+
+}
+
+/* Smooth scrolling */
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+/* Section spacing */
+
+section{
+
+    padding:40px 20px;
+
+}
+
+/* =====================================
+   HERO POLISH
+===================================== */
+
+.hero{
+
+    text-align:center;
+
+    padding:80px 20px 60px;
+
+}
+
+.hero h1{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    color:#111827;
+
+    margin-bottom:12px;
+
+}
+
+.hero p{
+
+    font-size:18px;
+
+    color:#6b7280;
+
+}
+
+/* =====================================
+   SEARCH POLISH
+===================================== */
+
+.search-section{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:-10px;
+
+}
+
+#searchInput{
+
+    width:100%;
+
+    max-width:650px;
+
+    padding:18px 24px;
+
+    border:none;
+
+    border-radius:20px;
+
+    background:#ffffff;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+
+    font-size:17px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+#searchInput:focus{
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.15);
+
+    transform:translateY(-2px);
+
+}
+/* =====================================
+   UI POLISH - GAME CARDS
+===================================== */
+
+.games-container{
+
+    max-width:1200px;
+
+    margin:40px auto;
+
+    padding:0 20px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:28px;
+
+}
+
+/* =====================================
+   Game Card
+===================================== */
+
+.game-card{
+
+    background:#ffffff;
+
+    border-radius:24px;
+
+    padding:32px 24px;
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+
+    transition:transform .35s ease,
+               box-shadow .35s ease;
+
+}
+
+/* Top gradient bar */
+
+.game-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:6px;
+
+    background:linear-gradient(90deg,#2563eb,#60a5fa);
+
+}
+
+/* Hover effect */
+
+.game-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 40px rgba(37,99,235,.18);
+
+}
+
+/* =====================================
+   Game Icon
+===================================== */
+
+.game-icon{
+
+    font-size:72px;
+
+    margin-bottom:24px;
+
+    transition:transform .35s ease;
+
+}
+
+.game-card:hover .game-icon{
+
+    transform:scale(1.15) rotate(5deg);
+
+}
+
+/* =====================================
+   Title
+===================================== */
+
+.game-title{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:#111827;
+
+    margin-bottom:14px;
+
+    line-height:1.2;
+
+}
+
+/* =====================================
+   Description
+===================================== */
+
+.game-description{
+
+    font-size:17px;
+
+    color:#6b7280;
+
+    margin-bottom:32px;
+
+    min-height:52px;
+
+}
+
+/* =====================================
+   Play Button
+===================================== */
+
+.play-btn{
+
+    width:100%;
+
+    padding:16px 22px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    color:#ffffff;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:transform .25s ease,
+               box-shadow .25s ease;
+
+}
+
+.play-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 20px rgba(37,99,235,.35);
+
+}
+
+/* =====================================
+   No Game
+===================================== */
+
+.no-game{
+
+    grid-column:1/-1;
+
+    background:#ffffff;
+
+    padding:40px 24px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+
+}
+
+.no-game h2{
+
+    color:#111827;
+
+    margin-bottom:10px;
+
+}
+
+.no-game p{
+
+    color:#6b7280;
+
+}
+
+/* =====================================
+   Mobile Polish
+===================================== */
+
+@media (max-width:768px){
+
+    .games-container{
+
+        gap:22px;
+
+        padding:0 16px;
+
+    }
+
+    .game-card{
+
+        padding:28px 22px;
+
+    }
+
+    .game-icon{
+
+        font-size:64px;
+
+    }
+
+    .game-title{
+
+        font-size:26px;
+
+    }
+
+    .play-btn{
+
+        padding:15px 20px;
+
+        font-size:17px;
+
+    }
+
+   }
+/* =====================================
+   UI POLISH - PREMIUM EFFECTS
+===================================== */
+
+/* Smooth animation for everything */
+
+*{
+
+    transition:background-color .3s ease,
+               color .3s ease,
+               border-color .3s ease;
+
+}
+
+/* =====================================
+   Hero Animation
+===================================== */
+
+.hero h1{
+
+    animation:fadeDown .8s ease forwards;
+
+}
+
+.hero p{
+
+    animation:fadeUp .9s ease forwards;
+
+}
+
+@keyframes fadeDown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* =====================================
+   Card Entrance Animation
+===================================== */
+
+.game-card{
+
+    animation:cardAppear .6s ease both;
+
+}
+
+@keyframes cardAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* =====================================
+   Button Click Effect
+===================================== */
+
+.play-btn:active,
+
+.theme-btn:active,
+
+.simple-nav a:active{
+
+    transform:scale(.96);
+
+}
+
+/* =====================================
+   Footer Polish
+===================================== */
+
+.simple-footer{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.simple-footer::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:4px;
+
+    background:linear-gradient(90deg,
+               #2563eb,
+               #60a5fa,
+               #2563eb);
+
+}
+
+.footer-social a{
+
+    box-shadow:0 6px 16px rgba(37,99,235,.25);
+
+}
+
+/* =====================================
+   Search Floating Effect
+===================================== */
+
+#searchInput:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* =====================================
+   Selection Color
+===================================== */
+
+::selection{
+
+    background:#2563eb;
+
+    color:#ffffff;
+
+}
+
+/* =====================================
+   Scrollbar Polish
+===================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#e5e7eb;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2563eb;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#1d4ed8;
+
+}
+/* =====================================
+   UI POLISH - PREMIUM GAMING LOOK
+===================================== */
+
+/* =====================================
+   Background Glow
+===================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    top:-150px;
+
+    left:-150px;
+
+    width:350px;
+
+    height:350px;
+
+    background:rgba(37,99,235,.18);
+
+    border-radius:50%;
+
+    filter:blur(80px);
+
+    z-index:-1;
+
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    bottom:-180px;
+
+    right:-180px;
+
+    width:420px;
+
+    height:420px;
+
+    background:rgba(96,165,250,.15);
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+    z-index:-1;
+
+}
+
+/* =====================================
+   Hero Premium Card
+===================================== */
+
+.hero{
+
+    max-width:1000px;
+
+    margin:40px auto 20px;
+
+    background:rgba(255,255,255,.78);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,.6);
+
+    border-radius:28px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.08);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* Decorative circles */
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-60px;
+
+    right:-60px;
+
+    width:180px;
+
+    height:180px;
+
+    background:rgba(37,99,235,.12);
+
+    border-radius:50%;
+
+}
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:-70px;
+
+    left:-70px;
+
+    width:220px;
+
+    height:220px;
+
+    background:rgba(96,165,250,.12);
+
+    border-radius:50%;
+
+}
+
+/* =====================================
+   Hero Text Glow
+===================================== */
+
+.hero h1{
+
+    position:relative;
+
+    z-index:1;
+
+    text-shadow:0 4px 18px rgba(37,99,235,.12);
+
+}
+
+.hero p{
+
+    position:relative;
+
+    z-index:1;
+
+}
+
+/* =====================================
+   Search Glass Effect
+===================================== */
+
+#searchInput{
+
+    background:rgba(255,255,255,.82);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,.65);
+
+}
+
+/* =====================================
+   Header Premium Shadow
+===================================== */
+
+.simple-header{
+
+    box-shadow:0 6px 20px rgba(37,99,235,.22);
+
+}
+
+/* =====================================
+   Floating Hover
+===================================== */
+
+.game-card:hover{
+
+    transform:translateY(-12px) scale(1.02);
+
+}
+
+/* =====================================
+   Soft Page Fade
+===================================== */
+
+body{
+
+    animation:pageFade .45s ease;
+
+}
+
+@keyframes pageFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+/* =====================================
+   UI POLISH - FINAL PREMIUM TOUCH
+===================================== */
+
+/* =====================================
+   Animated Gradient Button
+===================================== */
+
+.play-btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.play-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:120%;
+
+    height:100%;
+
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.35),
+        transparent
+    );
+
+    transition:.6s;
+
+}
+
+.play-btn:hover::before{
+
+    left:120%;
+
+}
+
+/* =====================================
+   Floating Game Icons
+===================================== */
+
+.game-icon{
+
+    animation:floatIcon 3s ease-in-out infinite;
+
+}
+
+@keyframes floatIcon{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* =====================================
+   Hero Subtitle Highlight
+===================================== */
+
+.hero p{
+
+    display:inline-block;
+
+    padding:8px 16px;
+
+    background:rgba(37,99,235,.08);
+
+    border-radius:999px;
+
+    font-weight:500;
+
+}
+
+/* =====================================
+   Search Placeholder Style
+===================================== */
+
+#searchInput::placeholder{
+
+    color:#9ca3af;
+
+    letter-spacing:.3px;
+
+}
+
+/* =====================================
+   Card Shine Effect
+===================================== */
+
+.game-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-100%;
+
+    left:-100%;
+
+    width:220%;
+
+    height:220%;
+
+    background:linear-gradient(
+        135deg,
+        transparent,
+        rgba(255,255,255,.22),
+        transparent
+    );
+
+    transform:rotate(20deg);
+
+    transition:.8s;
+
+}
+
+.game-card:hover::after{
+
+    top:100%;
+
+    left:100%;
+
+}
+
+/* =====================================
+   Footer Hover Glow
+===================================== */
+
+.footer-social a:hover{
+
+    box-shadow:0 10px 24px rgba(37,99,235,.45);
+
+}
+
+/* =====================================
+   Soft Divider
+===================================== */
+
+.hero + .search-section{
+
+    margin-top:-12px;
+
+}
+
+/* =====================================
+   Mobile Final Polish
+===================================== */
+
+@media (max-width:768px){
+
+    .hero{
+
+        margin:20px 16px;
+
+        padding:50px 20px 40px;
+
+    }
+
+    .hero h1{
+
+        font-size:32px;
+
+    }
+
+    .hero p{
+
+        font-size:15px;
+
+    }
+
+    #searchInput{
+
+        padding:16px 20px;
+
+        font-size:16px;
+
+    }
+
+}
+
+/* =====================================
+   Tiny Screen Polish
+===================================== */
+
+@media (max-width:480px){
+
+    .hero h1{
+
+        font-size:28px;
+
+    }
+
+    .simple-logo{
+
+        font-size:16px;
+
+    }
+
+    .simple-nav a{
+
+        padding:8px 12px;
+
+        font-size:14px;
+
+    }
+
+}
