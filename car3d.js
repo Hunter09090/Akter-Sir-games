@@ -308,3 +308,126 @@ window.addEventListener("resize", () => {
     );
 
 });
+/* =====================================
+   ENEMY CARS
+===================================== */
+
+const enemies = [];
+
+/* Create Enemy */
+
+function createEnemy() {
+
+    const enemy = new THREE.Group();
+
+    // Body
+    const bodyGeo = new THREE.BoxGeometry(1.2, 0.5, 2);
+    const bodyMat = new THREE.MeshStandardMaterial({
+        color: Math.random() * 0xffffff
+    });
+
+    const body = new THREE.Mesh(bodyGeo, bodyMat);
+    enemy.add(body);
+
+    // Roof
+    const roofGeo = new THREE.BoxGeometry(0.8, 0.35, 1);
+    const roofMat = new THREE.MeshStandardMaterial({
+        color: 0x222222
+    });
+
+    const roof = new THREE.Mesh(roofGeo, roofMat);
+    roof.position.y = 0.42;
+
+    enemy.add(roof);
+
+    // Random Lane
+    const lanes = [-2, 0, 2];
+
+    enemy.position.set(
+        lanes[Math.floor(Math.random() * lanes.length)],
+        0.35,
+        -30
+    );
+
+    scene.add(enemy);
+
+    enemies.push(enemy);
+
+}
+
+/* Spawn Every 1.5 Seconds */
+
+setInterval(createEnemy, 1500);
+
+/* =====================================
+   COLLISION
+===================================== */
+
+let gameOver = false;
+
+function checkCollision(enemy) {
+
+    const dx = Math.abs(car.position.x - enemy.position.x);
+
+    const dz = Math.abs(car.position.z - enemy.position.z);
+
+    return dx < 1 && dz < 1.5;
+
+}
+
+/* =====================================
+   GAME OVER
+===================================== */
+
+function showGameOver() {
+
+    if (gameOver) return;
+
+    gameOver = true;
+
+    setTimeout(() => {
+
+        const again = confirm(
+            `💥 GAME OVER!\\n\\nYour Score: ${Math.floor(score)}\\n\\nPlay Again?`
+        );
+
+        if (again) {
+
+            location.reload();
+
+        }
+
+    }, 100);
+
+}
+
+/* =====================================
+   UPDATE ENEMIES
+===================================== */
+
+function updateEnemies() {
+
+    enemies.forEach((enemy, index) => {
+
+        // Move Forward
+        enemy.position.z += 0.35;
+
+        // Collision
+        if (checkCollision(enemy)) {
+
+            showGameOver();
+
+        }
+
+        // Remove Passed Enemy
+        if (enemy.position.z > 20) {
+
+            scene.remove(enemy);
+
+            enemies.splice(index, 1);
+
+        }
+
+    });
+
+}
