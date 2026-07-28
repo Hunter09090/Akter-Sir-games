@@ -1,0 +1,93 @@
+/* =====================================
+   MEMORY MATCH GAME
+===================================== */
+
+.memory-info{
+
+    margin-bottom:20px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    color:#374151;
+
+}
+
+.memory-board{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:15px;
+
+    max-width:500px;
+
+    margin:0 auto 25px;
+
+}
+
+.memory-card{
+
+    aspect-ratio:1/1;
+
+    background:#2563eb;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:42px;
+
+    cursor:pointer;
+
+    color:transparent;
+
+    transition:.3s;
+
+    user-select:none;
+
+}
+
+.memory-card.flipped,
+
+.memory-card.matched{
+
+    background:#ffffff;
+
+    color:#111827;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.1);
+
+}
+
+.memory-card.matched{
+
+    background:#22c55e;
+
+    color:#ffffff;
+
+}
+
+@media (max-width:600px){
+
+    .memory-board{
+
+        gap:10px;
+
+    }
+
+    .memory-card{
+
+        font-size:34px;
+
+        border-radius:14px;
+
+    }
+
+}
