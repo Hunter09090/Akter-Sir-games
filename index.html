@@ -208,19 +208,17 @@
 <script src="utils.js"></script>
 
 
-
-
 <script src="app.js"></script>
 
     <script>
 
 /* =====================================
-   Auto Hide Header On Scroll
+   Hide Header Until Top
 ===================================== */
 
-let lastScroll = 0;
-
 const header = document.querySelector(".simple-header");
+
+let lastScroll = 0;
 
 window.addEventListener("scroll", () => {
 
@@ -233,8 +231,8 @@ window.addEventListener("scroll", () => {
 
     }
 
-    // উপরে Scroll করলে Header দেখাবে
-    else {
+    // একেবারে উপরে গেলে Header দেখাবে
+    if (currentScroll <= 10) {
 
         header.classList.remove("hide-header");
 
@@ -245,6 +243,7 @@ window.addEventListener("scroll", () => {
 });
 
     </script>
+    
 </body>
 
 </html>
