@@ -392,6 +392,17 @@ function showGameOver() {
 
     gameOver = true;
 
+   /* Save Best Score */
+
+const finalScore = Math.floor(score);
+
+if (finalScore > bestScore) {
+
+    bestScore = finalScore;
+
+    localStorage.setItem("car3d-best", bestScore);
+
+}
     setTimeout(() => {
 
         const again = confirm(
