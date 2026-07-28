@@ -963,3 +963,18 @@ img{
     transform:translateY(-100%);
 
 }
+/* =====================================
+   Header Hide Until Top
+===================================== */
+
+.simple-header{
+
+    transition:transform .35s ease;
+
+}
+
+.simple-header.hide-header{
+
+    transform:translateY(-100%);
+
+}
