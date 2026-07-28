@@ -276,6 +276,47 @@ function animate() {
 
     }
 
+    /* Update Enemies */
+
+    if (!gameOver) {
+
+        updateEnemies();
+
+    }
+
+    /* Score */
+
+    score += 0.05;
+
+    scoreEl.textContent =
+        Math.floor(score);
+
+    /* Render */
+
+    renderer.render(scene, camera);
+
+}
+
+/* Start Animation */
+
+animate();
+    /* Keep Inside Road */
+
+    car.position.x = Math.max(
+        -2.3,
+        Math.min(2.3, car.position.x)
+    );
+
+    /* Fake Road Movement */
+
+    road.position.z += 0.2;
+
+    if (road.position.z > 5) {
+
+        road.position.z = 0;
+
+    }
+
     /* Score */
 
     score += 0.05;
