@@ -948,3 +948,18 @@ img{
     }
 
 }
+/* =====================================
+   Header Hide On Scroll
+===================================== */
+
+.simple-header{
+
+    transition:transform .35s ease;
+
+}
+
+.simple-header.hide-header{
+
+    transform:translateY(-100%);
+
+}
