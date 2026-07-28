@@ -1976,3 +1976,72 @@ body{
     }
 
 }
+/* =====================================
+   GAME PAGE COMMON STYLE
+===================================== */
+
+.game-page{
+
+    max-width:900px;
+
+    margin:40px auto;
+
+    padding:30px 20px;
+
+}
+
+.game-box{
+
+    background:#ffffff;
+
+    border-radius:24px;
+
+    padding:40px 24px;
+
+    text-align:center;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+.game-box h1{
+
+    font-size:34px;
+
+    margin-bottom:16px;
+
+    color:#111827;
+
+}
+
+.game-box p{
+
+    color:#6b7280;
+
+    margin-bottom:28px;
+
+}
+
+@media (max-width:768px){
+
+    .game-page{
+
+        margin:20px auto;
+
+        padding:16px;
+
+    }
+
+    .game-box{
+
+        padding:28px 18px;
+
+    }
+
+    .game-box h1{
+
+        font-size:28px;
+
+    }
+
+}
