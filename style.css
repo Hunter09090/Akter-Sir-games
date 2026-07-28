@@ -2194,3 +2194,94 @@ body{
     }
 
 }
+/* =====================================
+   MOBILE HEADER - 2 LINE LAYOUT
+===================================== */
+
+@media screen and (max-width:768px){
+
+    .simple-header-container{
+
+        flex-wrap:wrap !important;
+
+        justify-content:space-between !important;
+
+        row-gap:6px !important;
+
+        height:auto !important;
+
+        padding:10px 14px !important;
+
+    }
+
+    /* Logo + Title */
+
+    .simple-logo{
+
+        width:auto !important;
+
+        display:flex !important;
+
+        align-items:center !important;
+
+        gap:10px !important;
+
+        font-size:16px !important;
+
+        line-height:1.2 !important;
+
+    }
+
+    .simple-logo img{
+
+        width:40px !important;
+
+        height:40px !important;
+
+    }
+
+    /* Theme button ডান পাশে থাকবে */
+
+    .theme-btn{
+
+        order:2 !important;
+
+        margin-left:auto !important;
+
+        width:38px !important;
+
+        height:38px !important;
+
+        font-size:18px !important;
+
+    }
+
+    /* Menu নিচে ২ লাইনে যাবে */
+
+    .simple-nav{
+
+        width:100% !important;
+
+        display:flex !important;
+
+        justify-content:center !important;
+
+        flex-wrap:wrap !important;
+
+        gap:8px 14px !important;
+
+        order:3 !important;
+
+    }
+
+    .simple-nav a{
+
+        padding:6px 10px !important;
+
+        font-size:14px !important;
+
+        border-radius:8px !important;
+
+    }
+
+}
