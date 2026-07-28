@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="rps.css">
+</head>
+
+<body>
+
+  <header class="simple-header">
+    <div class="simple-header-container">
+
+      <a href="index.html" class="simple-logo">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/686/686589.png"
+          alt="Logo">
+
+        <span>GAME HUB OF SIR</span>
+      </a>
+
+      <nav class="simple-nav">
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+
+      <button class="theme-btn">🌙</button>
+
+    </div>
+  </header>
+
+  <main class="game-page">
+
+    <div class="game-box rps-box">
+
+      <h1>✊ Rock Paper Scissors</h1>
+
+      <p>Play against the computer and test your luck!</p>
+
+      <div class="rps-score">
+
+        <div>
+          <h3>You</h3>
+          <p id="playerScore">0</p>
+        </div>
+
+        <div>
+          <h3>Computer</h3>
+          <p id="computerScore">0</p>
+        </div>
+
+      </div>
+
+      <div class="rps-choices">
+
+        <button class="rps-btn" data-choice="rock">
+          ✊
+        </button>
+
+        <button class="rps-btn" data-choice="paper">
+          ✋
+        </button>
+
+        <button class="rps-btn" data-choice="scissors">
+          ✌️
+        </button>
+
+      </div>
+
+      <div class="rps-result">
+
+        <p>You chose: <strong id="playerChoice">-</strong></p>
+
+        <p>Computer chose: <strong id="computerChoice">-</strong></p>
+
+        <h2 id="resultText">Make your move!</h2>
+
+      </div>
+
+      <button id="resetBtn" class="play-btn">
+        🔄 Reset Game
+      </button>
+
+    </div>
+
+  </main>
+
+  <footer class="simple-footer">
+    <div class="simple-footer-container">
+
+      <h2>GAME HUB OF SIR</h2>
+
+      <p>Learn, Play & Improve your skills with fun games.</p>
+
+      <div class="footer-social">
+        <a href="https://www.facebook.com/ahr110" target="_blank">Facebook</a>
+        <a href="https://wa.me/8801884197276" target="_blank">WhatsApp</a>
+        <a href="mailto:aakterhossen80@gmail.com">Email</a>
+      </div>
+
+      <p class="footer-copy">© 2026 GAME HUB OF SIR</p>
+
+    </div>
+  </footer>
+
+  <script src="rps.js"></script>
+
+</body>
+</html>
