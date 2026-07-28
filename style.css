@@ -2045,3 +2045,36 @@ body{
     }
 
 }
+/* =====================================
+   PREMIUM PAGE LOAD ANIMATION
+===================================== */
+
+body{
+
+    animation:premiumLoad 1s cubic-bezier(.22,1,.36,1);
+
+}
+
+@keyframes premiumLoad{
+
+    0%{
+
+        opacity:0;
+
+        transform:translateY(25px) scale(.97);
+
+        filter:blur(4px);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+        filter:blur(0);
+
+    }
+
+}
