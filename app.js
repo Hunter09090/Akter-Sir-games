@@ -153,6 +153,13 @@ const games = [
     icon: "✊",
     description: "Play against the computer and test your luck.",
     page: "rps.html"
+   },
+   {
+    id: 12,
+    name: "Mind Reader",
+    icon: "🔮",
+    description: "Think of a number and let the magic read your mind.",
+    page: "mindreader.html"
    }
 
    
