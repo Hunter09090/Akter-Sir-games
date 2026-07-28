@@ -417,7 +417,7 @@ function updateEnemies() {
     enemies.forEach((enemy, index) => {
 
         // Move Forward
-        enemy.position.z += 0.35;
+        enemy.position.z += speed;
 
         // Collision
         if (checkCollision(enemy)) {
