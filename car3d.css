@@ -109,3 +109,20 @@
     }
 
 }
+/* Best Score */
+
+.best-score{
+
+    color:#ea580c;
+
+    margin-top:-10px;
+
+}
+
+/* Trees */
+
+.tree-shadow{
+
+    box-shadow:0 0 20px rgba(34,197,94,.4);
+
+}
