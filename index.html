@@ -212,6 +212,39 @@
 
 <script src="app.js"></script>
 
+    <script>
+
+/* =====================================
+   Auto Hide Header On Scroll
+===================================== */
+
+let lastScroll = 0;
+
+const header = document.querySelector(".simple-header");
+
+window.addEventListener("scroll", () => {
+
+    const currentScroll = window.pageYOffset;
+
+    // নিচে Scroll করলে Header লুকাবে
+    if (currentScroll > lastScroll && currentScroll > 80) {
+
+        header.classList.add("hide-header");
+
+    }
+
+    // উপরে Scroll করলে Header দেখাবে
+    else {
+
+        header.classList.remove("hide-header");
+
+    }
+
+    lastScroll = currentScroll;
+
+});
+
+    </script>
 </body>
 
 </html>
