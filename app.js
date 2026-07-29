@@ -76,13 +76,7 @@ const games = [
         description: "Test your reaction speed.",
         page: "reaction.html"
     },
-{
-    id: 19,
-    name: "3D Arena Shooter",
-    icon: "🔫",
-    description: "Fight enemies in a simple 3D shooter arena.",
-    page: "arena.html"
-},
+
     {
         id: 2,
         name: "Coin Toss",
@@ -208,13 +202,6 @@ const games = [
     icon: "🎯",
     description: "Hit targets, avoid bombs, and build huge combos!",
     page: "target.html"
-   },
-   {
-    id: 20,
-    name: "FPS Arena",
-    icon: "🔫",
-    description: "First person style browser shooter with realistic arena.",
-    page: "fps.html"
    }
 
    
