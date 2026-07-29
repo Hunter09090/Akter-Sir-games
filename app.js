@@ -181,7 +181,14 @@ const games = [
     icon: "🌌",
     description: "Catch glowing neon orbs in this cyberpunk arcade game.",
     page: "neon.html"
-}
+},
+   {
+    id: 16,
+    name: "Rocket Dodge",
+    icon: "🚀",
+    description: "Dodge falling asteroids in this endless space runner.",
+    page: "rocket.html"
+   }
 
    
 ];
