@@ -202,16 +202,16 @@ window.addEventListener("keydown", (e) => {
 const leftBtn = document.getElementById("leftBtn");
 const rightBtn = document.getElementById("rightBtn");
 
-if (leftBtn) {
+if (rightBtn) {
 
-    leftBtn.addEventListener("click", () => {
+    rightBtn.addEventListener("click", () => {
 
         if (gameOver) return;
 
-        car.position.x -= 2;
+        targetX += 2;
 
-        car.position.x =
-            Math.max(-2, Math.min(2, car.position.x));
+        targetX =
+            Math.max(-2, Math.min(2, targetX));
 
     });
 
@@ -223,10 +223,10 @@ if (rightBtn) {
 
         if (gameOver) return;
 
-        car.position.x += 2;
+        targetX += 2;
 
-        car.position.x =
-            Math.max(-2, Math.min(2, car.position.x));
+        targetX =
+            Math.max(-2, Math.min(2, targetX));
 
     });
 
@@ -413,25 +413,30 @@ function showGameOver() {
 
     const finalScore = Math.floor(score);
 
-    if (finalScore > bestScore) {
+   let newRecord = false;
 
-        bestScore = finalScore;
+if (finalScore > bestScore) {
 
-        localStorage.setItem(
-            "car3d-best",
-            bestScore
-        );
+    bestScore = finalScore;
 
-    }
+    newRecord = true;
+
+    localStorage.setItem(
+        "car3d-best",
+        bestScore
+    );
+
+}
 
     setTimeout(() => {
 
-        const again = confirm(
-            `💥 GAME OVER!\n\n` +
-            `Your Score: ${finalScore}\n` +
-            `Best Score: ${bestScore}\n\n` +
-            `Play Again?`
-        );
+       const again = confirm(
+    `💥 GAME OVER!\n\n` +
+    `Your Score: ${finalScore}\n` +
+    `Best Score: ${bestScore}\n` +
+    `${newRecord ? "🏆 NEW RECORD!\n\n" : "\n"}` +
+    `Play Again?`
+);
 
         if (again) {
 
@@ -479,7 +484,10 @@ function animate() {
         road.position.z = 0;
 
     }
+/* Smooth Car Movement */
 
+car.position.x +=
+    (targetX - car.position.x) * 0.15;
     /* Update Game */
 
     if (!gameOver) {
@@ -488,7 +496,8 @@ function animate() {
 
         scoreEl.textContent =
             Math.floor(score);
-
+speedValueEl.textContent =
+    speed.toFixed(1);
         updateEnemies();
 
     }
