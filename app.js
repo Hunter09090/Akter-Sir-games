@@ -167,6 +167,13 @@ const games = [
     icon: "🏎️",
     description: "Drive a 3D car and avoid obstacles.",
     page: "car3d.html"
+   },
+   {
+    id: 14,
+    name: "Balloon Pop",
+    icon: "🎈",
+    description: "Pop balloons before the timer ends.",
+    page: "balloon.html"
    }
 
    
