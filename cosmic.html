@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Mobile Landscape Friendly -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Cosmic Odyssey</title>
+
+  <!-- Game CSS -->
+  <link rel="stylesheet" href="cosmic.css">
+</head>
+
+<body>
+
+  <!-- =====================================
+       GAME CANVAS
+  ===================================== -->
+
+  <canvas id="spaceCanvas"></canvas>
+
+  <!-- =====================================
+       HUD
+  ===================================== -->
+
+  <div class="hud">
+
+    <div class="hud-box">
+      🚀 Distance:
+      <span id="distance">0 km</span>
+    </div>
+
+    <div class="hud-box">
+      ⭐ Energy:
+      <span id="energy">100%</span>
+    </div>
+
+  </div>
+
+  <!-- =====================================
+       START OVERLAY
+  ===================================== -->
+
+  <div id="startOverlay" class="start-overlay">
+
+    <div class="start-card">
+
+      <h1>🌌 COSMIC ODYSSEY</h1>
+
+      <p>Travel from Earth into deep space.</p>
+
+      <p>Dodge meteors, survive the black hole, and explore the galaxy.</p>
+
+      <button id="startBtn" class="start-btn">
+        🚀 START MISSION
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- =====================================
+       MOBILE CONTROLS
+  ===================================== -->
+
+  <div class="mobile-controls">
+
+    <button id="leftBtn" class="control-btn">⬅️</button>
+
+    <button id="rightBtn" class="control-btn">➡️</button>
+
+  </div>
+
+  <!-- =====================================
+       GAME SCRIPT
+  ===================================== -->
+
+  <script src="cosmic.js"></script>
+
+</body>
+</html>
