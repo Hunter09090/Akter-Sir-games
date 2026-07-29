@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Balloon Pop</title>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Balloon Game CSS -->
+  <link rel="stylesheet" href="balloon.css">
+</head>
+
+<body>
+
+  <!-- ==========================
+       Header
+  =========================== -->
+
+  <header class="simple-header">
+    <div class="simple-header-container">
+
+      <a href="index.html" class="simple-logo">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/686/686589.png"
+          alt="Logo">
+
+        <span>GAME HUB OF SIR</span>
+      </a>
+
+      <nav class="simple-nav">
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+
+      <button class="theme-btn">🌙</button>
+
+    </div>
+  </header>
+
+  <!-- ==========================
+       Game Area
+  =========================== -->
+
+  <main class="game-page">
+
+    <div class="game-box balloon-box">
+
+      <h1>🎈 Balloon Pop</h1>
+
+      <p>
+        Pop as many balloons as possible before the time runs out!
+      </p>
+
+      <!-- Score Board -->
+
+      <div class="balloon-top-bar">
+
+        <div class="balloon-score">
+          🏆 Score:
+          <strong id="score">0</strong>
+        </div>
+
+        <div class="balloon-timer">
+          ⏱️ Time:
+          <strong id="timer">30</strong>s
+        </div>
+
+      </div>
+
+      <!-- Game Area -->
+
+      <div id="gameArea" class="balloon-game-area">
+
+        <!-- Balloons will appear here -->
+
+      </div>
+
+      <!-- Start Button -->
+
+      <button id="startBtn" class="play-btn">
+        ▶ Start Game
+      </button>
+
+    </div>
+
+  </main>
+
+  <!-- ==========================
+       Footer
+  =========================== -->
+
+  <footer class="simple-footer">
+
+    <div class="simple-footer-container">
+
+      <h2>GAME HUB OF SIR</h2>
+
+      <p>
+        Learn, Play & Improve your skills with fun games.
+      </p>
+
+      <div class="footer-social">
+
+        <a href="https://www.facebook.com/ahr110" target="_blank">
+          Facebook
+        </a>
+
+        <a href="https://wa.me/8801884197276" target="_blank">
+          WhatsApp
+        </a>
+
+        <a href="mailto:aakterhossen80@gmail.com">
+          Email
+        </a>
+
+      </div>
+
+      <p class="footer-copy">
+        © 2026 GAME HUB OF SIR
+      </p>
+
+    </div>
+
+  </footer>
+
+  <!-- Game Script -->
+
+  <script src="balloon.js"></script>
+
+</body>
+</html>
