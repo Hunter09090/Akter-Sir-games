@@ -173,27 +173,28 @@ let gameOver = false;
    KEYBOARD CONTROL
 ===================================== */
 
+let targetX = 0;
+
 window.addEventListener("keydown", (e) => {
 
     if (gameOver) return;
 
     if (e.key === "ArrowLeft") {
 
-        car.position.x -= 2;
+        targetX -= 2;
 
     }
 
     if (e.key === "ArrowRight") {
 
-        car.position.x += 2;
+        targetX += 2;
 
     }
 
-    car.position.x =
-        Math.max(-2, Math.min(2, car.position.x));
+    targetX =
+        Math.max(-2, Math.min(2, targetX));
 
 });
-
 /* =====================================
    MOBILE CONTROL
 ===================================== */
