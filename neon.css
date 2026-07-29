@@ -1,0 +1,363 @@
+/* =====================================
+   NEON CATCHER GAME
+===================================== */
+
+.neon-box{
+
+    max-width:900px;
+
+    margin:auto;
+
+}
+
+/* Top Bar */
+
+.neon-top-bar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:25px 0;
+
+    gap:15px;
+
+}
+
+.neon-score,
+.neon-life{
+
+    background:#111827;
+
+    padding:12px 18px;
+
+    border-radius:16px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#ffffff;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:0 0 12px rgba(59,130,246,.25);
+
+}
+
+.neon-score{
+
+    color:#60a5fa;
+
+}
+
+.neon-life{
+
+    color:#fb7185;
+
+}
+
+/* Game Area */
+
+.neon-game-area{
+
+    position:relative;
+
+    width:100%;
+
+    height:520px;
+
+    overflow:hidden;
+
+    border-radius:28px;
+
+    background:radial-gradient(
+        circle at top,
+        #1e293b 0%,
+        #0f172a 45%,
+        #020617 100%
+    );
+
+    box-shadow:
+        0 0 25px rgba(59,130,246,.18),
+        0 0 45px rgba(168,85,247,.12);
+
+    margin:25px auto;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+/* Neon Grid Effect */
+
+.neon-game-area::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.05) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.05) 1px,
+            transparent 1px
+        );
+
+    background-size:32px 32px;
+
+    opacity:.35;
+
+}
+
+/* Basket */
+
+.basket{
+
+    position:absolute;
+
+    bottom:18px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:110px;
+
+    height:20px;
+
+    border-radius:20px;
+
+    background:linear-gradient(
+        90deg,
+        #06b6d4,
+        #3b82f6,
+        #8b5cf6
+    );
+
+    box-shadow:
+        0 0 12px #06b6d4,
+        0 0 22px #3b82f6,
+        0 0 36px #8b5cf6;
+
+    transition:left .12s linear;
+
+    z-index:5;
+
+}
+
+/* Basket Glow */
+
+.basket::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-6px;
+
+    border-radius:24px;
+
+    background:rgba(59,130,246,.2);
+
+    filter:blur(10px);
+
+    z-index:-1;
+
+}
+
+/* Neon Orb */
+
+.orb{
+
+    position:absolute;
+
+    width:34px;
+
+    height:34px;
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 10px currentColor,
+        0 0 20px currentColor,
+        0 0 32px currentColor;
+
+    animation:orbPulse 1s infinite alternate;
+
+}
+
+.cyan{
+
+    background:#22d3ee;
+
+    color:#22d3ee;
+
+}
+
+.purple{
+
+    background:#a855f7;
+
+    color:#a855f7;
+
+}
+
+.pink{
+
+    background:#ec4899;
+
+    color:#ec4899;
+
+}
+
+.blue{
+
+    background:#3b82f6;
+
+    color:#3b82f6;
+
+}
+
+.green{
+
+    background:#22c55e;
+
+    color:#22c55e;
+
+}
+
+@keyframes orbPulse{
+
+    from{
+
+        transform:scale(1);
+
+    }
+
+    to{
+
+        transform:scale(1.08);
+
+    }
+
+}
+
+/* Start Button */
+
+#startBtn{
+
+    margin-top:12px;
+
+    min-width:200px;
+
+}
+
+/* Mobile Controls */
+
+.mobile-controls{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin-top:18px;
+
+}
+
+.control-btn{
+
+    width:68px;
+
+    height:68px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#111827;
+
+    color:#ffffff;
+
+    font-size:26px;
+
+    cursor:pointer;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 0 10px rgba(59,130,246,.25),
+        0 0 18px rgba(168,85,247,.15);
+
+    transition:.2s;
+
+}
+
+.control-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 0 16px rgba(59,130,246,.4),
+        0 0 28px rgba(168,85,247,.25);
+
+}
+
+.control-btn:active{
+
+    transform:scale(.95);
+
+}
+
+/* Responsive */
+
+@media (max-width:768px){
+
+    .neon-top-bar{
+
+        flex-direction:column;
+
+    }
+
+    .neon-game-area{
+
+        height:420px;
+
+    }
+
+    .basket{
+
+        width:92px;
+
+        height:18px;
+
+    }
+
+    .orb{
+
+        width:28px;
+
+        height:28px;
+
+    }
+
+    .control-btn{
+
+        width:60px;
+
+        height:60px;
+
+        font-size:22px;
+
+    }
+
+  }
