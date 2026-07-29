@@ -174,7 +174,14 @@ const games = [
     icon: "🎈",
     description: "Pop balloons before the timer ends.",
     page: "balloon.html"
-   }
+   },
+   {
+    id: 15,
+    name: "Neon Catcher",
+    icon: "🌌",
+    description: "Catch glowing neon orbs in this cyberpunk arcade game.",
+    page: "neon.html"
+}
 
    
 ];
