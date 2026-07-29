@@ -195,6 +195,13 @@ const games = [
     icon: "⚡",
     description: "Test your lightning-fast reaction speed.",
     page: "thunder.html"
+   },
+   {
+    id: 18,
+    name: "Target Storm",
+    icon: "🎯",
+    description: "Hit targets, avoid bombs, and build huge combos!",
+    page: "target.html"
    }
 
    
