@@ -136,11 +136,11 @@ function handleTap() {
 
         thunderArea.classList.add("flash");
 
-        setTimeout(() => {
+setTimeout(() => {
 
-            thunderArea.classList.remove("flash";
+    thunderArea.classList.remove("flash");
 
-        }, 150);
+}, 150);
 
         /* Save Best */
 
