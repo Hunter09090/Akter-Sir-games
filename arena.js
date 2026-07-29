@@ -251,11 +251,13 @@ function animate() {
 
     updateEnemy();
 
+    updateBullets();
+
+    checkPlayerDamage();
+
     renderer.render(scene, camera);
 
 }
-
-animate();
 
 /* =====================================
    RESPONSIVE
@@ -501,18 +503,3 @@ document
    Replace করে নিচেরটা বসাও
 */
 
-function animate() {
-
-    requestAnimationFrame(animate);
-
-    movePlayer();
-
-    updateEnemy();
-
-    updateBullets();
-
-    checkPlayerDamage();
-
-    renderer.render(scene, camera);
-
-}
