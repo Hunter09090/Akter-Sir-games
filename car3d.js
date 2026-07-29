@@ -11,7 +11,8 @@
 const gameContainer = document.getElementById("gameContainer");
 const scoreEl = document.getElementById("score");
 const bestScoreEl = document.getElementById("bestScore");
-
+const speedValueEl =
+    document.getElementById("speedValue");
 /* =====================================
    BEST SCORE
 ===================================== */
