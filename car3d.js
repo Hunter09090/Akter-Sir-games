@@ -1,5 +1,5 @@
 /* =====================================
-   3D HIGHWAY RUNNER - PART 2
+   3D HIGHWAY RUNNER
 ===================================== */
 
 "use strict";
@@ -8,381 +8,319 @@
    DOM
 ===================================== */
 
-const container =
-document.getElementById("gameContainer");
-
-const scoreEl =
-document.getElementById("score");
+const gameContainer = document.getElementById("gameContainer");
+const scoreEl = document.getElementById("score");
+const bestScoreEl = document.getElementById("bestScore");
 
 /* =====================================
-   Scene
+   BEST SCORE
+===================================== */
+
+let bestScore =
+    Number(localStorage.getItem("car3d-best")) || 0;
+
+bestScoreEl.textContent = bestScore;
+
+/* =====================================
+   THREE.JS SETUP
 ===================================== */
 
 const scene = new THREE.Scene();
-
-scene.background =
-new THREE.Color(0x87ceeb); // Sky Blue
-
-/* =====================================
-   Camera
-===================================== */
+scene.background = new THREE.Color(0x87ceeb);
 
 const camera = new THREE.PerspectiveCamera(
     75,
-    container.clientWidth / container.clientHeight,
+    gameContainer.clientWidth / gameContainer.clientHeight,
     0.1,
     1000
 );
-
-camera.position.set(0, 5, 10);
-
-/* =====================================
-   Renderer
-===================================== */
 
 const renderer = new THREE.WebGLRenderer({
     antialias: true
 });
 
 renderer.setSize(
-    container.clientWidth,
-    container.clientHeight
+    gameContainer.clientWidth,
+    gameContainer.clientHeight
 );
 
 renderer.shadowMap.enabled = true;
 
-container.appendChild(renderer.domElement);
+gameContainer.appendChild(renderer.domElement);
 
 /* =====================================
-   Lights
+   LIGHTS
 ===================================== */
 
-// Sun Light
+const ambientLight =
+    new THREE.AmbientLight(0xffffff, 0.7);
 
-const light =
-new THREE.DirectionalLight(0xffffff, 1);
+scene.add(ambientLight);
 
-light.position.set(5, 10, 7);
+const directionalLight =
+    new THREE.DirectionalLight(0xffffff, 1);
 
-light.castShadow = true;
+directionalLight.position.set(5, 10, 7);
+directionalLight.castShadow = true;
 
-scene.add(light);
-
-// Soft Ambient Light
-
-const ambient =
-new THREE.AmbientLight(0xffffff, 0.4);
-
-scene.add(ambient);
+scene.add(directionalLight);
 
 /* =====================================
-   Road
+   ROAD
 ===================================== */
 
-const roadGeometry =
-new THREE.PlaneGeometry(6, 60);
+const roadGeo =
+    new THREE.PlaneGeometry(6, 50);
 
-const roadMaterial =
-new THREE.MeshStandardMaterial({
-    color: 0x333333
-});
+const roadMat =
+    new THREE.MeshStandardMaterial({
+        color: 0x2d2d2d
+    });
 
 const road =
-new THREE.Mesh(
-    roadGeometry,
-    roadMaterial
-);
+    new THREE.Mesh(roadGeo, roadMat);
 
 road.rotation.x = -Math.PI / 2;
-
 road.receiveShadow = true;
 
 scene.add(road);
 
-/* =====================================
-   Road Side Borders
-===================================== */
+/* Road Borders */
 
-function createBorder(x) {
+const borderGeo =
+    new THREE.BoxGeometry(0.2, 0.2, 50);
 
-    const geo =
-    new THREE.BoxGeometry(0.3, 0.3, 60);
-
-    const mat =
+const borderMat =
     new THREE.MeshStandardMaterial({
         color: 0xffffff
     });
 
-    const border =
-    new THREE.Mesh(geo, mat);
+const leftBorder =
+    new THREE.Mesh(borderGeo, borderMat);
 
-    border.position.set(x, 0.15, 0);
+leftBorder.position.set(-3.1, 0.1, 0);
 
-    scene.add(border);
+const rightBorder =
+    new THREE.Mesh(borderGeo, borderMat);
 
-}
+rightBorder.position.set(3.1, 0.1, 0);
 
-createBorder(-3);
-createBorder(3);
+scene.add(leftBorder);
+scene.add(rightBorder);
 
 /* =====================================
-   Player Car
+   PLAYER CAR
 ===================================== */
 
-const car =
-new THREE.Group();
+const car = new THREE.Group();
 
-// Car Body
+/* Body */
 
 const bodyGeo =
-new THREE.BoxGeometry(1.2, 0.5, 2);
+    new THREE.BoxGeometry(1.2, 0.5, 2);
 
 const bodyMat =
-new THREE.MeshStandardMaterial({
-    color: 0xff0000
-});
+    new THREE.MeshStandardMaterial({
+        color: 0xff3333
+    });
 
 const body =
-new THREE.Mesh(bodyGeo, bodyMat);
+    new THREE.Mesh(bodyGeo, bodyMat);
 
 body.castShadow = true;
 
 car.add(body);
 
-// Car Roof
+/* Roof */
 
 const roofGeo =
-new THREE.BoxGeometry(0.8, 0.35, 1);
+    new THREE.BoxGeometry(0.8, 0.35, 1);
 
 const roofMat =
-new THREE.MeshStandardMaterial({
-    color: 0xaa0000
-});
+    new THREE.MeshStandardMaterial({
+        color: 0x111111
+    });
 
 const roof =
-new THREE.Mesh(roofGeo, roofMat);
+    new THREE.Mesh(roofGeo, roofMat);
 
 roof.position.y = 0.42;
-
 roof.castShadow = true;
 
 car.add(roof);
 
-// Car Position
-
-car.position.set(0, 0.35, 5);
+car.position.set(0, 0.35, 8);
 
 scene.add(car);
 
 /* =====================================
-   Controls
+   CAMERA
 ===================================== */
 
-let moveLeft = false;
-let moveRight = false;
-
-document.addEventListener("keydown", e => {
-
-    if (e.key === "ArrowLeft") {
-        moveLeft = true;
-    }
-
-    if (e.key === "ArrowRight") {
-        moveRight = true;
-    }
-
-});
-
-document.addEventListener("keyup", e => {
-
-    if (e.key === "ArrowLeft") {
-        moveLeft = false;
-    }
-
-    if (e.key === "ArrowRight") {
-        moveRight = false;
-    }
-
-});
-
-/* Mobile Buttons */
-
-document
-.getElementById("leftBtn")
-.addEventListener("touchstart", () => {
-    moveLeft = true;
-});
-
-document
-.getElementById("leftBtn")
-.addEventListener("touchend", () => {
-    moveLeft = false;
-});
-
-document
-.getElementById("rightBtn")
-.addEventListener("touchstart", () => {
-    moveRight = true;
-});
-
-document
-.getElementById("rightBtn")
-.addEventListener("touchend", () => {
-    moveRight = false;
-});
+camera.position.set(0, 6, 12);
+camera.lookAt(0, 0, 0);
 
 /* =====================================
-   Score
+   GAME STATE
 ===================================== */
 
 let score = 0;
+let speed = 0.35;
+let gameOver = false;
 
 /* =====================================
-   Animation
+   KEYBOARD CONTROL
 ===================================== */
 
-function animate() {
+window.addEventListener("keydown", (e) => {
 
-    requestAnimationFrame(animate);
+    if (gameOver) return;
 
-    /* Move Car */
+    if (e.key === "ArrowLeft") {
 
-    if (moveLeft) {
-
-        car.position.x -= 0.08;
+        car.position.x -= 2;
 
     }
 
-    if (moveRight) {
+    if (e.key === "ArrowRight") {
 
-        car.position.x += 0.08;
-
-    }
-
-    /* Keep Inside Road */
-
-    car.position.x = Math.max(
-        -2.3,
-        Math.min(2.3, car.position.x)
-    );
-
-    /* Fake Road Movement */
-
-    road.position.z += 0.2;
-
-    if (road.position.z > 5) {
-
-        road.position.z = 0;
+        car.position.x += 2;
 
     }
 
-    /* Update Enemies */
-
-    if (!gameOver) {
-
-        updateEnemies();
-
-    }
-
-    /* Score */
-
-    score += 0.05;
-
-    scoreEl.textContent =
-        Math.floor(score);
-
-    /* Render */
-
-    renderer.render(scene, camera);
-
-}
-
-/* Start Animation */
-
-animate();
-    /* Keep Inside Road */
-
-    car.position.x = Math.max(
-        -2.3,
-        Math.min(2.3, car.position.x)
-    );
-
-    /* Fake Road Movement */
-
-    road.position.z += 0.2;
-
-    if (road.position.z > 5) {
-
-        road.position.z = 0;
-
-    }
-
-    /* Score */
-
-    score += 0.05;
-
-    scoreEl.textContent =
-        Math.floor(score);
-
-   
-    /* Render */
-
-    renderer.render(scene, camera);
-
-}
-
-animate();
-
-/* =====================================
-   Resize
-===================================== */
-
-window.addEventListener("resize", () => {
-
-    camera.aspect =
-        container.clientWidth / container.clientHeight;
-
-    camera.updateProjectionMatrix();
-
-    renderer.setSize(
-        container.clientWidth,
-        container.clientHeight
-    );
+    car.position.x =
+        Math.max(-2, Math.min(2, car.position.x));
 
 });
+
+/* =====================================
+   MOBILE CONTROL
+===================================== */
+
+const leftBtn = document.getElementById("leftBtn");
+const rightBtn = document.getElementById("rightBtn");
+
+if (leftBtn) {
+
+    leftBtn.addEventListener("click", () => {
+
+        if (gameOver) return;
+
+        car.position.x -= 2;
+
+        car.position.x =
+            Math.max(-2, Math.min(2, car.position.x));
+
+    });
+
+}
+
+if (rightBtn) {
+
+    rightBtn.addEventListener("click", () => {
+
+        if (gameOver) return;
+
+        car.position.x += 2;
+
+        car.position.x =
+            Math.max(-2, Math.min(2, car.position.x));
+
+    });
+
+}
+
+/* =====================================
+   SIDE TREES
+===================================== */
+
+function createTree(x, z) {
+
+    const tree = new THREE.Group();
+
+    const trunkGeo =
+        new THREE.CylinderGeometry(0.1, 0.1, 0.8);
+
+    const trunkMat =
+        new THREE.MeshStandardMaterial({
+            color: 0x8b5a2b
+        });
+
+    const trunk =
+        new THREE.Mesh(trunkGeo, trunkMat);
+
+    trunk.position.y = 0.4;
+
+    tree.add(trunk);
+
+    const leavesGeo =
+        new THREE.SphereGeometry(0.45, 8, 8);
+
+    const leavesMat =
+        new THREE.MeshStandardMaterial({
+            color: 0x22c55e
+        });
+
+    const leaves =
+        new THREE.Mesh(leavesGeo, leavesMat);
+
+    leaves.position.y = 1;
+
+    tree.add(leaves);
+
+    tree.position.set(x, 0, z);
+
+    scene.add(tree);
+
+}
+
+for (let i = -25; i < 25; i += 4) {
+
+    createTree(-5, i);
+    createTree(5, i);
+
+}
+
 /* =====================================
    ENEMY CARS
 ===================================== */
 
 const enemies = [];
 
-/* Create Enemy */
-
 function createEnemy() {
+
+    if (gameOver) return;
 
     const enemy = new THREE.Group();
 
-    // Body
-    const bodyGeo = new THREE.BoxGeometry(1.2, 0.5, 2);
-    const bodyMat = new THREE.MeshStandardMaterial({
-        color: Math.random() * 0xffffff
-    });
+    const bodyGeo =
+        new THREE.BoxGeometry(1.2, 0.5, 2);
 
-    const body = new THREE.Mesh(bodyGeo, bodyMat);
+    const bodyMat =
+        new THREE.MeshStandardMaterial({
+            color: Math.random() * 0xffffff
+        });
+
+    const body =
+        new THREE.Mesh(bodyGeo, bodyMat);
+
     enemy.add(body);
 
-    // Roof
-    const roofGeo = new THREE.BoxGeometry(0.8, 0.35, 1);
-    const roofMat = new THREE.MeshStandardMaterial({
-        color: 0x222222
-    });
+    const roofGeo =
+        new THREE.BoxGeometry(0.8, 0.35, 1);
 
-    const roof = new THREE.Mesh(roofGeo, roofMat);
+    const roofMat =
+        new THREE.MeshStandardMaterial({
+            color: 0x222222
+        });
+
+    const roof =
+        new THREE.Mesh(roofGeo, roofMat);
+
     roof.position.y = 0.42;
 
     enemy.add(roof);
 
-    // Random Lane
     const lanes = [-2, 0, 2];
 
     enemy.position.set(
@@ -397,25 +335,69 @@ function createEnemy() {
 
 }
 
-/* Spawn Every 1.5 Seconds */
-
 setInterval(createEnemy, 1500);
 
 /* =====================================
    COLLISION
 ===================================== */
 
-let gameOver = false;
-
 function checkCollision(enemy) {
 
-    const dx = Math.abs(car.position.x - enemy.position.x);
+    const dx =
+        Math.abs(car.position.x - enemy.position.x);
 
-    const dz = Math.abs(car.position.z - enemy.position.z);
+    const dz =
+        Math.abs(car.position.z - enemy.position.z);
 
     return dx < 1 && dz < 1.5;
 
 }
+
+function updateEnemies() {
+
+    enemies.forEach((enemy, index) => {
+
+        enemy.position.z += speed;
+
+        if (checkCollision(enemy)) {
+
+            showGameOver();
+
+        }
+
+        if (enemy.position.z > 20) {
+
+            scene.remove(enemy);
+
+            enemies.splice(index, 1);
+
+        }
+
+    });
+
+}
+
+/* =====================================
+   SPEED SYSTEM
+===================================== */
+
+function increaseSpeed() {
+
+    speed += 0.005;
+
+    speed = Math.min(speed, 0.9);
+
+}
+
+setInterval(() => {
+
+    if (!gameOver) {
+
+        increaseSpeed();
+
+    }
+
+}, 5000);
 
 /* =====================================
    GAME OVER
@@ -427,22 +409,27 @@ function showGameOver() {
 
     gameOver = true;
 
-   /* Save Best Score */
+    const finalScore = Math.floor(score);
 
-const finalScore = Math.floor(score);
+    if (finalScore > bestScore) {
 
-if (finalScore > bestScore) {
+        bestScore = finalScore;
 
-    bestScore = finalScore;
+        localStorage.setItem(
+            "car3d-best",
+            bestScore
+        );
 
-    localStorage.setItem("car3d-best", bestScore);
+    }
 
-}
     setTimeout(() => {
 
         const again = confirm(
-    `💥 GAME OVER!\\n\\nYour Score: ${finalScore}\\nBest Score: ${bestScore}\\n\\nPlay Again?`
-);
+            `💥 GAME OVER!\n\n` +
+            `Your Score: ${finalScore}\n` +
+            `Best Score: ${bestScore}\n\n` +
+            `Play Again?`
+        );
 
         if (again) {
 
@@ -455,119 +442,57 @@ if (finalScore > bestScore) {
 }
 
 /* =====================================
-   UPDATE ENEMIES
+   RESIZE
 ===================================== */
 
-function updateEnemies() {
+window.addEventListener("resize", () => {
 
-    enemies.forEach((enemy, index) => {
+    camera.aspect =
+        gameContainer.clientWidth /
+        gameContainer.clientHeight;
 
-        // Move Forward
-        enemy.position.z += speed;
+    camera.updateProjectionMatrix();
 
-        // Collision
-        if (checkCollision(enemy)) {
+    renderer.setSize(
+        gameContainer.clientWidth,
+        gameContainer.clientHeight
+    );
 
-            showGameOver();
-
-        }
-
-        // Remove Passed Enemy
-        if (enemy.position.z > 20) {
-
-            scene.remove(enemy);
-
-            enemies.splice(index, 1);
-
-        }
-
-    });
-
-}
-/* =====================================
-   SIDE TREES
-===================================== */
-
-function createTree(x, z) {
-
-    const tree = new THREE.Group();
-
-    // Trunk
-    const trunkGeo = new THREE.CylinderGeometry(0.1, 0.1, 0.8);
-
-    const trunkMat = new THREE.MeshStandardMaterial({
-        color: 0x8b5a2b
-    });
-
-    const trunk = new THREE.Mesh(trunkGeo, trunkMat);
-
-    trunk.position.y = 0.4;
-
-    tree.add(trunk);
-
-    // Leaves
-    const leavesGeo = new THREE.SphereGeometry(0.45, 8, 8);
-
-    const leavesMat = new THREE.MeshStandardMaterial({
-        color: 0x22c55e
-    });
-
-    const leaves = new THREE.Mesh(leavesGeo, leavesMat);
-
-    leaves.position.y = 1.0;
-
-    tree.add(leaves);
-
-    tree.position.set(x, 0, z);
-
-    scene.add(tree);
-
-}
-
-/* Create Many Trees */
-
-for (let i = -25; i < 25; i += 4) {
-
-    createTree(-5, i);
-
-    createTree(5, i);
-
-}
+});
 
 /* =====================================
-   BEST SCORE
+   ANIMATION LOOP
 ===================================== */
 
-const bestScoreEl =
-document.getElementById("bestScore");
+function animate() {
 
-let bestScore =
-Number(localStorage.getItem("car3d-best")) || 0;
+    requestAnimationFrame(animate);
 
-bestScoreEl.textContent = bestScore;
+    /* Move Road */
 
-/* =====================================
-   SPEED SYSTEM
-===================================== */
+    road.position.z += 0.2;
 
-let speed = 0.35;
+    if (road.position.z > 2) {
 
-function increaseSpeed() {
-
-    speed += 0.005;
-
-    speed = Math.min(speed, 0.9);
-
-}
-
-/* Increase Speed Every 5 Seconds */
-
-setInterval(() => {
-
-    if (!gameOver) {
-
-        increaseSpeed();
+        road.position.z = 0;
 
     }
 
-}, 5000);
+    /* Update Game */
+
+    if (!gameOver) {
+
+        score += 0.05;
+
+        scoreEl.textContent =
+            Math.floor(score);
+
+        updateEnemies();
+
+    }
+
+    renderer.render(scene, camera);
+
+}
+
+animate();
