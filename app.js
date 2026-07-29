@@ -196,6 +196,13 @@ const games = [
     icon: "🎯",
     description: "Hit targets, avoid bombs, and build huge combos!",
     page: "target.html"
+   },
+   {
+    id: 21,
+    name: "Cosmic Odyssey",
+    icon: "🌌",
+    description: "Travel from Earth into deep space and escape the black hole.",
+    page: "cosmic.html"
    }
 
    
