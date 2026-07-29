@@ -76,7 +76,13 @@ const games = [
         description: "Test your reaction speed.",
         page: "reaction.html"
     },
-
+{
+    id: 19,
+    name: "3D Arena Shooter",
+    icon: "🔫",
+    description: "Fight enemies in a simple 3D shooter arena.",
+    page: "arena.html"
+},
     {
         id: 2,
         name: "Coin Toss",
