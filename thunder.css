@@ -1,0 +1,280 @@
+/* =====================================
+   THUNDER TAP GAME
+===================================== */
+
+.thunder-box{
+
+    max-width:850px;
+
+    margin:auto;
+
+}
+
+/* Top Info */
+
+.thunder-info{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:25px 0;
+
+    gap:15px;
+
+}
+
+.thunder-round,
+.thunder-best{
+
+    background:#111827;
+
+    padding:12px 18px;
+
+    border-radius:16px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#ffffff;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:0 0 12px rgba(59,130,246,.2);
+
+}
+
+.thunder-round{
+
+    color:#facc15;
+
+}
+
+.thunder-best{
+
+    color:#22d3ee;
+
+}
+
+/* Thunder Area */
+
+.thunder-area{
+
+    position:relative;
+
+    width:100%;
+
+    height:420px;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    background:radial-gradient(
+        circle at top,
+        #1e293b 0%,
+        #0f172a 45%,
+        #020617 100%
+    );
+
+    box-shadow:
+        0 0 25px rgba(59,130,246,.18),
+        0 0 45px rgba(168,85,247,.12);
+
+    margin:25px auto;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
+
+    cursor:pointer;
+
+}
+
+/* Dark Overlay */
+
+.thunder-area::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.04) 0%, transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(59,130,246,.08) 0%, transparent 35%),
+        radial-gradient(circle at 50% 80%, rgba(168,85,247,.08) 0%, transparent 40%);
+
+}
+
+/* Message */
+
+.thunder-message{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:32px;
+
+    font-weight:700;
+
+    color:#e2e8f0;
+
+    text-align:center;
+
+    padding:20px;
+
+    text-shadow:0 0 10px rgba(255,255,255,.15);
+
+}
+
+/* Lightning */
+
+.lightning{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:120px;
+
+    color:#facc15;
+
+    filter:
+        drop-shadow(0 0 10px #facc15)
+        drop-shadow(0 0 25px #fde047)
+        drop-shadow(0 0 45px #ffffff);
+
+    animation:lightningFlash .25s infinite alternate;
+
+}
+
+/* Hidden */
+
+.hidden{
+
+    display:none;
+
+}
+
+/* Flash Animation */
+
+@keyframes lightningFlash{
+
+    from{
+
+        transform:scale(1);
+
+        opacity:.85;
+
+    }
+
+    to{
+
+        transform:scale(1.12);
+
+        opacity:1;
+
+    }
+
+}
+
+/* White Flash Effect */
+
+.flash{
+
+    animation:screenFlash .15s ease;
+
+}
+
+@keyframes screenFlash{
+
+    0%{
+
+        background:#ffffff;
+
+    }
+
+    100%{
+
+        background:radial-gradient(
+            circle at top,
+            #1e293b 0%,
+            #0f172a 45%,
+            #020617 100%
+        );
+
+    }
+
+}
+
+/* Result */
+
+.thunder-result{
+
+    margin-top:10px;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#2563eb;
+
+}
+
+/* Start Button */
+
+#startBtn{
+
+    margin-top:20px;
+
+    min-width:220px;
+
+}
+
+/* Responsive */
+
+@media (max-width:768px){
+
+    .thunder-info{
+
+        flex-direction:column;
+
+    }
+
+    .thunder-area{
+
+        height:340px;
+
+    }
+
+    .thunder-message{
+
+        font-size:24px;
+
+    }
+
+    .lightning{
+
+        font-size:84px;
+
+    }
+
+    .thunder-result{
+
+        font-size:20px;
+
+    }
+
+}
