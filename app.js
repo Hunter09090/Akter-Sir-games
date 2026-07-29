@@ -188,6 +188,13 @@ const games = [
     icon: "🚀",
     description: "Dodge falling asteroids in this endless space runner.",
     page: "rocket.html"
+   },
+   {
+    id: 17,
+    name: "Thunder Tap",
+    icon: "⚡",
+    description: "Test your lightning-fast reaction speed.",
+    page: "thunder.html"
    }
 
    
