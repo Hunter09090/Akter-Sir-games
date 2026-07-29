@@ -208,6 +208,13 @@ const games = [
     icon: "🎯",
     description: "Hit targets, avoid bombs, and build huge combos!",
     page: "target.html"
+   },
+   {
+    id: 20,
+    name: "FPS Arena",
+    icon: "🔫",
+    description: "First person style browser shooter with realistic arena.",
+    page: "fps.html"
    }
 
    
