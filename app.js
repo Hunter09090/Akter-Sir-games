@@ -138,7 +138,13 @@ const games = [
         description: "Improve your aiming skill.",
         page: "aim.html"
     },
-
+{
+    id: 23,
+    name: "Banana Slip Battle",
+    icon: "🍌",
+    description: "Funny full screen arcade game where you dodge banana peels and avoid slipping.",
+    page: "banana.html"
+},
     {
         id: 9,
         name: "Jump Game",
