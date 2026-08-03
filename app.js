@@ -215,6 +215,13 @@ const games = [
     icon: "🌌",
     description: "Travel from Earth into deep space and escape the black hole.",
     page: "cosmic.html"
+   },
+   {
+    id: 24,
+    name: "Penguin Slide",
+    icon: "🐧",
+    description: "Slide across the ice, collect fish and avoid dangerous ice holes in this full screen arcade adventure.",
+    page: "penguin.html"
    }
 
    
