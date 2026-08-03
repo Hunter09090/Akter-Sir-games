@@ -84,7 +84,13 @@ const games = [
         description: "Flip a virtual coin.",
         page: "coin.html"
     },
-
+{
+    id: 22,
+    name: "Whack The Alien",
+    icon: "👽",
+    description: "Full screen arcade game where you whack aliens before time runs out.",
+    page: "alien.html"
+},
     {
         id: 3,
         name: "Dice Roller",
