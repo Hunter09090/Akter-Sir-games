@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Penguin Slide</title>
+
+  <link rel="stylesheet" href="penguin.css">
+</head>
+
+<body>
+
+  <!-- HUD -->
+
+  <div class="hud">
+
+    <div class="hud-box">
+      🐟 Score:
+      <span id="score">0</span>
+    </div>
+
+    <div class="hud-box">
+      ⭐ Best:
+      <span id="bestScore">0</span>
+    </div>
+
+  </div>
+
+  <!-- Game Area -->
+
+  <div id="gameArea" class="game-area">
+
+    <!-- Penguin -->
+
+    <div id="penguin" class="penguin">🐧</div>
+
+  </div>
+
+  <!-- Mobile Controls -->
+
+  <div class="mobile-controls">
+
+    <button id="leftBtn" class="control-btn">⬅️</button>
+
+    <button id="rightBtn" class="control-btn">➡️</button>
+
+  </div>
+
+  <!-- Start Screen -->
+
+  <div id="startOverlay" class="start-overlay">
+
+    <div class="start-card">
+
+      <h1>🐧 PENGUIN SLIDE</h1>
+
+      <p>Slide across the ice, collect fish and avoid dangerous ice holes!</p>
+
+      <button id="startBtn" class="start-btn">
+        ▶ START SLIDE
+      </button>
+
+    </div>
+
+  </div>
+
+  <script src="penguin.js"></script>
+
+</body>
+</html>
