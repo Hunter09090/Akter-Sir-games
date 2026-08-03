@@ -1,0 +1,270 @@
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html,
+body{
+
+    width:100%;
+
+    height:100%;
+
+    overflow:hidden;
+
+    font-family:"Poppins", sans-serif;
+
+    background:#020617;
+
+}
+
+/* Background */
+
+body{
+
+    background:
+        radial-gradient(circle at top, #0f172a 0%, #020617 50%, #000000 100%);
+
+}
+
+/* HUD */
+
+.hud{
+
+    position:fixed;
+
+    top:12px;
+
+    left:12px;
+
+    right:12px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    z-index:50;
+
+}
+
+.hud-box{
+
+    background:rgba(15,23,42,.85);
+
+    color:white;
+
+    padding:12px 18px;
+
+    border-radius:18px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:0 0 15px rgba(59,130,246,.25);
+
+}
+
+/* Game Area */
+
+.game-area{
+
+    width:100vw;
+
+    height:100vh;
+
+    display:grid;
+
+    grid-template-columns:repeat(3, 1fr);
+
+    grid-template-rows:repeat(3, 1fr);
+
+    gap:22px;
+
+    padding:90px 20px 30px;
+
+}
+
+/* Hole */
+
+.hole{
+
+    position:relative;
+
+    border-radius:50%;
+
+    background:radial-gradient(circle, #1e293b 0%, #020617 75%);
+
+    box-shadow:
+        inset 0 10px 20px rgba(0,0,0,.6),
+        0 0 25px rgba(59,130,246,.12);
+
+    overflow:hidden;
+
+}
+
+/* Alien */
+
+.alien{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:-100%;
+
+    transform:translateX(-50%);
+
+    font-size:70px;
+
+    cursor:pointer;
+
+    transition:bottom .18s ease;
+
+    user-select:none;
+
+    filter:drop-shadow(0 0 12px rgba(74,222,128,.7));
+
+}
+
+.hole.show .alien{
+
+    bottom:12%;
+
+}
+
+/* Hit Effect */
+
+.alien.hit{
+
+    transform:translateX(-50%) scale(1.25);
+
+    filter:drop-shadow(0 0 18px rgba(250,204,21,.9));
+
+}
+
+/* Start Overlay */
+
+.start-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.7);
+
+    z-index:100;
+
+}
+
+.start-card{
+
+    width:min(420px, 90%);
+
+    padding:34px 26px;
+
+    border-radius:28px;
+
+    background:rgba(15,23,42,.95);
+
+    text-align:center;
+
+    color:white;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 0 30px rgba(59,130,246,.28);
+
+}
+
+.start-card h1{
+
+    font-size:34px;
+
+    margin-bottom:14px;
+
+    color:#60a5fa;
+
+}
+
+.start-card p{
+
+    color:#cbd5e1;
+
+    line-height:1.6;
+
+    margin-bottom:22px;
+
+}
+
+.start-btn{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:linear-gradient(135deg, #2563eb, #7c3aed);
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:all .2s ease;
+
+}
+
+.start-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* Mobile */
+
+@media (max-width:768px){
+
+    .game-area{
+
+        gap:14px;
+
+        padding:85px 12px 20px;
+
+    }
+
+    .alien{
+
+        font-size:52px;
+
+    }
+
+    .hud-box{
+
+        font-size:15px;
+
+        padding:10px 14px;
+
+    }
+
+      }
