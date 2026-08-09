@@ -128,52 +128,50 @@ function animate(){
 
     const time = Date.now()*0.001;
 
+    // ================= HEART =================
     if(mode === 'heart'){
 
-    // Neon background glow
-    const gradient = ctx.createRadialGradient(
-        canvas.width/2,
-        canvas.height/2,
-        50,
-        canvas.width/2,
-        canvas.height/2,
-        500
-    );
+        const gradient = ctx.createRadialGradient(
+            canvas.width/2,
+            canvas.height/2,
+            50,
+            canvas.width/2,
+            canvas.height/2,
+            500
+        );
 
-    gradient.addColorStop(0,'rgba(255,20,147,.25)');
-    gradient.addColorStop(.5,'rgba(255,0,100,.08)');
-    gradient.addColorStop(1,'rgba(0,0,0,1)');
+        gradient.addColorStop(0,'rgba(255,20,147,.25)');
+        gradient.addColorStop(.5,'rgba(255,0,100,.08)');
+        gradient.addColorStop(1,'rgba(0,0,0,1)');
 
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0,0,canvas.width,canvas.height);
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0,0,canvas.width,canvas.height);
 
-    particles.forEach(p=>{
+        particles.forEach(p=>{
 
-        const pulse = Math.sin(time*3 + p.phase) * 8;
+            const pulse = Math.sin(time*3 + p.phase) * 8;
 
-        p.x = p.ox + Math.cos(time + p.phase) * 2;
-        p.y = p.oy + pulse;
+            p.x = p.ox + Math.cos(time + p.phase) * 2;
+            p.y = p.oy + pulse;
 
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.size + pulse*0.08,0,Math.PI*2);
+            ctx.beginPath();
+            ctx.arc(p.x,p.y,p.size + pulse*0.08,0,Math.PI*2);
 
-        ctx.fillStyle = p.color;
-        ctx.shadowColor = p.color;
-        ctx.shadowBlur = 25;
-        ctx.fill();
-    });
+            ctx.fillStyle = p.color;
+            ctx.shadowColor = p.color;
+            ctx.shadowBlur = 25;
+            ctx.fill();
+        });
 
-    // Center text
-    ctx.font = 'bold 56px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#ffffff';
-    ctx.shadowColor = '#ff5ea8';
-    ctx.shadowBlur = 35;
-    ctx.fillText('LOVE', canvas.width/2, canvas.height/2 + 260);
-}
-
+        ctx.font = 'bold 56px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#ffffff';
+        ctx.shadowColor = '#ff5ea8';
+        ctx.shadowBlur = 35;
+        ctx.fillText('LOVE', canvas.width/2, canvas.height/2 + 260);
     }
 
+    // ================= STAR =================
     else if(mode === 'star'){
 
         particles.forEach(p=>{
@@ -187,9 +185,9 @@ function animate(){
             ctx.shadowBlur = 14;
             ctx.fill();
         });
-
     }
 
+    // ================= BUTTERFLY =================
     else if(mode === 'butterfly'){
 
         particles.forEach(p=>{
@@ -202,9 +200,9 @@ function animate(){
             ctx.shadowBlur = 16;
             ctx.fill();
         });
-
     }
 
+    // ================= SPIRAL =================
     else if(mode === 'spiral'){
 
         particles.forEach(p=>{
@@ -223,7 +221,7 @@ function animate(){
     }
 
     animationId = requestAnimationFrame(animate);
-
+}
 
 // =============================
 // Play Animation
