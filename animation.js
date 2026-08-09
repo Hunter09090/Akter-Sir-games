@@ -21,21 +21,30 @@ function createHeart(){
 
     particles = [];
 
-    const scale = 13;
+    const total = 1200;
 
-    for(let t = 0; t < Math.PI*2; t += 0.04){
+    for(let i=0;i<total;i++){
 
+        const t = Math.random() * Math.PI * 2;
+
+        // Real smooth heart formula
         const x = 16 * Math.pow(Math.sin(t),3);
-        const y = -(13*Math.cos(t) - 5*Math.cos(2*t) - 2*Math.cos(3*t) - Math.cos(4*t));
+
+        const y = 13*Math.cos(t)
+                - 5*Math.cos(2*t)
+                - 2*Math.cos(3*t)
+                - Math.cos(4*t);
+
+        const scale = 18 + Math.random()*6;
 
         particles.push({
-            x:canvas.width/2 + x*scale,
-            y:canvas.height/2 + y*scale,
-            ox:canvas.width/2 + x*scale,
-            oy:canvas.height/2 + y*scale,
-            size:Math.random()*3 + 1,
-            angle:Math.random()*Math.PI*2,
-            color:`hsl(${330+Math.random()*20},100%,70%)`
+            ox: canvas.width/2 + x*scale,
+            oy: canvas.height/2 - y*scale,
+            x:  canvas.width/2 + x*scale,
+            y:  canvas.height/2 - y*scale,
+            size: Math.random()*3 + 1,
+            phase: Math.random()*Math.PI*2,
+            color: `hsl(${330+Math.random()*25},100%,${65+Math.random()*20}%)`
         });
     }
 }
@@ -121,19 +130,47 @@ function animate(){
 
     if(mode === 'heart'){
 
-        particles.forEach(p=>{
-            const pulse = Math.sin(time + p.angle)*5;
+    // Neon background glow
+    const gradient = ctx.createRadialGradient(
+        canvas.width/2,
+        canvas.height/2,
+        50,
+        canvas.width/2,
+        canvas.height/2,
+        500
+    );
 
-            p.x = p.ox + Math.cos(time + p.angle)*2;
-            p.y = p.oy + pulse;
+    gradient.addColorStop(0,'rgba(255,20,147,.25)');
+    gradient.addColorStop(.5,'rgba(255,0,100,.08)');
+    gradient.addColorStop(1,'rgba(0,0,0,1)');
 
-            ctx.beginPath();
-            ctx.arc(p.x,p.y,p.size + pulse*0.1,0,Math.PI*2);
-            ctx.fillStyle = p.color;
-            ctx.shadowColor = p.color;
-            ctx.shadowBlur = 18;
-            ctx.fill();
-        });
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    particles.forEach(p=>{
+
+        const pulse = Math.sin(time*3 + p.phase) * 8;
+
+        p.x = p.ox + Math.cos(time + p.phase) * 2;
+        p.y = p.oy + pulse;
+
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.size + pulse*0.08,0,Math.PI*2);
+
+        ctx.fillStyle = p.color;
+        ctx.shadowColor = p.color;
+        ctx.shadowBlur = 25;
+        ctx.fill();
+    });
+
+    // Center text
+    ctx.font = 'bold 56px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#ffffff';
+    ctx.shadowColor = '#ff5ea8';
+    ctx.shadowBlur = 35;
+    ctx.fillText('LOVE', canvas.width/2, canvas.height/2 + 260);
+}
 
     }
 
