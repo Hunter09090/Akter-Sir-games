@@ -3,40 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animation Gallery</title>
+    <title>Neon Animation Studio</title>
     <link rel="stylesheet" href="animation.css">
 </head>
 <body>
 
-    <h1 class="title">🎬 Animation Gallery</h1>
+    <div class="header">
+        <h1>✨ Neon Animation Studio</h1>
+        <p>Professional Fullscreen Particle Experience</p>
+    </div>
 
     <div class="gallery">
 
         <div class="card" onclick="playAnimation('heart')">
-            <div class="preview heart-preview">💖</div>
-            <h3>Heart Animation</h3>
+            <div class="icon">💖</div>
+            <h3>Heart Universe</h3>
+            <p>Romantic neon particle heart</p>
         </div>
 
         <div class="card" onclick="playAnimation('star')">
-            <div class="preview star-preview">⭐</div>
-            <h3>Star Animation</h3>
+            <div class="icon">⭐</div>
+            <h3>Star Burst</h3>
+            <p>Golden cosmic star explosion</p>
         </div>
 
         <div class="card" onclick="playAnimation('butterfly')">
-            <div class="preview butterfly-preview">🦋</div>
-            <h3>Butterfly Animation</h3>
+            <div class="icon">🦋</div>
+            <h3>Butterfly Wings</h3>
+            <p>Smooth glowing wing particles</p>
         </div>
 
         <div class="card" onclick="playAnimation('spiral')">
-            <div class="preview spiral-preview">🌀</div>
-            <h3>Spiral Animation</h3>
+            <div class="icon">🌀</div>
+            <h3>Galaxy Spiral</h3>
+            <p>Deep space rotating vortex</p>
         </div>
 
     </div>
 
     <canvas id="mainCanvas"></canvas>
 
-    <button id="closeBtn" onclick="closeAnimation()">✖ Close</button>
+    <button id="closeBtn" onclick="closeAnimation()">
+        ✖ Close
+    </button>
 
     <script src="animation.js"></script>
 
