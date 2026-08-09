@@ -210,6 +210,13 @@ const games = [
     page: "target.html"
    },
    {
+    id: 20,
+    name: "Animation Gallery",
+    icon: "🎬",
+    description: "Heart, Star, Butterfly ও Spiral এর সুন্দর Fullscreen Particle Animation দেখুন।",
+    page: "animation.html"
+   },
+   {
     id: 21,
     name: "Cosmic Odyssey",
     icon: "🌌",
