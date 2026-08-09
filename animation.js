@@ -223,7 +223,7 @@ function animate(){
     }
 
     animationId = requestAnimationFrame(animate);
-}
+
 
 // =============================
 // Play Animation
