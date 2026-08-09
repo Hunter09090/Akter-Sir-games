@@ -12,41 +12,91 @@ function resizeCanvas(){
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-function createParticles(color,count=180){
+// ====================================
+// Create Heart Shape
+// ====================================
+
+function createHeartParticles(){
+
     particles = [];
 
-    for(let i=0;i<count;i++){
+    const scale = 12;
+
+    for(let t = 0; t < Math.PI * 2; t += 0.05){
+
+        const x = 16 * Math.pow(Math.sin(t),3);
+
+        const y = -(13*Math.cos(t) - 5*Math.cos(2*t) - 2*Math.cos(3*t) - Math.cos(4*t));
+
         particles.push({
-            x:Math.random()*canvas.width,
-            y:Math.random()*canvas.height,
-            size:Math.random()*4+1,
-            vx:(Math.random()-.5)*2,
-            vy:(Math.random()-.5)*2,
-            color
+            x: canvas.width / 2 + x * scale,
+            y: canvas.height / 2 + y * scale,
+            baseX: canvas.width / 2 + x * scale,
+            baseY: canvas.height / 2 + y * scale,
+            size: Math.random()*3 + 1,
+            angle: Math.random() * Math.PI * 2,
+            color: `hsl(${330 + Math.random()*30},100%,70%)`
         });
     }
 }
 
-function animateParticles(){
+// ====================================
+// Animate Heart
+// ====================================
+
+function animateHeart(){
+
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    particles.forEach(p=>{
-        p.x += p.vx;
-        p.y += p.vy;
+    // Background glow
+    const gradient = ctx.createRadialGradient(
+        canvas.width/2,
+        canvas.height/2,
+        50,
+        canvas.width/2,
+        canvas.height/2,
+        400
+    );
 
-        if(p.x<0 || p.x>canvas.width) p.vx *= -1;
-        if(p.y<0 || p.y>canvas.height) p.vy *= -1;
+    gradient.addColorStop(0,'rgba(255,20,147,.25)');
+    gradient.addColorStop(1,'rgba(0,0,0,1)');
+
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    const time = Date.now() * 0.002;
+
+    particles.forEach(p => {
+
+        // Breathing effect
+        const pulse = Math.sin(time + p.angle) * 6;
+
+        p.x = p.baseX + Math.cos(time + p.angle) * 3;
+        p.y = p.baseY + pulse;
 
         ctx.beginPath();
-        ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+        ctx.arc(p.x,p.y,p.size + pulse*0.1,0,Math.PI*2);
+
         ctx.fillStyle = p.color;
         ctx.shadowColor = p.color;
-        ctx.shadowBlur = 12;
+        ctx.shadowBlur = 20;
         ctx.fill();
     });
 
-    animationId = requestAnimationFrame(animateParticles);
+    // Center text
+    ctx.font = 'bold 48px Arial';
+    ctx.fillStyle = '#fff';
+    ctx.textAlign = 'center';
+    ctx.shadowColor = '#ff5ea8';
+    ctx.shadowBlur = 25;
+    ctx.fillText('I ❤️ YOU', canvas.width/2, canvas.height/2 + 220);
+
+    animationId = requestAnimationFrame(animateHeart);
 }
+
+// ====================================
+// Play Animation
+// ====================================
 
 function playAnimation(type){
 
@@ -55,26 +105,15 @@ function playAnimation(type){
 
     cancelAnimationFrame(animationId);
 
-    switch(type){
-        case 'heart':
-            createParticles('#ff5ea8');
-            break;
-
-        case 'star':
-            createParticles('#ffe066');
-            break;
-
-        case 'butterfly':
-            createParticles('#6bc8ff');
-            break;
-
-        case 'spiral':
-            createParticles('#b57dff');
-            break;
+    if(type === 'heart'){
+        createHeartParticles();
+        animateHeart();
     }
-
-    animateParticles();
 }
+
+// ====================================
+// Close
+// ====================================
 
 function closeAnimation(){
     cancelAnimationFrame(animationId);
