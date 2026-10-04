@@ -1,71 +1,21 @@
-/* =====================================
-   GAME HUB OF SIR - SERVICE WORKER
-===================================== */
-
-const CACHE_NAME = "game-hub-v1";
-
-const urlsToCache = [
-
-  "./",
-  "./index.html",
-  "./style.css",
-  "./app.js",
-  "./firebase.js",
-  "./icons/icon-192.png",
-  "./icons/icon-512.png"
-
-];
-
-/* Install */
+const CACHE_NAME = "game-hub-v2";
+const APP_SHELL = ["./","./index.html","./style.css","./hub-v2.css","./responsive.css","./app.js","./utils.js","./manifest.json"];
 
 self.addEventListener("install", event => {
-
-  event.waitUntil(
-
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
-
-  );
-
+  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)).then(()=>self.skipWaiting()));
 });
-
-/* Fetch */
-
-self.addEventListener("fetch", event => {
-
-  event.respondWith(
-
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
-
-  );
-
-});
-
-/* Activate */
 
 self.addEventListener("activate", event => {
+  event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));
+});
 
-  event.waitUntil(
-
-    caches.keys().then(keys => {
-
-      return Promise.all(
-
-        keys.map(key => {
-
-          if (key !== CACHE_NAME) {
-
-            return caches.delete(key);
-
-          }
-
-        })
-
-      );
-
-    })
-
+self.addEventListener("fetch", event => {
+  if(event.request.method!=="GET") return;
+  event.respondWith(
+    fetch(event.request).then(response=>{
+      const copy=response.clone();
+      caches.open(CACHE_NAME).then(cache=>cache.put(event.request,copy)).catch(()=>{});
+      return response;
+    }).catch(()=>caches.match(event.request).then(cached=>cached||caches.match("./index.html")))
   );
-
 });
