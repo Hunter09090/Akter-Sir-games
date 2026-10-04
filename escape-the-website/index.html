@@ -17,13 +17,15 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:lin
 <body>
 <div class="wrap top">
   <div class="brand">🧪 AKTER CRAZY LAB</div>
-  <div class="status"><span class="pill">ROOM <b id="roomNo">0</b>/6</span><span class="pill">TIME <b id="topTime">10:00</b></span><button class="btn" id="soundBtn" type="button">🔊</button></div>
+  <div class="status"><span class="pill">ROOM <b id="roomNo">0</b>/6</span><span class="pill">TIME <b id="topTime">10:00</b></span><span class="pill">❤️ <b id="topLives">3</b></span><span class="pill">💡 <b id="topHints">2</b></span><button class="btn" id="soundBtn" type="button">🔊</button></div>
 </div>
 <main class="screen"><div class="card" id="app"></div></main>
 <script>
 const app=document.getElementById('app');
 const roomNo=document.getElementById('roomNo');
 const topTime=document.getElementById('topTime');
+const topLives=document.getElementById('topLives');
+const topHints=document.getElementById('topHints');
 let state={room:0,time:600,score:0,items:[],used:[],sound:true,started:false,lives:3,hints:2,glitches:0};
 try{const s=JSON.parse(localStorage.getItem('escapeWebsiteSave'));if(s)state={...state,...s}}catch(e){}
 let timer=null,audioCtx=null;
@@ -31,7 +33,7 @@ let timer=null,audioCtx=null;
 function save(){localStorage.setItem('escapeWebsiteSave',JSON.stringify(state))}
 function beep(freq=440,dur=.08,type='sine'){if(!state.sound)return;try{audioCtx??=new (window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(.04,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+dur);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+dur)}catch(e){}}
 function format(t){let m=Math.floor(t/60),s=t%60;return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}
-function render(){roomNo.textContent=state.room;topTime.textContent=format(state.time);topTime.classList.toggle('danger',state.time<=60)}
+function render(){roomNo.textContent=state.room;topTime.textContent=format(state.time);topTime.classList.toggle('danger',state.time<=60);topLives.textContent=state.lives??3;topHints.textContent=state.hints??2}
 function set(html){app.innerHTML=html;render()}
 function startTimer(){clearInterval(timer);timer=setInterval(()=>{if(!state.started||state.room>=6)return;state.time--;if(Math.random()<0.02)glitch();if(state.time<=0){state.time=0;clearInterval(timer);timeout()}save();render()},1000)}
 function glitch(){document.body.classList.add('glitch');beep(70,.08,'square');setTimeout(()=>document.body.classList.remove('glitch'),450)}
