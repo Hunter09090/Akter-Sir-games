@@ -1,424 +1,107 @@
-
-/* =====================================
-   File : app.js
-===================================== */
-
+/* GAME HUB OF SIR — Home application */
 "use strict";
-/* =====================================
-   Load Header & Footer
-===================================== */
-
-async function loadLayout() {
-
-    try {
-
-        const headerContainer =
-            document.getElementById("header");
-
-        if (headerContainer) {
-
-            const response =
-                await fetch("header.html");
-
-            headerContainer.innerHTML =
-                await response.text();
-
-            if (typeof initHeader === "function") {
-
-                initHeader();
-
-            }
-
-        }
-
-        const footerContainer =
-            document.getElementById("footer");
-
-        if (footerContainer) {
-
-            const response =
-                await fetch("footer.html");
-
-            footerContainer.innerHTML =
-                await response.text();
-
-            if (typeof initFooter === "function") {
-
-                initFooter();
-
-            }
-
-        }
-
-    } catch (error) {
-
-        console.error(
-
-            "Layout Load Error:",
-
-            error
-
-        );
-
-    }
-
-}
-/* =====================================
-   Game List
-===================================== */
 
 const games = [
-
-    {
-        id: 1,
-        name: "Reaction Time Test",
-        icon: "⚡",
-        description: "Test your reaction speed.",
-        page: "reaction.html"
-    },
-
-    {
-        id: 2,
-        name: "Coin Toss",
-        icon: "🪙",
-        description: "Flip a virtual coin.",
-        page: "coin.html"
-    },
-{
-    id: 22,
-    name: "Whack The Alien",
-    icon: "👽",
-    description: "Full screen arcade game where you whack aliens before time runs out.",
-    page: "alien.html"
-},
-    {
-        id: 3,
-        name: "Dice Roller",
-        icon: "🎲",
-        description: "Roll a random dice.",
-        page: "dice.html"
-    },
-
-    {
-        id: 4,
-        name: "Tic Tac Toe",
-        icon: "❌",
-        description: "Classic XO Game.",
-        page: "tic.html"
-    },
-
-    {
-        id: 5,
-        name: "Spin The Wheel",
-        icon: "🎡",
-        description: "Spin and get a surprise.",
-        page: "wheel.html"
-    },
-
-    {
-        id: 6,
-        name: "Truth Or Dare",
-        icon: "🤔",
-        description: "Play with friends.",
-        page: "truth.html"
-    },
-
-    {
-        id: 7,
-        name: "Random Challenge",
-        icon: "🎯",
-        description: "Complete fun challenges.",
-        page: "challenge.html"
-    },
-
-    {
-        id: 8,
-        name: "Aim Trainer",
-        icon: "🎯",
-        description: "Improve your aiming skill.",
-        page: "aim.html"
-    },
-{
-    id: 23,
-    name: "Banana Slip Battle",
-    icon: "🍌",
-    description: "Funny full screen arcade game where you dodge banana peels and avoid slipping.",
-    page: "banana.html"
-},
-    {
-        id: 9,
-        name: "Jump Game",
-        icon: "🦘",
-        description: "Jump over obstacles.",
-        page: "jump.html"
-    },
-{
-    id: 10,
-    name: "Memory Match",
-    icon: "🧠",
-    description: "Find matching emoji pairs and train your brain.",
-    page: "memory.html"
-},
-   {
-    id: 11,
-    name: "Rock Paper Scissors",
-    icon: "✊",
-    description: "Play against the computer and test your luck.",
-    page: "rps.html"
-   },
-   {
-    id: 12,
-    name: "Mind Reader",
-    icon: "🔮",
-    description: "Think of a number and let the magic read your mind.",
-    page: "mindreader.html"
-   },
-   
-   {
-    id: 14,
-    name: "Balloon Pop",
-    icon: "🎈",
-    description: "Pop balloons before the timer ends.",
-    page: "balloon.html"
-   },
-   {
-    id: 15,
-    name: "Neon Catcher",
-    icon: "🌌",
-    description: "Catch glowing neon orbs in this cyberpunk arcade game.",
-    page: "neon.html"
-},
-   {
-    id: 16,
-    name: "Rocket Dodge",
-    icon: "🚀",
-    description: "Dodge falling asteroids in this endless space runner.",
-    page: "rocket.html"
-   },
-   {
-    id: 17,
-    name: "Thunder Tap",
-    icon: "⚡",
-    description: "Test your lightning-fast reaction speed.",
-    page: "thunder.html"
-   },
-   {
-    id: 18,
-    name: "Target Storm",
-    icon: "🎯",
-    description: "Hit targets, avoid bombs, and build huge combos!",
-    page: "target.html"
-   },
-   {
-    id: 20,
-    name: "Animation Gallery",
-    icon: "🎬",
-    description: "Heart, Star, Butterfly ও Spiral এর সুন্দর Fullscreen Particle Animation দেখুন।",
-    page: "animation.html"
-   },
-   {
-    id: 21,
-    name: "Cosmic Odyssey",
-    icon: "🌌",
-    description: "Travel from Earth into deep space and escape the black hole.",
-    page: "cosmic.html"
-   },
-   {
-    id: 24,
-    name: "Penguin Slide",
-    icon: "🐧",
-    description: "Slide across the ice, collect fish and avoid dangerous ice holes in this full screen arcade adventure.",
-    page: "penguin.html"
-   }
-
-   
+  {id:1,name:"Reaction Time Test",icon:"⚡",description:"Test your reaction speed.",page:"reaction.html",category:"skill"},
+  {id:2,name:"Coin Toss",icon:"🪙",description:"Flip a virtual coin.",page:"coin.html",category:"casual"},
+  {id:22,name:"Whack The Alien",icon:"👽",description:"Whack aliens before time runs out.",page:"alien.html",category:"arcade"},
+  {id:3,name:"Dice Roller",icon:"🎲",description:"Roll a random dice.",page:"dice.html",category:"casual"},
+  {id:4,name:"Tic Tac Toe",icon:"❌",description:"Classic XO strategy game.",page:"tic.html",category:"brain"},
+  {id:5,name:"Spin The Wheel",icon:"🎡",description:"Spin and get a surprise.",page:"wheel.html",category:"casual"},
+  {id:6,name:"Truth Or Dare",icon:"🤔",description:"Play a fun round with friends.",page:"truth.html",category:"casual"},
+  {id:7,name:"Random Challenge",icon:"🎯",description:"Complete a fun challenge.",page:"challenge.html",category:"skill"},
+  {id:8,name:"Aim Trainer",icon:"🎯",description:"Improve your aiming skill.",page:"aim.html",category:"skill"},
+  {id:23,name:"Banana Slip Battle",icon:"🍌",description:"Dodge banana peels and stay on your feet.",page:"banana.html",category:"arcade"},
+  {id:9,name:"Jump Game",icon:"🦘",description:"Jump over obstacles and survive.",page:"jump.html",category:"arcade"},
+  {id:10,name:"Memory Match",icon:"🧠",description:"Match emoji pairs and train your brain.",page:"memory.html",category:"brain"},
+  {id:11,name:"Rock Paper Scissors",icon:"✊",description:"Play against the computer.",page:"rps.html",category:"casual"},
+  {id:12,name:"Mind Reader",icon:"🔮",description:"Think of a number and test the magic.",page:"mindreader.html",category:"brain"},
+  {id:14,name:"Balloon Pop",icon:"🎈",description:"Pop balloons before the timer ends.",page:"balloon.html",category:"arcade"},
+  {id:15,name:"Neon Catcher",icon:"🌌",description:"Catch glowing neon orbs.",page:"neon.html",category:"arcade"},
+  {id:16,name:"Rocket Dodge",icon:"🚀",description:"Dodge asteroids in an endless space runner.",page:"rocket.html",category:"space"},
+  {id:17,name:"Thunder Tap",icon:"⚡",description:"Test your lightning-fast reaction speed.",page:"thunder.html",category:"skill"},
+  {id:18,name:"Target Storm",icon:"🎯",description:"Hit targets, avoid bombs and build combos.",page:"target.html",category:"skill"},
+  {id:20,name:"Animation Gallery",icon:"🎬",description:"Explore beautiful interactive particle animations.",page:"animation.html",category:"casual"},
+  {id:21,name:"Cosmic Odyssey",icon:"🌌",description:"Travel into deep space and escape the black hole.",page:"cosmic.html",category:"space"},
+  {id:24,name:"Penguin Slide",icon:"🐧",description:"Slide across the ice, collect fish and avoid holes.",page:"penguin.html",category:"arcade"}
 ];
 
+const KEY={recent:"gh_recent_v2",favorites:"gh_favorites_v2",plays:"gh_plays_v2",theme:"gh_theme_v2"};
+const $=s=>document.querySelector(s);
+const $$=s=>[...document.querySelectorAll(s)];
+const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}};
+const write=(key,value)=>localStorage.setItem(key,JSON.stringify(value));
 
-/* =====================================
-   DOM
-===================================== */
+function escapeHtml(value){const d=document.createElement("div");d.textContent=String(value);return d.innerHTML;}
+function findGame(id){return games.find(g=>g.id===Number(id));}
 
-const gamesContainer =
-document.getElementById("gamesContainer");
-
-const searchInput =
-document.getElementById("searchInput");
-
-
-/* =====================================
-   Start App
-===================================== */
-window.onload = () => {
-
-    loadGames(games);
-
-};
-
-
-/* =====================================
-   Load Game Cards
-===================================== */
-
-function loadGames(gameList) {
-
-    // যদি Container না থাকে তাহলে বন্ধ
-    if (!gamesContainer) return;
-
-    // আগের Card মুছে ফেলো
-    gamesContainer.innerHTML = "";
-
-    // যদি কোন Game না থাকে
-    if (gameList.length === 0) {
-
-        gamesContainer.innerHTML = `
-
-            <div class="no-game">
-
-                <h2>No Game Found 😔</h2>
-
-                <p>Please try another search.</p>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-    // Loop করে সব Game Card তৈরি
-    gameList.forEach(game => {
-
-        const card = document.createElement("div");
-
-        card.className = "game-card";
-
-        card.innerHTML = `
-
-            <div class="game-icon">
-
-                ${game.icon}
-
-            </div>
-
-            <h2 class="game-title">
-
-                ${game.name}
-
-            </h2>
-
-            <p class="game-description">
-
-                ${game.description}
-
-            </p>
-
-            <button
-                class="play-btn"
-                data-page="${game.page}">
-
-                ▶ Play Now
-
-            </button>
-
-        `;
-
-        // Card Click করলে Game Page Open হবে
-        card.addEventListener("click", () => {
-
-            window.location.href = game.page;
-
-        });
-
-        gamesContainer.appendChild(card);
-
-    });
-
+function applyTheme(theme){
+  document.documentElement.dataset.theme=theme;
+  const btn=$("#themeBtn");
+  if(btn){btn.textContent=theme==="dark"?"☀️":"🌙";btn.setAttribute("aria-label",theme==="dark"?"Switch to light mode":"Switch to dark mode");}
+  localStorage.setItem(KEY.theme,theme);
 }
-/* =====================================
-   Search Games
-===================================== */
-
-if (searchInput) {
-
-    searchInput.addEventListener("input", function () {
-
-        const keyword = this.value
-            .trim()
-            .toLowerCase();
-
-        const filteredGames = games.filter(game => {
-
-            return (
-                game.name.toLowerCase().includes(keyword) ||
-                game.description.toLowerCase().includes(keyword)
-            );
-
-        });
-
-        loadGames(filteredGames);
-
-    });
-
+function initTheme(){
+  const saved=localStorage.getItem(KEY.theme);
+  const theme=saved||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+  applyTheme(theme);
+  $("#themeBtn")?.addEventListener("click",()=>applyTheme(document.documentElement.dataset.theme==="dark"?"light":"dark"));
 }
 
-
-/* =====================================
-   Open Game
-===================================== */
-
-document.addEventListener("click", function (event) {
-
-    if (!event.target.classList.contains("play-btn")) {
-        return;
-    }
-
-    event.stopPropagation();
-
-    const page = event.target.dataset.page;
-
-    if (page) {
-
-        window.location.href = page;
-
-    }
-
-});
-
-/* =====================================
-   PWA SERVICE WORKER
-===================================== */
-
-if ("serviceWorker" in navigator) {
-
-    window.addEventListener("load", () => {
-
-        navigator.serviceWorker
-            .register("./service-worker.js")
-            .then(() => {
-
-                console.log("PWA Ready");
-
-            })
-            .catch(err => {
-
-                console.log("SW Error:", err);
-
-            });
-
-    });
-
+function card(game){
+  const favorites=read(KEY.favorites,[]);
+  const fav=favorites.includes(game.id);
+  return `<article class="hub-card" data-id="${game.id}">
+    <div class="hub-card-top"><span class="hub-game-icon">${game.icon}</span><button class="hub-fav ${fav?"active":""}" data-favorite="${game.id}" type="button" aria-label="${fav?"Remove from favorites":"Add to favorites"}">${fav?"♥":"♡"}</button></div>
+    <span class="hub-category">${escapeHtml(game.category)}</span><h3>${escapeHtml(game.name)}</h3><p>${escapeHtml(game.description)}</p>
+    <button class="hub-play" data-play="${game.id}" type="button">Play now <span>→</span></button>
+  </article>`;
 }
-/* =====================================
-   Future Ready
-===================================== */
 
-// এখানে ভবিষ্যতে যোগ করা হবে:
-// - Category Filter
-// - Favorite Games
-// - Recently Played
-// - Most Played
-// - Game Rating
-// - Game Search History
-// - Firebase Sync
+function trackPlay(game){
+  const recent=read(KEY.recent,[]).filter(id=>id!==game.id);recent.unshift(game.id);write(KEY.recent,recent.slice(0,8));
+  const plays=read(KEY.plays,{});plays[game.id]=(plays[game.id]||0)+1;write(KEY.plays,plays);
+}
+
+function render(list,target){const el=$(target);if(!el)return;el.innerHTML=list.map(card).join("");}
+function renderHome(category="all",query=""){
+  const q=query.trim().toLowerCase();
+  const filtered=games.filter(g=>(category==="all"||g.category===category)&&(!q||`${g.name} ${g.description}`.toLowerCase().includes(q)));
+  render(filtered,"#gamesContainer");
+  $("#noGame").hidden=filtered.length>0;
+  const featured=games.slice().sort((a,b)=>(b.id%7)-(a.id%7)).slice(0,6);
+  if(category==="all"&&!q){render(featured,"#featuredGames");$("#featuredSection").hidden=false}else{$("#featuredSection").hidden=true;}
+  const recent=read(KEY.recent,[]).map(findGame).filter(Boolean);
+  const recentEl=$("#recentSection");
+  if(recent.length&&!q&&category==="all"){render(recent,"#recentGames");recentEl.hidden=false}else recentEl.hidden=true;
+  updateStats();
+}
+function updateStats(){
+  const plays=read(KEY.plays,{}), recent=read(KEY.recent,[]), fav=read(KEY.favorites,[]);
+  const total=Object.values(plays).reduce((a,b)=>a+Number(b||0),0);
+  $("#heroGameCount")&&( $("#heroGameCount").textContent=games.length );
+  $("#heroPlayed")&&($("#heroPlayed").textContent=total);
+  $("#heroFavorites")&&($("#heroFavorites").textContent=fav.length);
+}
+
+function openGame(id){const game=findGame(id);if(!game)return;trackPlay(game);window.location.href=game.page;}
+
+function init(){
+  initTheme();
+  let category="all";
+  renderHome();
+  $("#searchInput")?.addEventListener("input",e=>renderHome(category,e.target.value));
+  $$(".hub-filter").forEach(btn=>btn.addEventListener("click",()=>{$$(".hub-filter").forEach(b=>b.classList.remove("active"));btn.classList.add("active");category=btn.dataset.category;renderHome(category,$("#searchInput")?.value||"");}));
+  document.addEventListener("click",e=>{
+    const play=e.target.closest("[data-play]");if(play){e.stopPropagation();openGame(play.dataset.play);return;}
+    const fav=e.target.closest("[data-favorite]");if(fav){const id=Number(fav.dataset.favorite);let list=read(KEY.favorites,[]);list=list.includes(id)?list.filter(x=>x!==id):[...list,id];write(KEY.favorites,list);renderHome(category,$("#searchInput")?.value||"");return;}
+    const clear=e.target.closest("[data-clear-recent]");if(clear){write(KEY.recent,[]);renderHome(category,$("#searchInput")?.value||"");}
+  });
+  $("[data-scroll-games]")?.addEventListener("click",()=>$("#gamesSection")?.scrollIntoView({behavior:"smooth"}));
+  const menu=$("#mobileHubMenu"),menuBtn=$("#mobileMenuBtn");
+  menuBtn?.addEventListener("click",()=>{const open=!menu.hidden;menu.hidden=open;menuBtn.setAttribute("aria-expanded",String(!open));});
+  $$("#mobileHubMenu a").forEach(a=>a.addEventListener("click",()=>{menu.hidden=true;menuBtn?.setAttribute("aria-expanded","false");}));
+  if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js").catch(()=>{}));
+}
+
+document.addEventListener("DOMContentLoaded",init);
