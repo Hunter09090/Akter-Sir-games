@@ -10,65 +10,24 @@
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="hub-v2.css">
 </head>
 <body class="hub-home">
-  <header class="simple-header" id="siteHeader">
-    <div class="simple-header-container">
-      <a href="index.html" class="simple-logo" aria-label="GAME HUB OF SIR home">
-        <span class="logo-mark" aria-hidden="true">🎮</span>
-        <span>GAME HUB OF SIR</span>
-      </a>
-      <nav class="simple-nav" aria-label="Primary navigation">
-        <a class="active" href="index.html">Home</a>
-        <a href="games.html">Games</a>
-        <a href="leaderboard.html">Leaderboard</a>
-        <a href="profile.html">Profile</a>
-        <button id="themeBtn" class="theme-btn" type="button" aria-label="Toggle theme">🌙</button>
-        <button id="mobileMenuBtn" class="hub-menu-btn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
-      </nav>
-    </div>
-  </header>
-
-  <div id="mobileHubMenu" class="hub-mobile-menu" hidden>
-    <a href="index.html">🏠 Home</a><a href="games.html">🎮 Games</a><a href="leaderboard.html">🏆 Leaderboard</a><a href="profile.html">👤 Profile</a>
-  </div>
-
+  <header class="simple-header" id="siteHeader"><div class="simple-header-container">
+    <a href="index.html" class="simple-logo" aria-label="GAME HUB OF SIR home"><span class="logo-mark" aria-hidden="true">🎮</span><span>GAME HUB OF SIR</span></a>
+    <nav class="simple-nav" aria-label="Primary navigation"><a class="active" href="index.html">Home</a><a href="games.html">Games</a><a href="leaderboard.html">Leaderboard</a><a href="profile.html">Profile</a><button id="themeBtn" class="theme-btn" type="button" aria-label="Toggle theme">🌙</button><button id="mobileMenuBtn" class="hub-menu-btn" type="button" aria-label="Open menu" aria-expanded="false">☰</button></nav>
+  </div></header>
+  <div id="mobileHubMenu" class="hub-mobile-menu" hidden><a href="index.html">🏠 Home</a><a href="games.html">🎮 Games</a><a href="leaderboard.html">🏆 Leaderboard</a><a href="profile.html">👤 Profile</a></div>
   <main>
-    <section class="hub-hero">
-      <div class="hub-hero-glow"></div>
-      <div class="hub-hero-content">
-        <span class="hub-eyebrow">🎮 YOUR PERSONAL GAME HUB</span>
-        <h1>Play. Compete.<br><span>Improve.</span></h1>
-        <p>Quick games, brain challenges and arcade adventures — all in one place.</p>
-        <div class="hub-hero-actions">
-          <button class="hub-primary" data-scroll-games type="button">Explore Games <span>→</span></button>
-          <a class="hub-secondary" href="profile.html">View My Stats</a>
-        </div>
-        <div class="hub-mini-stats"><span><b id="heroGameCount">0</b> Games</span><span><b id="heroPlayed">0</b> Plays</span><span><b id="heroFavorites">0</b> Favorites</span></div>
-      </div>
-    </section>
-
-    <section class="hub-section" id="gamesSection">
-      <div class="hub-section-head"><div><span class="hub-kicker">DISCOVER</span><h2>Find your next game</h2></div><a href="games.html">View all →</a></div>
-      <div class="hub-filter-row" role="toolbar" aria-label="Game filters">
-        <button class="hub-filter active" data-category="all" type="button">All</button>
-        <button class="hub-filter" data-category="arcade" type="button">🕹️ Arcade</button>
-        <button class="hub-filter" data-category="brain" type="button">🧠 Brain</button>
-        <button class="hub-filter" data-category="skill" type="button">🎯 Skill</button>
-        <button class="hub-filter" data-category="casual" type="button">🎲 Casual</button>
-        <button class="hub-filter" data-category="space" type="button">🚀 Space</button>
-      </div>
+    <section class="hub-hero"><div class="hub-hero-glow"></div><div class="hub-hero-content"><span class="hub-eyebrow">🎮 YOUR PERSONAL GAME HUB</span><h1>Play. Compete.<br><span>Improve.</span></h1><p>Quick games, brain challenges and arcade adventures — all in one place.</p><div class="hub-hero-actions"><button class="hub-primary" data-scroll-games type="button">Explore Games <span>→</span></button><a class="hub-secondary" href="profile.html">View My Stats</a></div><div class="hub-mini-stats"><span><b id="heroGameCount">0</b> Games</span><span><b id="heroPlayed">0</b> Plays</span><span><b id="heroFavorites">0</b> Favorites</span></div></div></section>
+    <section class="hub-section" id="gamesSection"><div class="hub-section-head"><div><span class="hub-kicker">DISCOVER</span><h2>Find your next game</h2></div><a href="games.html">View all →</a></div>
+      <div class="hub-filter-row" role="toolbar" aria-label="Game filters"><button class="hub-filter active" data-category="all" type="button">All</button><button class="hub-filter" data-category="arcade" type="button">🕹️ Arcade</button><button class="hub-filter" data-category="brain" type="button">🧠 Brain</button><button class="hub-filter" data-category="skill" type="button">🎯 Skill</button><button class="hub-filter" data-category="casual" type="button">🎲 Casual</button><button class="hub-filter" data-category="space" type="button">🚀 Space</button></div>
       <div class="hub-search-wrap"><span>⌕</span><input id="searchInput" type="search" autocomplete="off" placeholder="Search games..." aria-label="Search games"></div>
       <div class="hub-subsection" id="recentSection" hidden><div class="hub-subhead"><h3>Continue playing</h3><button data-clear-recent type="button">Clear</button></div><div class="hub-grid" id="recentGames"></div></div>
       <div class="hub-subsection" id="featuredSection"><div class="hub-subhead"><h3>Featured games</h3></div><div class="hub-grid" id="featuredGames"></div></div>
-      <div class="hub-grid" id="gamesContainer" aria-live="polite"></div>
-      <div class="hub-empty" id="noGame" hidden><div>🔎</div><h3>No games found</h3><p>Try another search or category.</p></div>
+      <div class="hub-grid" id="gamesContainer" aria-live="polite"></div><div class="hub-empty" id="noGame" hidden><div>🔎</div><h3>No games found</h3><p>Try another search or category.</p></div>
     </section>
   </main>
-
   <footer class="simple-footer"><div class="simple-footer-container"><h2>GAME HUB OF SIR</h2><p>Learn, play and improve with fun games.</p><div class="footer-social"><a href="https://www.facebook.com/ahr110" target="_blank" rel="noopener">Facebook</a><a href="https://wa.me/8801884197276" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:aakterhossen80@gmail.com">Email</a></div><p class="footer-copy">© 2026 GAME HUB OF SIR</p></div></footer>
-
-  <script src="utils.js"></script>
-  <script src="app.js"></script>
-</body>
-</html>
+  <script src="utils.js"></script><script src="app.js"></script>
+</body></html>
