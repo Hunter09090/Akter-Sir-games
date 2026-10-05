@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080914">
+<title>EVERY TIME — A Different Website</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:#080914;color:#fff}
+body{overflow-x:hidden;transition:background 1.2s ease,color .8s ease}
+.bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 20% 20%,rgba(99,102,241,.28),transparent 32%),radial-gradient(circle at 80% 70%,rgba(236,72,153,.22),transparent 30%),#080914;transition:background 1.2s}
+.noise{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E")}
+.wrap{width:min(1100px,92%);margin:auto}.top{display:flex;justify-content:space-between;align-items:center;padding:20px 0}.brand{font-weight:900;letter-spacing:.12em;font-size:13px}.back{color:#fff;text-decoration:none;border:1px solid #ffffff2e;background:#ffffff0d;padding:9px 13px;border-radius:12px}
+.hero{min-height:82vh;display:grid;place-items:center;text-align:center;padding:30px 0}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid #ffffff25;background:#ffffff0b;border-radius:999px;font-size:12px;color:#cbd5e1}
+.dot{width:7px;height:7px;border-radius:50%;background:#6ee7b7;box-shadow:0 0 14px #6ee7b7}.hero h1{font-size:clamp(55px,12vw,130px);line-height:.82;margin:25px 0 20px;letter-spacing:-.07em;text-transform:uppercase}.hero h1 span{display:block;background:linear-gradient(90deg,#fff,#a5b4fc,#f9a8d4);-webkit-background-clip:text;color:transparent}.hero p{max-width:650px;margin:auto;color:#b7bfd5;line-height:1.65;font-size:17px}.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:30px}.btn{border:0;border-radius:14px;padding:14px 20px;font-weight:900;font-size:15px;cursor:pointer;color:#080914;background:#fff;box-shadow:0 10px 40px #0005}.btn.secondary{color:#fff;background:#ffffff0d;border:1px solid #ffffff2b;box-shadow:none}.meta{display:flex;justify-content:center;gap:24px;margin-top:25px;color:#8f99b5;font-size:12px}.section{padding:30px 0 80px}.section h2{text-align:center;font-size:28px;margin-bottom:8px}.sub{text-align:center;color:#8993ae;margin:0 0 28px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{border:1px solid #ffffff1b;background:#ffffff09;border-radius:22px;padding:22px;min-height:175px;backdrop-filter:blur(12px);transition:transform .3s,border-color .3s}.card:hover{transform:translateY(-5px);border-color:#ffffff45}.emoji{font-size:34px}.card h3{margin:13px 0 7px}.card p{color:#929cb7;line-height:1.5;margin:0;font-size:14px}.result{margin:28px auto 0;max-width:700px;text-align:center;border:1px solid #ffffff20;background:#0002;border-radius:20px;padding:18px;color:#cbd5e1}.result strong{color:#fff}.footer{text-align:center;color:#69738d;font-size:12px;padding:20px 0 35px}
+body.theme-neon .bg{background:radial-gradient(circle at 15% 30%,#00e5ff40,transparent 30%),radial-gradient(circle at 80% 65%,#a855f740,transparent 34%),#05070f}
+body.theme-sunset .bg{background:radial-gradient(circle at 50% 20%,#fb923c55,transparent 35%),radial-gradient(circle at 85% 80%,#f43f5e40,transparent 35%),#160b12}
+body.theme-forest .bg{background:radial-gradient(circle at 20% 25%,#22c55e40,transparent 32%),radial-gradient(circle at 80% 70%,#14b8a640,transparent 35%),#06110e}
+body.theme-ocean .bg{background:radial-gradient(circle at 30% 20%,#38bdf855,transparent 35%),radial-gradient(circle at 80% 80%,#2563eb45,transparent 35%),#06101b}
+body.theme-paper{background:#f4f0e6;color:#171717}.theme-paper .bg{background:radial-gradient(circle at 30% 20%,#fff 0,transparent 45%),#e9e2d2}.theme-paper .noise{opacity:.08}.theme-paper .back,.theme-paper .eyebrow,.theme-paper .card,.theme-paper .result{color:#171717;border-color:#17171722;background:#ffffff70}.theme-paper .hero p,.theme-paper .sub,.theme-paper .card p,.theme-paper .meta,.theme-paper .footer{color:#5f5a50}.theme-paper .hero h1 span{background:linear-gradient(90deg,#111,#7c3aed,#be123c);-webkit-background-clip:text}.theme-paper .btn{background:#171717;color:#fff}.theme-paper .btn.secondary{background:#ffffff90;color:#171717}
+@media(max-width:760px){.cards{grid-template-columns:1fr}.hero{min-height:76vh}.hero h1{font-size:clamp(52px,18vw,92px)}}
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="noise"></div>
+<div class="wrap">
+<header class="top"><div class="brand">⚡ EVERY TIME</div><a class="back" href="../index.html">← Game Hub</a></header>
+<main>
+<section class="hero">
+<div>
+<div class="eyebrow"><span class="dot"></span><span id="status">THE WEBSITE IS DIFFERENT TODAY</span></div>
+<h1><span>Nothing</span><span>stays</span><span>the same.</span></h1>
+<p id="intro">Reload this page. Press the button. Come back tomorrow. The website rebuilds its mood every time — colors, personality, message and tiny details all change.</p>
+<div class="actions"><button class="btn" id="change">✨ Change Everything</button><button class="btn secondary" id="surprise">🎲 Surprise Me</button></div>
+<div class="meta"><span id="mood">Mood: —</span><span id="visit">Version: —</span><span id="time">Time: —</span></div>
+</div>
+</section>
+<section class="section">
+<h2>What changed?</h2><p class="sub">This page has a different personality every time you meet it.</p>
+<div class="cards">
+<article class="card"><div class="emoji" id="e1">🎨</div><h3 id="c1">Visual Mood</h3><p id="p1">The atmosphere shifts.</p></article>
+<article class="card"><div class="emoji" id="e2">🧠</div><h3 id="c2">Personality</h3><p id="p2">The website has something new to say.</p></article>
+<article class="card"><div class="emoji" id="e3">🪄</div><h3 id="c3">Tiny Secret</h3><p id="p3">There may be a little surprise hiding here.</p></article>
+</div>
+<div class="result" id="result">Your current world is being generated…</div>
+</section>
+</main>
+<footer class="footer">A small experiment in randomness, design & the web.</footer>
+</div>
+<script>
+const worlds=[
+{name:"NEON",theme:"theme-neon",emoji:["🌌","⚡","👾"],mood:"Electric",line:"The internet forgot to sleep.",cards:["Cyber Mood","Hyper Personality","Glitch Secret"],texts:["Everything is glowing a little too much.","Fast. Bright. Slightly chaotic.","Look closely. Something is hiding in plain sight."]},
+{name:"SUNSET",theme:"theme-sunset",emoji:["🌅","🔥","🧡"],mood:"Dreamy",line:"Today the website feels strangely calm.",cards:["Warm Colors","Soft Personality","Golden Secret"],texts:["A warmer world appeared around you.","No rush. Just enjoy the view.","Somewhere in this page is a tiny golden thought."]},
+{name:"FOREST",theme:"theme-forest",emoji:["🌿","🍃","🦉"],mood:"Wild",line:"You found the version that escaped into the forest.",cards:["Living Colors","Curious Personality","Hidden Secret"],texts:["Green means the page is alive today.","Quiet, curious and watching.","The forest never gives away all its secrets."]},
+{name:"OCEAN",theme:"theme-ocean",emoji:["🌊","🐋","🫧"],mood:"Deep",line:"The page is drifting somewhere under the surface.",cards:["Deep Blue","Reflective Personality","Underwater Secret"],texts:["The colors went underwater.","Slow down. There is more beneath the obvious.","Not everything here is meant to be found quickly."]},
+{name:"PAPER",theme:"theme-paper",emoji:["📜","✒️","🕵️"],mood:"Vintage",line:"The website temporarily became a strange little note.",cards:["Paper World","Old-School Personality","Ink Secret"],texts:["Minimal today. Almost suspiciously simple.","It has opinions, but writes them quietly.","Read between the lines. Literally."]}
+];
+const extras=[
+["🪐","Cosmic","A tiny universe appeared for no obvious reason."],
+["🧩","Puzzle","Something here may make more sense if you stop looking for sense."],
+["🎭","Theater","The website is performing. You are the audience."],
+["🔮","Mystery","Not every detail wants to explain itself."],
+["🧪","Experiment","The page changed. The experiment continues."]
+];
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+function build(){
+const w=pick(worlds),x=pick(extras);
+document.body.className=w.theme;
+document.getElementById("status").textContent="TODAY'S WORLD: "+w.name;
+document.getElementById("mood").textContent="Mood: "+w.mood;
+document.getElementById("visit").textContent="Version: #"+Math.floor(1000+Math.random()*9000);
+document.getElementById("time").textContent="Time: "+new Date().toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"});
+document.getElementById("intro").textContent=w.line+" "+pick(["Come back later and it may be completely different.","There are no permanent versions here.","You only get this version for now.","Tomorrow could look nothing like today."]);
+["e1","e2","e3"].forEach((id,i)=>document.getElementById(id).textContent=w.emoji[i]);
+["c1","c2","c3"].forEach((id,i)=>document.getElementById(id).textContent=w.cards[i]);
+["p1","p2","p3"].forEach((id,i)=>document.getElementById(id).textContent=w.texts[i]);
+document.getElementById("result").innerHTML="<strong>"+x[0]+" "+x[1]+"</strong><br>"+x[2];
+}
+document.getElementById("change").onclick=()=>{build();window.scrollTo({top:0,behavior:"smooth"})};
+document.getElementById("surprise").onclick=()=>{build();document.getElementById("result").animate([{transform:"scale(.96)",opacity:.4},{transform:"scale(1)",opacity:1}],{duration:450})};
+build();
+</script>
+</body>
+</html>
