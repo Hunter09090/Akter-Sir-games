@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090713">
+<title>DRAGON EGG — GAME HUB OF SIR</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 50% 18%,#32183f 0,#110c1c 35%,#07070d 78%);color:#fff;font-family:system-ui,Arial,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 20% 70%,#ff4d9a12,transparent 25%),radial-gradient(circle at 80% 60%,#7b5cff12,transparent 28%)}
+.wrap{width:min(1050px,92%);margin:auto;padding:18px 0 45px}.top{display:flex;justify-content:space-between;align-items:center}.back{color:#d9c9ff;text-decoration:none;border:1px solid #4c3866;background:#171022;padding:9px 13px;border-radius:12px}.brand{font-weight:900;color:#ffb3df;letter-spacing:.8px}
+.hero{text-align:center;padding:30px 0 10px}.eyebrow{font-size:12px;letter-spacing:3px;color:#cbb7ff;font-weight:900}.hero h1{font-size:clamp(42px,9vw,82px);margin:10px 0 4px;line-height:.95;background:linear-gradient(90deg,#fff,#ff9bd5,#c5a5ff);-webkit-background-clip:text;color:transparent}.hero p{color:#aaa0bc;margin:0 auto;max-width:620px}
+.panel{margin:24px auto 0;max-width:720px;border:1px solid #4b345f;background:#0e0b17d9;border-radius:28px;padding:25px;box-shadow:0 25px 80px #0008}
+.hud{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}.stat{background:#171020;border:1px solid #322542;border-radius:15px;padding:10px;text-align:center}.stat b{display:block;font-size:22px}.stat span{font-size:11px;color:#988ba8}
+.stage{min-height:370px;display:grid;place-items:center;position:relative;border-radius:22px;background:radial-gradient(circle,#261832,#100c18 65%,#09070e);overflow:hidden;border:1px solid #332343}.stars{position:absolute;inset:0;background-image:radial-gradient(#fff8 1px,transparent 1px);background-size:37px 37px;opacity:.15}
+.egg{width:175px;height:225px;border-radius:52% 48% 48% 52%/58% 58% 42% 42%;position:relative;background:linear-gradient(135deg,#2a1730,#8c356b 46%,#e77eb8 50%,#4b2260 54%,#160d20);border:3px solid #f2a8d1;box-shadow:0 0 25px #f35da866,0 0 75px #9b4dff33;cursor:pointer;transition:.25s;display:grid;place-items:center;font-size:50px;user-select:none}
+.egg:before,.egg:after{content:"";position:absolute;width:4px;background:#f8c7e6;border-radius:8px;box-shadow:0 0 8px #fff}.egg:before{height:48px;left:46px;top:45px;transform:rotate(25deg)}.egg:after{height:34px;right:46px;bottom:55px;transform:rotate(-30deg)}
+.egg:hover{transform:scale(1.025) rotate(-1deg)}.egg.shake{animation:shake .4s}.egg.cracked{background:linear-gradient(135deg,#17101d,#5a3159 50%,#e5b5ff);box-shadow:0 0 40px #b783ff88,0 0 100px #e86bdb33}
+@keyframes shake{0%,100%{transform:translateX(0) rotate(0)}25%{transform:translateX(-9px) rotate(-3deg)}50%{transform:translateX(9px) rotate(3deg)}75%{transform:translateX(-5px) rotate(-2deg)}}
+.hint{text-align:center;color:#a99ab9;font-size:13px;margin-top:16px}.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:17px}.btn{border:1px solid #5a3e73;background:#21142d;color:#fff;border-radius:13px;padding:12px 17px;font-weight:900;cursor:pointer}.btn.primary{background:linear-gradient(135deg,#a64279,#6542a5);border-color:#c36ca5}.btn:disabled{opacity:.45;cursor:not-allowed}
+.log{margin-top:20px;display:grid;gap:8px}.msg{background:#15101d;border:1px solid #2f2340;border-radius:12px;padding:10px 12px;color:#cfc4da;font-size:13px}.msg strong{color:#ffb0d9}
+.result{display:none;text-align:center;padding:20px;border-radius:18px;background:#171022;border:1px solid #624676;margin-top:18px}.result.show{display:block}.result h2{margin:0 0 8px;color:#ffb3df}.dragon{font-size:80px;filter:drop-shadow(0 0 18px #ff72bf)}
+.collection{margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.slot{padding:10px 5px;border-radius:12px;background:#120d19;border:1px solid #2b2037;text-align:center;font-size:11px;color:#756b80}.slot.found{color:#ffd1eb;border-color:#784c68;background:#211322}.slot b{display:block;font-size:25px;margin-bottom:3px}
+@media(max-width:650px){.wrap{width:94%}.panel{padding:15px}.stage{min-height:330px}.egg{width:145px;height:190px}.collection{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><a class="back" href="../index.html">← Game Hub</a><div class="brand">🐉 SIR'S DRAGON WORLD</div></header>
+<section class="hero"><div class="eyebrow">MAGIC • PATIENCE • DISCOVERY</div><h1>DRAGON EGG</h1><p>একটি রহস্যময় ড্রাগন ডিম। ঠিক সময়ে ঠিকভাবে যত্ন নাও—তারপর দেখো, ভেতরে কী লুকিয়ে আছে।</p></section>
+<section class="panel">
+<div class="hud"><div class="stat"><b id="energy">0</b><span>MAGIC ENERGY</span></div><div class="stat"><b id="clicks">0/12</b><span>EGG PULSES</span></div><div class="stat"><b id="stageName">Sleeping</b><span>STAGE</span></div></div>
+<div class="stage"><div class="stars"></div><div class="egg" id="egg" title="Tap the egg">🥚</div></div>
+<div class="hint" id="hint">ডিমে ট্যাপ করো। কিন্তু খুব তাড়াহুড়া করো না! ✨</div>
+<div class="actions"><button class="btn primary" id="warm">🔥 Warm the Egg</button><button class="btn" id="magic">✨ Send Magic</button><button class="btn" id="reset">↻ New Egg</button></div>
+<div class="log" id="log"></div>
+<div class="result" id="result"><div class="dragon" id="dragon">🐉</div><h2 id="resultTitle">THE EGG HATCHED!</h2><p id="resultText"></p><button class="btn primary" id="again">Raise Another Egg</button></div>
+<div class="collection" id="collection"></div>
+</section>
+</div>
+<script>
+const KEY='dragonEggState';
+const names=['Ember','Luna','Void','Storm'];
+const emojis=['🔥','🌙','🖤','⚡'];
+let s=JSON.parse(localStorage.getItem(KEY)||'null')||{energy:0,clicks:0,warm:0,magic:0,hatched:[]};
+let lastAction=0;
+const $=id=>document.getElementById(id);
+function save(){localStorage.setItem(KEY,JSON.stringify(s))}
+function render(){
+ $('energy').textContent=s.energy;
+ $('clicks').textContent=s.clicks+'/12';
+ $('stageName').textContent=s.clicks<4?'Sleeping':s.clicks<8?'Awakening':s.clicks<12?'Cracking':'Hatching';
+ $('egg').classList.toggle('cracked',s.clicks>=8);
+ const slots=names.map((n,i)=>'<div class="slot '+(s.hatched.includes(n)?'found':'')+'"><b>'+emojis[i]+'</b>'+n+(s.hatched.includes(n)?' ✓':' ?')+'</div>');
+ $('collection').innerHTML=slots.join('');
+}
+function log(t){const d=document.createElement('div');d.className='msg';d.innerHTML=t;$('log').prepend(d);while($('log').children.length>4)$('log').lastChild.remove()}
+function pulse(){
+ if($('result').classList.contains('show'))return;
+ const now=Date.now();
+ if(now-lastAction<450){log('⚠️ <strong>Too fast!</strong> The egg dislikes spam clicking.');return}
+ lastAction=now;
+ s.clicks++;
+ s.energy+=Math.floor(6+Math.random()*10);
+ $('egg').classList.remove('shake');void $('egg').offsetWidth;$('egg').classList.add('shake');
+ if(s.clicks===4)log('👀 <strong>Something moved inside...</strong>');
+ if(s.clicks===8)log('💥 <strong>A crack appeared!</strong> Keep calm.');
+ if(s.clicks===12)hatch();
+ save();render();
+}
+function hatch(){
+ const idx=Math.min(3,Math.floor(s.magic/3));
+ const name=names[idx];
+ if(!s.hatched.includes(name))s.hatched.push(name);
+ $('dragon').textContent=emojis[idx];
+ $('resultTitle').textContent=name.toUpperCase()+' DRAGON AWAKENED!';
+ $('resultText').textContent='তোমার '+s.energy+' Magic Energy-তে একটি '+name+' Dragon জেগে উঠেছে। '+(s.hatched.length===4?'সব Dragon আবিষ্কার করেছ! তুমি DRAGON MASTER!':'আরও Dragon আছে—পরের ডিমে ভিন্নভাবে চেষ্টা করো।');
+ $('result').classList.add('show');log('🐉 <strong>'+name+' Dragon has awakened!</strong>');
+ save();render();
+}
+$('egg').onclick=pulse;
+$('warm').onclick=()=>{if(s.clicks>=12)return; s.energy+=12;s.warm++;log('🔥 <strong>Warmth added.</strong> The egg feels alive.');save();render()};
+$('magic').onclick=()=>{if(s.clicks>=12)return;s.energy+=18;s.magic++;log('✨ <strong>Magic sent.</strong> Something answered from inside.');save();render()};
+$('reset').onclick=()=>{s={energy:0,clicks:0,warm:0,magic:0,hatched:s.hatched};$('result').classList.remove('show');$('log').innerHTML='';log('🥚 <strong>A fresh egg arrived.</strong>');save();render()};
+$('again').onclick=()=>{$('result').classList.remove('show');s={energy:0,clicks:0,warm:0,magic:0,hatched:s.hatched};$('log').innerHTML='';log('🥚 <strong>A new mystery egg is waiting.</strong>');save();render()};
+log('🥚 <strong>The Dragon Egg has chosen you.</strong>');
+render();
+</script>
+</body>
+</html>
