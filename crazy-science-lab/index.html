@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#05070b"><title>Crazy Science Lab 🧪</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:#05070b;color:#f7fbff}
+body{overflow-x:hidden}.bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 15% 20%,#00f5a033,transparent 28%),radial-gradient(circle at 85% 70%,#7c3aed33,transparent 30%),#05070b}.gridbg{position:fixed;inset:0;z-index:-1;opacity:.16;background-image:linear-gradient(#4ade8020 1px,transparent 1px),linear-gradient(90deg,#4ade8020 1px,transparent 1px);background-size:38px 38px}
+.wrap{width:min(1120px,92%);margin:auto}.top{height:68px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:1000;letter-spacing:.08em}.back{color:#fff;text-decoration:none;border:1px solid #ffffff22;background:#ffffff09;padding:9px 13px;border-radius:12px}
+.hero{text-align:center;padding:42px 0 28px}.labtag{display:inline-flex;gap:8px;align-items:center;border:1px solid #4ade8050;background:#4ade8010;color:#86efac;border-radius:999px;padding:8px 13px;font-size:12px;font-weight:900;letter-spacing:.08em}.hero h1{font-size:clamp(48px,10vw,105px);line-height:.84;letter-spacing:-.07em;margin:22px 0 16px}.hero h1 span{background:linear-gradient(90deg,#fff,#86efac,#c4b5fd);-webkit-background-clip:text;color:transparent}.hero p{max-width:690px;margin:auto;color:#9eabc0;line-height:1.6}.hud{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:25px 0}.pill{border:1px solid #ffffff18;background:#ffffff08;border-radius:14px;padding:10px 15px;min-width:110px}.pill b{display:block;font-size:19px}.pill small{color:#7f8ba4}
+.lab{display:grid;grid-template-columns:1fr 1.15fr;gap:16px;padding:18px 0 55px}.panel{border:1px solid #ffffff18;background:#0b1019dd;border-radius:24px;padding:22px;box-shadow:0 20px 70px #0006;backdrop-filter:blur(12px)}.panel h2{margin:0 0 6px}.muted{color:#7f8ba4;font-size:13px}.beaker{min-height:390px;display:grid;place-items:center;position:relative;overflow:hidden}.beaker:before{content:"";position:absolute;width:210px;height:260px;border:5px solid #dbeafe70;border-top:0;border-radius:0 0 80px 80px;bottom:35px;left:50%;transform:translateX(-50%)}.liquid{position:absolute;width:190px;height:130px;bottom:72px;left:50%;transform:translateX(-50%);border-radius:0 0 70px 70px;background:linear-gradient(#22c55eaa,#7c3aedcc);box-shadow:0 0 35px #22c55e55;transition:.5s}.bubble{position:absolute;border-radius:50%;background:#ffffff80;animation:float 2.5s infinite ease-in-out}.b1{width:13px;height:13px;left:44%;bottom:160px}.b2{width:8px;height:8px;left:53%;bottom:190px;animation-delay:.6s}.b3{width:18px;height:18px;left:57%;bottom:125px;animation-delay:1s}@keyframes float{50%{transform:translateY(-45px);opacity:.35}}
+.controls{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}.chemical{border:1px solid #ffffff20;background:#121a27;color:#fff;border-radius:14px;padding:14px;cursor:pointer;text-align:left;transition:.2s}.chemical:hover{transform:translateY(-2px);border-color:#86efac}.chemical strong{display:block}.chemical span{color:#7f8ba4;font-size:12px}.mix{width:100%;margin-top:12px;border:0;border-radius:14px;padding:15px;font-weight:1000;font-size:15px;background:#fff;color:#05070b;cursor:pointer}.reset{background:#ffffff0b;color:#fff;border:1px solid #ffffff22}
+.console{margin-top:16px;border-radius:16px;background:#05070b;border:1px solid #ffffff14;padding:14px;min-height:110px;font-family:ui-monospace,monospace;font-size:12px;color:#a7f3d0;line-height:1.6}.console .warn{color:#fcd34d}.console .bad{color:#fb7185}.console .good{color:#86efac}
+.challenge{margin-top:16px;padding:17px;border:1px dashed #ffffff20;border-radius:18px}.challenge h3{margin:0 0 7px}.challenge p{color:#a8b3c7;font-size:14px;line-height:1.5}.answer{display:flex;gap:8px}.answer input{flex:1;min-width:0;background:#05070b;border:1px solid #ffffff22;color:#fff;border-radius:11px;padding:12px}.answer button{border:0;border-radius:11px;padding:0 15px;font-weight:900;cursor:pointer}
+.overlay{position:fixed;inset:0;display:none;place-items:center;background:#000b;z-index:20;padding:20px}.overlay.show{display:grid}.modal{width:min(520px,100%);text-align:center;border:1px solid #86efac55;background:#0b1019;border-radius:25px;padding:30px;box-shadow:0 25px 100px #000}.modal .big{font-size:70px}.modal h2{font-size:32px;margin:8px 0}.modal p{color:#aab5c8;line-height:1.6}.modal button{border:0;border-radius:12px;padding:13px 18px;font-weight:900;cursor:pointer}
+.flash{animation:flash .45s}@keyframes flash{50%{filter:brightness(1.8)}}
+@media(max-width:800px){.lab{grid-template-columns:1fr}.beaker{min-height:330px}.hero{padding-top:25px}.controls{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="gridbg"></div>
+<div class="wrap">
+<header class="top"><div class="brand">🧪 CRAZY SCIENCE LAB</div><a class="back" href="../index.html">← Game Hub</a></header>
+<section class="hero">
+<div class="labtag">⚠️ UNSTABLE EXPERIMENT • LAB #07</div>
+<h1><span>CRAZY</span><br>SCIENCE LAB</h1>
+<p>Mix mysterious chemicals, discover reactions, solve the lab challenge and try not to blow up the experiment. There are no boring formulas here.</p>
+<div class="hud"><div class="pill"><b id="score">0</b><small>SCORE</small></div><div class="pill"><b id="discoveries">0/8</b><small>REACTIONS</small></div><div class="pill"><b id="streak">0</b><small>STREAK</small></div></div>
+</section>
+<main class="lab">
+<section class="panel">
+<h2>⚗️ Experiment Chamber</h2><div class="muted">Choose two chemicals, then hit MIX.</div>
+<div class="beaker" id="beaker"><div class="liquid" id="liquid"></div><i class="bubble b1"></i><i class="bubble b2"></i><i class="bubble b3"></i></div>
+<div class="controls" id="controls"></div>
+<button class="mix" id="mix">🧬 MIX THE CHEMICALS</button>
+<button class="mix reset" id="reset">↻ RESET EXPERIMENT</button>
+<div class="console" id="console">> SYSTEM ONLINE...<br>> Choose two chemicals to begin.</div>
+</section>
+<section class="panel">
+<h2>🧠 Scientist's Notebook</h2><div class="muted">Your discovered reactions and today's challenge.</div>
+<div class="challenge"><h3>🔬 Daily Lab Challenge</h3><p id="challengeText">Loading experiment...</p><div class="answer"><input id="answer" placeholder="Type your answer"><button id="check">CHECK</button></div></div>
+<div id="log" class="console">> REACTION LOG<br>> No reactions recorded yet.</div>
+<div class="challenge"><h3>💡 How to play</h3><p>Every pair creates a reaction. Some are useful, some weird, and one is extremely rare. Discover all 8 reactions for the maximum lab score.</p></div>
+</section>
+</main>
+</div>
+<div class="overlay" id="overlay"><div class="modal"><div class="big" id="modalIcon">🧪</div><h2 id="modalTitle">REACTION!</h2><p id="modalText"></p><button id="close">Continue Experiment</button></div></div>
+<script>
+const chemicals=[
+{id:"A",name:"Quantum Goo",emoji:"🟢",desc:"Unstable bio-gel"},
+{id:"B",name:"Moon Dust",emoji:"🌙",desc:"Unknown particles"},
+{id:"C",name:"Dragon Spark",emoji:"🔥",desc:"Highly reactive"},
+{id:"D",name:"Void Water",emoji:"🧪",desc:"Do not drink"},
+{id:"E",name:"Star Powder",emoji:"✨",desc:"Cosmic material"},
+{id:"F",name:"Frost Crystal",emoji:"❄️",desc:"Temperature: impossible"}
+];
+const reactions=[
+["A","B","🌀","GRAVITY GOO","The mixture starts floating.","good",100],
+["A","C","💚","TOXIC DRAGON","A green dragon-shaped cloud appears.","good",120],
+["A","D","🫧","INFINITE BUBBLES","The beaker refuses to stop bubbling.","good",90],
+["B","C","🌋","MINI VOLCANO","Congratulations. You made a tiny volcano.","good",140],
+["B","E","🌌","POCKET GALAXY","Stars appear inside the liquid.","good",180],
+["C","D","💥","LAB BOOM","That was... louder than expected.","warn",80],
+["C","F","❄️","FIRE ICE","Impossible physics detected.","good",160],
+["E","F","🌈","RAINBOW MATTER","The experiment has become beautiful.","good",200]
+];
+let selected=[],score=0,streak=0,found=JSON.parse(localStorage.getItem("crazyLabFound")||"[]");
+const $=id=>document.getElementById(id);
+function renderChemicals(){
+$("controls").innerHTML=chemicals.map(function(c){return '<button class="chemical" data-id="'+c.id+'">'+c.emoji+' <strong>'+c.name+'</strong><span>'+c.desc+'</span></button>'}).join("");
+document.querySelectorAll(".chemical").forEach(function(b){b.onclick=function(){select(b.dataset.id)}});
+}
+function select(id){
+if(selected.includes(id)){selected=selected.filter(function(x){return x!==id})}else{if(selected.length>=2)selected.shift();selected.push(id)}
+document.querySelectorAll(".chemical").forEach(function(b){b.style.outline=selected.includes(b.dataset.id)?"2px solid #86efac":"none"});
+$("console").innerHTML="> SELECTED: "+(selected.map(function(x){return chemicals.find(function(c){return c.id===x}).name}).join(" + ")||"none")+"<br>> Awaiting MIX command...";
+}
+function getReaction(a,b){return reactions.find(function(r){return(r[0]===a&&r[1]===b)||(r[0]===b&&r[1]===a)})}
+function update(){ $("score").textContent=score;$("discoveries").textContent=found.length+"/8";$("streak").textContent=streak }
+function log(){
+$("log").innerHTML="<b>> REACTION LOG</b><br>"+found.map(function(k){var x=reactions.find(function(r){return r[0]+r[1]===k});return x?"• "+x[2]+" "+x[3]:""}).join("<br>");
+}
+function openModal(r,fresh){$("modalIcon").textContent=r[2];$("modalTitle").textContent=r[3];$("modalText").textContent=r[4]+" "+(fresh?"New discovery unlocked!":"You already knew this reaction.");$("overlay").classList.add("show")}
+function mix(){
+if(selected.length!==2){$("console").innerHTML='<span class="warn">> ERROR: Select exactly two chemicals.</span>';return}
+var r=getReaction(selected[0],selected[1]);
+if(!r){$("console").innerHTML='<span class="bad">> UNKNOWN REACTION. The chemicals refuse to cooperate.</span>';streak=0;selected=[];return}
+var key=r[0]+r[1],fresh=!found.includes(key);
+if(fresh){found.push(key);localStorage.setItem("crazyLabFound",JSON.stringify(found));score+=r[6];streak++}else{score+=10}
+update();log();
+$("liquid").style.background="linear-gradient(#"+(r[5]==="warn"?"f59e0b":"22c55e")+"aa,#7c3aedcc)";
+$("console").innerHTML="> REACTION DETECTED<br>> "+r[3]+"<br>> "+r[4]+"<br>> "+(fresh?"+ "+r[6]+" POINTS":"Already discovered • +10")+"<br>> Streak: "+streak;
+$("beaker").classList.add("flash");setTimeout(function(){$("beaker").classList.remove("flash")},450);
+openModal(r,fresh);selected=[];document.querySelectorAll(".chemical").forEach(function(b){b.style.outline="none"});
+if(found.length===8)setTimeout(win,700);
+}
+function win(){$("modalIcon").textContent="🏆";$("modalTitle").textContent="LAB MASTER";$("modalText").textContent="You discovered all 8 known reactions. The lab survived. Barely. Final score: "+score+"."; $("overlay").classList.add("show")}
+$("close").onclick=function(){$("overlay").classList.remove("show")};
+$("mix").onclick=mix;
+$("reset").onclick=function(){selected=[];document.querySelectorAll(".chemical").forEach(function(b){b.style.outline="none"});$("console").innerHTML="> EXPERIMENT RESET.<br>> Choose two chemicals to begin.";$("liquid").style.background="linear-gradient(#22c55eaa,#7c3aedcc)"};
+const challenges=[
+["What gas do humans need to breathe to survive?","oxygen"],["What planet is known as the Red Planet?","mars"],["What force pulls objects toward Earth?","gravity"],["What is H2O commonly called?","water"],["What star is closest to Earth?","sun"]
+];
+var ch=challenges[Math.floor(Math.random()*challenges.length)];
+$("challengeText").textContent=ch[0];
+$("check").onclick=function(){var v=$("answer").value.trim().toLowerCase();if(v===ch[1]){score+=50;update();$("challengeText").textContent="✅ Correct! +50 points. Scientist level increased.";$("answer").value=""}else{$("challengeText").textContent="❌ Not quite. Try again."}};
+renderChemicals();update();
+</script>
+</body>
+</html>
